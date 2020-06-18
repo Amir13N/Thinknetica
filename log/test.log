@@ -11902,3 +11902,1191 @@ Completed 302 Found in 3ms (ActiveRecord: 0.3ms | Allocations: 804)
   [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
   [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "dummy value"], ["title", "dummy value"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:17:00.130210"], ["updated_at", "2020-06-18 22:17:00.130210"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 9ms (ActiveRecord: 0.7ms | Allocations: 6185)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:17:00.155694"], ["updated_at", "2020-06-18 22:17:00.155694"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 919)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/new.html.slim within layouts/application (Duration: 0.6ms | Allocations: 335)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 11ms (Views: 5.2ms | ActiveRecord: 0.3ms | Allocations: 6862)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/new.html.slim within layouts/application (Duration: 0.2ms | Allocations: 69)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1381)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:17:00.181744"], ["updated_at", "2020-06-18 22:17:00.181744"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"new body", "title"=>"new title"}, "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "new body"], ["id", 1], ["title", "new title"], ["LIMIT", 1]]
+  [1m[36mQuestion Update (0.1ms)[0m  [1m[33mUPDATE "questions" SET "body" = ?, "title" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["body", "new body"], ["title", "new title"], ["updated_at", "2020-06-18 22:17:00.188447"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms | Allocations: 2523)
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:17:00.193257"], ["updated_at", "2020-06-18 22:17:00.193257"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1047)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:17:00.200787"], ["updated_at", "2020-06-18 22:17:00.200787"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 71)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 1840)
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:17:00.209918"], ["updated_at", "2020-06-18 22:17:00.209918"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 69)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1698)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:17:00.219822"], ["updated_at", "2020-06-18 22:17:00.219822"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mQuestion Destroy (0.1ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions
+Completed 302 Found in 9ms (ActiveRecord: 0.6ms | Allocations: 5153)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:17:00.233644"], ["updated_at", "2020-06-18 22:17:00.233644"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Load (0.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mQuestion Destroy (0.1ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 804)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" = ? LIMIT ?[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-06-18 22:17:00.263647"], ["updated_at", "2020-06-18 22:17:00.263647"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Update (0.1ms)[0m  [1m[33mUPDATE "questions" SET "body" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["body", "dummy value"], ["updated_at", "2020-06-18 22:17:00.264865"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" IS NULL LIMIT ?[0m  [["body", "dummy value"], ["LIMIT", 1]]
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" IS NULL LIMIT ?[0m  [["body", "DUMMY VALUE"], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "dummy value"], ["title", "dummy value"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:52.998819"], ["updated_at", "2020-06-18 22:28:52.998819"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.013358"], ["updated_at", "2020-06-18 22:28:53.013358"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.018556"], ["updated_at", "2020-06-18 22:28:53.018556"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.023495"], ["updated_at", "2020-06-18 22:28:53.023495"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.028676"], ["updated_at", "2020-06-18 22:28:53.028676"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:28:53.036803"], ["updated_at", "2020-06-18 22:28:53.036803"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.040802"], ["updated_at", "2020-06-18 22:28:53.040802"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:28:53.043142"], ["updated_at", "2020-06-18 22:28:53.043142"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.048177"], ["updated_at", "2020-06-18 22:28:53.048177"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:28:53.049994"], ["updated_at", "2020-06-18 22:28:53.049994"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.4ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.054873"], ["updated_at", "2020-06-18 22:28:53.054873"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.2ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:28:53.070113"], ["updated_at", "2020-06-18 22:28:53.070113"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.076701"], ["updated_at", "2020-06-18 22:28:53.076701"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:28:53.078755"], ["updated_at", "2020-06-18 22:28:53.078755"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.083262"], ["updated_at", "2020-06-18 22:28:53.083262"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:28:53.085209"], ["updated_at", "2020-06-18 22:28:53.085209"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.096095"], ["updated_at", "2020-06-18 22:28:53.096095"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms | Allocations: 2174)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.101859"], ["updated_at", "2020-06-18 22:28:53.101859"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 918)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/new.html.slim within layouts/application (Duration: 0.5ms | Allocations: 336)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 4926)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/new.html.slim within layouts/application (Duration: 0.2ms | Allocations: 70)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1382)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.126939"], ["updated_at", "2020-06-18 22:28:53.126939"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"new body", "title"=>"new title"}, "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "new body"], ["id", 1], ["title", "new title"], ["LIMIT", 1]]
+  [1m[36mQuestion Update (0.1ms)[0m  [1m[33mUPDATE "questions" SET "body" = ?, "title" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["body", "new body"], ["title", "new title"], ["updated_at", "2020-06-18 22:28:53.133163"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 5ms (ActiveRecord: 0.5ms | Allocations: 2494)
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.138825"], ["updated_at", "2020-06-18 22:28:53.138825"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1047)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.148089"], ["updated_at", "2020-06-18 22:28:53.148089"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 72)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1842)
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.159017"], ["updated_at", "2020-06-18 22:28:53.159017"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 70)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1699)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.169171"], ["updated_at", "2020-06-18 22:28:53.169171"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mQuestion Destroy (0.1ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions
+Completed 302 Found in 10ms (ActiveRecord: 0.5ms | Allocations: 3790)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:28:53.185791"], ["updated_at", "2020-06-18 22:28:53.185791"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Load (0.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mQuestion Destroy (0.1ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 804)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" = ? LIMIT ?[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-06-18 22:28:53.214399"], ["updated_at", "2020-06-18 22:28:53.214399"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Update (0.1ms)[0m  [1m[33mUPDATE "questions" SET "body" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["body", "dummy value"], ["updated_at", "2020-06-18 22:28:53.216058"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" IS NULL LIMIT ?[0m  [["body", "dummy value"], ["LIMIT", 1]]
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" IS NULL LIMIT ?[0m  [["body", "DUMMY VALUE"], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "dummy value"], ["title", "dummy value"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.513177"], ["updated_at", "2020-06-18 22:29:38.513177"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#create as HTML
+  Parameters: {"answer"=>{"body"=>"MyText", "correct"=>"false", "question"=>"1"}, "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:29:38.532886"], ["updated_at", "2020-06-18 22:29:38.532886"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1/answers/1
+Completed 302 Found in 15ms (ActiveRecord: 0.5ms | Allocations: 12048)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.546535"], ["updated_at", "2020-06-18 22:29:38.546535"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#create as HTML
+  Parameters: {"answer"=>{"body"=>"MyText", "correct"=>"false", "question"=>"1"}, "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:29:38.550591"], ["updated_at", "2020-06-18 22:29:38.550591"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1/answers/1
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 1104)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.555630"], ["updated_at", "2020-06-18 22:29:38.555630"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#create as HTML
+  Parameters: {"answer"=>{"body"=>"", "correct"=>"false", "question"=>"1"}, "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  Rendering answers/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered answers/new.html.slim within layouts/application (Duration: 0.4ms | Allocations: 335)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.1ms | Allocations: 5085)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.576836"], ["updated_at", "2020-06-18 22:29:38.576836"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#create as HTML
+  Parameters: {"answer"=>{"body"=>"", "correct"=>"false", "question"=>"1"}, "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  Rendering answers/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered answers/new.html.slim within layouts/application (Duration: 0.1ms | Allocations: 69)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 1493)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.585411"], ["updated_at", "2020-06-18 22:29:38.585411"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:29:38.587270"], ["updated_at", "2020-06-18 22:29:38.587270"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by AnswersController#update as HTML
+  Parameters: {"answer"=>{"body"=>"new body"}, "question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Update (0.1ms)[0m  [1m[33mUPDATE "answers" SET "body" = ?, "updated_at" = ? WHERE "answers"."id" = ?[0m  [["body", "new body"], ["updated_at", "2020-06-18 22:29:38.591160"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/questions/1/answers/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1704)
+  [1m[36mAnswer Load (0.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.596080"], ["updated_at", "2020-06-18 22:29:38.596080"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:29:38.597982"], ["updated_at", "2020-06-18 22:29:38.597982"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#update as HTML
+  Parameters: {"answer"=>{"body"=>"MyText", "correct"=>"false", "question"=>"1"}, "question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/questions/1/answers/1
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 1208)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.605718"], ["updated_at", "2020-06-18 22:29:38.605718"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:29:38.607940"], ["updated_at", "2020-06-18 22:29:38.607940"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#update as HTML
+  Parameters: {"answer"=>{"body"=>"", "correct"=>"false", "question"=>"1"}, "question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering answers/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered answers/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 71)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 1794)
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.617348"], ["updated_at", "2020-06-18 22:29:38.617348"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:29:38.619235"], ["updated_at", "2020-06-18 22:29:38.619235"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#update as HTML
+  Parameters: {"answer"=>{"body"=>"", "correct"=>"false", "question"=>"1"}, "question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering answers/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered answers/edit.html.slim within layouts/application (Duration: 0.1ms | Allocations: 69)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1650)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.627333"], ["updated_at", "2020-06-18 22:29:38.627333"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:29:38.629175"], ["updated_at", "2020-06-18 22:29:38.629175"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+Processing by AnswersController#destroy as HTML
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Destroy (0.1ms)[0m  [1m[31mDELETE FROM "answers" WHERE "answers"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/questions/1/answers
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 829)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.635727"], ["updated_at", "2020-06-18 22:29:38.635727"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:29:38.637665"], ["updated_at", "2020-06-18 22:29:38.637665"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by AnswersController#destroy as HTML
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Destroy (0.1ms)[0m  [1m[31mDELETE FROM "answers" WHERE "answers"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/questions/1/answers
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 811)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.663234"], ["updated_at", "2020-06-18 22:29:38.663234"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1062)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.670045"], ["updated_at", "2020-06-18 22:29:38.670045"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms | Allocations: 918)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/new.html.slim within layouts/application (Duration: 0.2ms | Allocations: 72)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 2050)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/new.html.slim within layouts/application (Duration: 0.2ms | Allocations: 70)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1382)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.691429"], ["updated_at", "2020-06-18 22:29:38.691429"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"new body", "title"=>"new title"}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "new body"], ["id", 1], ["title", "new title"], ["LIMIT", 1]]
+  [1m[36mQuestion Update (0.1ms)[0m  [1m[33mUPDATE "questions" SET "body" = ?, "title" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["body", "new body"], ["title", "new title"], ["updated_at", "2020-06-18 22:29:38.696039"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1268)
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.700949"], ["updated_at", "2020-06-18 22:29:38.700949"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1047)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.710419"], ["updated_at", "2020-06-18 22:29:38.710419"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 72)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.4ms | Allocations: 1836)
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.721522"], ["updated_at", "2020-06-18 22:29:38.721522"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 70)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.3ms | Allocations: 1699)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.731290"], ["updated_at", "2020-06-18 22:29:38.731290"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mQuestion Destroy (0.1ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1007)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:29:38.741590"], ["updated_at", "2020-06-18 22:29:38.741590"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mQuestion Destroy (0.2ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 804)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" = ? LIMIT ?[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-06-18 22:29:38.770371"], ["updated_at", "2020-06-18 22:29:38.770371"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Update (0.1ms)[0m  [1m[33mUPDATE "questions" SET "body" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["body", "dummy value"], ["updated_at", "2020-06-18 22:29:38.771960"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" IS NULL LIMIT ?[0m  [["body", "dummy value"], ["LIMIT", 1]]
+  [1m[36mQuestion Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" IS NULL LIMIT ?[0m  [["body", "DUMMY VALUE"], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "dummy value"], ["title", "dummy value"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:18.976277"], ["updated_at", "2020-06-18 22:30:18.976277"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#create as HTML
+  Parameters: {"answer"=>{"body"=>"MyText", "correct"=>"false", "question"=>"1"}, "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:30:18.995705"], ["updated_at", "2020-06-18 22:30:18.995705"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1/answers/1
+Completed 302 Found in 15ms (ActiveRecord: 0.6ms | Allocations: 12048)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.008940"], ["updated_at", "2020-06-18 22:30:19.008940"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#create as HTML
+  Parameters: {"answer"=>{"body"=>"MyText", "correct"=>"false", "question"=>"1"}, "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:30:19.012943"], ["updated_at", "2020-06-18 22:30:19.012943"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1/answers/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 1104)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.017623"], ["updated_at", "2020-06-18 22:30:19.017623"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#create as HTML
+  Parameters: {"answer"=>{"body"=>"", "correct"=>"false", "question"=>"1"}, "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  Rendering answers/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered answers/new.html.slim within layouts/application (Duration: 0.5ms | Allocations: 335)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.1ms | Allocations: 5085)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.038905"], ["updated_at", "2020-06-18 22:30:19.038905"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#create as HTML
+  Parameters: {"answer"=>{"body"=>"", "correct"=>"false", "question"=>"1"}, "question_id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  Rendering answers/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered answers/new.html.slim within layouts/application (Duration: 0.1ms | Allocations: 69)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 1493)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.1ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.047306"], ["updated_at", "2020-06-18 22:30:19.047306"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:30:19.048998"], ["updated_at", "2020-06-18 22:30:19.048998"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by AnswersController#update as HTML
+  Parameters: {"answer"=>{"body"=>"new body"}, "question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAnswer Update (0.1ms)[0m  [1m[33mUPDATE "answers" SET "body" = ?, "updated_at" = ? WHERE "answers"."id" = ?[0m  [["body", "new body"], ["updated_at", "2020-06-18 22:30:19.052930"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/questions/1/answers/1
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1704)
+  [1m[36mAnswer Load (0.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.1ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.057598"], ["updated_at", "2020-06-18 22:30:19.057598"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:30:19.059359"], ["updated_at", "2020-06-18 22:30:19.059359"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#update as HTML
+  Parameters: {"answer"=>{"body"=>"MyText", "correct"=>"false", "question"=>"1"}, "question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/questions/1/answers/1
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 1208)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.067174"], ["updated_at", "2020-06-18 22:30:19.067174"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:30:19.069625"], ["updated_at", "2020-06-18 22:30:19.069625"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#update as HTML
+  Parameters: {"answer"=>{"body"=>"", "correct"=>"false", "question"=>"1"}, "question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering answers/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered answers/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 71)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 1794)
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.079261"], ["updated_at", "2020-06-18 22:30:19.079261"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:30:19.081127"], ["updated_at", "2020-06-18 22:30:19.081127"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Processing by AnswersController#update as HTML
+  Parameters: {"answer"=>{"body"=>"", "correct"=>"false", "question"=>"1"}, "question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameter: :question[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering answers/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered answers/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 69)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1650)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.089706"], ["updated_at", "2020-06-18 22:30:19.089706"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.1ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:30:19.091549"], ["updated_at", "2020-06-18 22:30:19.091549"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+Processing by AnswersController#destroy as HTML
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Destroy (0.2ms)[0m  [1m[31mDELETE FROM "answers" WHERE "answers"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/questions/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 829)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "answers"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.099476"], ["updated_at", "2020-06-18 22:30:19.099476"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Create (0.2ms)[0m  [1m[32mINSERT INTO "answers" ("body", "correct", "question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "MyText"], ["correct", 0], ["question_id", 1], ["created_at", "2020-06-18 22:30:19.102092"], ["updated_at", "2020-06-18 22:30:19.102092"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by AnswersController#destroy as HTML
+  Parameters: {"question_id"=>"1", "id"=>"1"}
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Destroy (0.1ms)[0m  [1m[31mDELETE FROM "answers" WHERE "answers"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Load (0.0ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://test.host/questions/1
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 811)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.113131"], ["updated_at", "2020-06-18 22:30:19.113131"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1012)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.119853"], ["updated_at", "2020-06-18 22:30:19.119853"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 918)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/new.html.slim within layouts/application (Duration: 0.2ms | Allocations: 72)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 2026)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Processing by QuestionsController#create as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/new.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/new.html.slim within layouts/application (Duration: 0.2ms | Allocations: 70)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1382)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.139263"], ["updated_at", "2020-06-18 22:30:19.139263"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"new body", "title"=>"new title"}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "new body"], ["id", 1], ["title", "new title"], ["LIMIT", 1]]
+  [1m[36mQuestion Update (0.1ms)[0m  [1m[33mUPDATE "questions" SET "body" = ?, "title" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["body", "new body"], ["title", "new title"], ["updated_at", "2020-06-18 22:30:19.143724"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms | Allocations: 1257)
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.148403"], ["updated_at", "2020-06-18 22:30:19.148403"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>"MyString"}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions/1
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1047)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.157049"], ["updated_at", "2020-06-18 22:30:19.157049"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 72)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 5ms (Views: 1.4ms | ActiveRecord: 0.4ms | Allocations: 1836)
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.168529"], ["updated_at", "2020-06-18 22:30:19.168529"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#update as HTML
+  Parameters: {"question"=>{"body"=>"MyText", "title"=>""}, "id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."id" != ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["id", 1], ["title", ""], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering questions/edit.html.slim within layouts/application
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+  Rendered questions/edit.html.slim within layouts/application (Duration: 0.2ms | Allocations: 70)
+  Template rendering was prevented by rspec-rails. Use `render_views` to verify rendered view contents if necessary.
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1699)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.178746"], ["updated_at", "2020-06-18 22:30:19.178746"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Load (0.1ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mQuestion Destroy (0.1ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1004)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "MyText"], ["title", "MyString"], ["LIMIT", 1]]
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("title", "body", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "MyString"], ["body", "MyText"], ["created_at", "2020-06-18 22:30:19.187908"], ["updated_at", "2020-06-18 22:30:19.187908"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Processing by QuestionsController#destroy as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mAnswer Load (0.0ms)[0m  [1m[34mSELECT "answers".* FROM "answers" WHERE "answers"."question_id" = ?[0m  [["question_id", 1]]
+  [1m[36mQuestion Destroy (0.1ms)[0m  [1m[31mDELETE FROM "questions" WHERE "questions"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/questions
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 804)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" = ? LIMIT ?[0m  [["title", ""], ["LIMIT", 1]]
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" IS NULL AND "questions"."title" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" ORDER BY "questions"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO "questions" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2020-06-18 22:30:19.214802"], ["updated_at", "2020-06-18 22:30:19.214802"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mQuestion Update (0.1ms)[0m  [1m[33mUPDATE "questions" SET "body" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["body", "dummy value"], ["updated_at", "2020-06-18 22:30:19.216328"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" IS NULL LIMIT ?[0m  [["body", "dummy value"], ["LIMIT", 1]]
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" IS NULL LIMIT ?[0m  [["body", "DUMMY VALUE"], ["LIMIT", 1]]
+  [1m[36mQuestion Load (0.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions"[0m
+  [1m[36mQuestion Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "questions" WHERE "questions"."body" = ? AND "questions"."title" = ? LIMIT ?[0m  [["body", "dummy value"], ["title", "dummy value"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
