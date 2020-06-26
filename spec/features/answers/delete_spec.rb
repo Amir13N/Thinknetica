@@ -32,7 +32,7 @@ feature 'User can delete answers', %q{
 
   end
 
-  scenario 'Unauthenticated user can not delete answers' do
+  scenario 'Unauthenticated user tries to delete answers' do
     show_question
     expect(page).to_not have_content 'Delete'
   end

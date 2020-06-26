@@ -5,7 +5,7 @@ feature 'User can sign up', %q{
   As an unauthenticated user
   I'd like to be able to sign up
 } do
-  scenario 'Registered user tries to sign up' do
+  scenario 'Registered user signs up' do
     visit new_user_registration_path
     fill_in 'Email', with: 'user@test.com'
     fill_in 'Password', with: '123456'
