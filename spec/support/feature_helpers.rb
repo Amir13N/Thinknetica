@@ -5,4 +5,9 @@ module FeatureHelpers
     fill_in 'Password', with: user.password
     click_on 'Log in'
   end
+
+  def show_question
+    visit questions_path
+    click_on 'Show'
+  end
 end

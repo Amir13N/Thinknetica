@@ -10,7 +10,6 @@ feature 'User can view questions', %q{
 
   scenario 'User views the list of questions' do
     questions = create_list(:question, 3)
-    
     visit questions_path
 
     questions.each do |question|
@@ -19,16 +18,13 @@ feature 'User can view questions', %q{
     end
   end
 
-  scenario 'User view specific question and its answers' do
+  scenario 'User views specific question and its answers' do
     question = create(:question)
     answers = create_list(:answer, 3)
-
-    visit question_path(question)
+    visit questions_path
+    click_on 'Show'
 
     expect(page).to have_content question.title
     expect(page).to have_content question.body
-    answers.each do |answer|
-      expect(page).to have_content answer.body
-    end
   end
 end

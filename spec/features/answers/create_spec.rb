@@ -13,8 +13,8 @@ feature 'User can create answer', %q{
   describe 'Authenticated user' do
 
     background { 
-      sign_in(user) 
-      click_on 'Show'
+      sign_in(user)
+      show_question
     }
 
     scenario 'gives valid answer question' do
@@ -37,8 +37,7 @@ feature 'User can create answer', %q{
 
 
   scenario 'Unauthenticated user tries to answer question' do
-    visit questions_path
-    click_on 'Show'
+    show_question
     expect(page).to_not have_content 'Answer question'
   end
 

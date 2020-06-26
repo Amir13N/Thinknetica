@@ -14,7 +14,7 @@ feature 'User can delete answers', %q{
     scenario 'deletes his answer' do
       answer = create(:answer)
       sign_in(user)
-      visit question_path(question)
+      show_question
       click_on 'Delete'
 
       expect(page).to have_content 'Your answer was successfully deleted.'
@@ -25,7 +25,7 @@ feature 'User can delete answers', %q{
       create_list(:answer, 3)
       new_user = create(:user)
       sign_in(new_user)
-      visit question_path(question)
+      show_question
 
       expect(page).to_not have_content 'Delete'
     end
@@ -33,7 +33,7 @@ feature 'User can delete answers', %q{
   end
 
   scenario 'Unauthenticated user can not delete answers' do
-    visit question_path(question)
+    show_question
     expect(page).to_not have_content 'Delete'
   end
 end
