@@ -1,19 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
+  let!(:user) { create(:user) }
   let(:question) { create(:question) }
   let(:answer) { create(:answer) }
 
   describe 'Post #create' do
+    before { login(user) }
+    
     context 'with valid attributes' do
       it 'saves a new answer in the database' do
         expect { post :create, params: { question_id: question, answer: attributes_for(:answer) } }.to change(Answer, :count).by(1)
-      end
-
-      it 'redirects to show view' do
-        post :create, params: { question_id: question, answer: attributes_for(:answer) }
-
-        expect(response).to redirect_to question_answer_path(question, assigns(:answer))
       end
     end
 
@@ -21,12 +18,12 @@ RSpec.describe AnswersController, type: :controller do
       it 'does not save a new answer in the database' do
         expect { post :create, params: { question_id: question, answer: attributes_for(:answer, :invalid) } }.to_not change(Answer, :count)
       end
+    end
 
-      it 're-renders new view' do
-        post :create, params: { question_id: question, answer: attributes_for(:answer, :invalid) }
+    it 'redirects to question show view' do
+      post :create, params: { question_id: question, answer: attributes_for(:answer) }
 
-        expect(response).to render_template :new
-      end
+      expect(response).to redirect_to question_path(question)
     end
   end
 
@@ -51,7 +48,7 @@ RSpec.describe AnswersController, type: :controller do
       it 'does not save a new answer in the database' do
         answer.reload
 
-        expect(answer.body).to eq 'MyText'
+        expect(answer.body).to eq 'AnswerText'
       end
 
       it 're-renders new view' do

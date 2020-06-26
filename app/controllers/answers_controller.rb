@@ -1,21 +1,23 @@
 class AnswersController < ApplicationController
   expose :question, id: -> { params[:question_id] }
-  expose :answers, -> { Answer.all }
+  expose :answers, model: -> { Answer.all }
   expose :answer
 
   def create
-    @answer = question.answers.new(answer_params)
+    answer = question.answers.new(answer_params)
+    current_user.answers.push(answer)
 
-    if @answer.save
-      redirect_to question_answer_path(question, @answer)
+    if answer.save
+      redirect_to question, notice: 'Your answer was successfully created.'
     else
-      render :new
+      redirect_to question_path(question, answer: answer_params)
     end
+
   end
 
   def update
     if answer.update(answer_params)
-      redirect_to question_answer_path(question, answer)
+      redirect_to question_answer_path(question)
     else
       render :edit
     end
@@ -23,7 +25,7 @@ class AnswersController < ApplicationController
 
   def destroy
     answer.destroy
-    redirect_to question_path(question)
+    redirect_to question_path(question), notice: 'Your answer was successfully deleted.'
   end
 
   private

@@ -1,0 +1,8 @@
+tr
+  td.align-middle = answer.body
+  td.align-middle = answer.correct
+  td.align-middle
+    = link_to 'Show', question_answer_path(question, answer)
+    - if user_signed_in?
+      - if current_user.answers.include? answer
+        = link_to 'Delete', question_answer_path(question, answer), method: :delete, id: 'delete-link'

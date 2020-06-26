@@ -9,4 +9,6 @@ RSpec.describe Question, type: :model do
   
   it { should validate_uniqueness_of(:body).scoped_to(:title) }
 
+  it { should belong_to :user }
+
 end

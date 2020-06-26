@@ -1,18 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe QuestionsController, type: :controller do
+  let!(:user) { create(:user) }
   let(:question) { create(:question) }
 
   describe 'Post #create' do
+    before { login(user) }
+
     context 'with valid attributes' do
       it 'saves a new question in the database' do
         expect { post :create, params: { question: attributes_for(:question) } }.to change(Question, :count).by(1)
       end
 
-      it 'redirects to show view' do
+      it 'redirects to index view' do
         post :create, params: { question: attributes_for(:question) }
 
-        expect(response).to redirect_to assigns(:question)
+        expect(response).to redirect_to questions_path
       end
     end
 
@@ -30,6 +33,8 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'Patch #update' do
+    before { login(user) }
+
     context 'with valid attributes' do
       it 'changes question attributes' do
         patch :update, params: { id: question, question: { body: 'new body', title: 'new title' } }
@@ -50,9 +55,8 @@ RSpec.describe QuestionsController, type: :controller do
       
       it 'does not save a new question in the database' do
         question.reload
-
-        expect(question.title).to eq 'MyString'
-        expect(question.body).to eq 'MyText'
+        
+        expect(question.body).to eq 'QuestionText'
       end
 
       it 're-renders new view' do
@@ -63,6 +67,8 @@ RSpec.describe QuestionsController, type: :controller do
 
   describe 'DELETE #destroy' do
     let!(:question) { create(:question) }
+
+    before { login(user) }
 
     it 'deletes question' do
       expect { delete :destroy, params: { id: question } }.to change(Question, :count).by(-1)
