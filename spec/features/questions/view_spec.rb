@@ -8,8 +8,10 @@ feature 'User can view questions', "
   I'd like to view questions
 " do
   background { create(:user) }
+  
   given!(:questions) { create_list(:question, 3) }
-  given!(:answers) { create_list(:answer, 3) }
+  
+  background { create_list(:answer, 3) }
 
   scenario 'User views the list of questions' do
     visit questions_path

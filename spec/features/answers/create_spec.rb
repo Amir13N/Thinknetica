@@ -13,7 +13,7 @@ feature 'User can create answer', "
 
   describe 'Authenticated user' do
     background do
-      sign_in(user)
+    sign_in(user)
     visit questions_path
     click_on 'Show'
     end
