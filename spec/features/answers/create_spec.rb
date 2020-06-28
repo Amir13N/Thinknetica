@@ -13,9 +13,9 @@ feature 'User can create answer', "
 
   describe 'Authenticated user' do
     background do
-    sign_in(user)
-    visit questions_path
-    click_on 'Show'
+      sign_in(user)
+      visit questions_path
+      click_on 'Show'
     end
 
     scenario 'gives valid answer question' do

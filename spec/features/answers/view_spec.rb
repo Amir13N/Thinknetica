@@ -7,7 +7,6 @@ feature 'User can view answers', "
   As an authenticated user
   I'd like to view answers
 " do
-
   background { create(:user) }
 
   given!(:question) { create(:question) }

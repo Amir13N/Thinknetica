@@ -11,7 +11,7 @@ feature 'User can delete questions', "
   given!(:question) { create(:question) }
 
   background { create_list(:question, 3) }
-  
+
   given(:new_user) { create(:user) }
 
   describe 'Authenticated user' do
