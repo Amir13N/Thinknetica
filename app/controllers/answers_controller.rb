@@ -1,23 +1,28 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
   expose :question, id: -> { params[:question_id] }
-  expose :answers, model: -> { Answer.all }
+  expose :answers, -> { Answer.all }
   expose :answer
 
-  def create
-    answer = question.answers.new(answer_params)
-    current_user.answers.push(answer)
+  before_action :authenticate_user!, except: 'show'
 
-    if answer.save
+  def create
+    @answer = question.answers.new(answer_params)
+    current_user.answers.push(@answer)
+
+    if @answer.save
       redirect_to question, notice: 'Your answer was successfully created.'
     else
-      redirect_to question_path(question, answer: answer_params)
+      render 'questions/show', location: question
     end
-
   end
 
   def update
-    if answer.update(answer_params)
-      redirect_to question_answer_path(question)
+    @answer = answer
+
+    if @answer.update(answer_params)
+      redirect_to question, notice: 'Your answer was successfully updated.'
     else
       render :edit
     end
@@ -25,7 +30,7 @@ class AnswersController < ApplicationController
 
   def destroy
     answer.destroy
-    redirect_to question_path(question), notice: 'Your answer was successfully deleted.'
+    redirect_to question, notice: 'Your answer was successfully deleted.'
   end
 
   private

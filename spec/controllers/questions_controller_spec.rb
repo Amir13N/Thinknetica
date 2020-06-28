@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe QuestionsController, type: :controller do
@@ -52,10 +54,10 @@ RSpec.describe QuestionsController, type: :controller do
 
     context 'with invalid attributes' do
       before { patch :update, params: { id: question, question: attributes_for(:question, :invalid) } }
-      
+
       it 'does not save a new question in the database' do
         question.reload
-        
+
         expect(question.body).to eq 'QuestionText'
       end
 

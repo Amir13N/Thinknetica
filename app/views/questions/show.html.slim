@@ -1,9 +1,6 @@
 h1= question.title
 p= question.body
 
-- if params[:answer]
-  = render 'shared/errors', resource: new_answer(params.permit(:answer).merge( question: question, user: current_user ))
-
 table.table.table-bordered.col-8
     thead
       tr
@@ -16,5 +13,5 @@ table.table.table-bordered.col-8
 
 - if user_signed_in?
   p Answer question
-  
+
   = render 'answers/form'

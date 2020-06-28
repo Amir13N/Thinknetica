@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class QuestionsController < ApplicationController
   expose :questions, -> { Question.all }
   expose :question
   expose :answers, -> { question.answers }
   expose :answer, model: -> { question.answers }, id: -> { params[:answer_id] }
 
-  before_action :authenticate_user!, except: %i[ index show ]
+  before_action :authenticate_user!, except: %i[index show]
 
   def create
     @question = current_user.questions.new(question_params)
@@ -18,7 +20,7 @@ class QuestionsController < ApplicationController
 
   def update
     if question.update(question_params)
-      redirect_to question_path(question)
+      redirect_to question_path(question), notice: 'Your question was successfully updated.'
     else
       render :edit
     end

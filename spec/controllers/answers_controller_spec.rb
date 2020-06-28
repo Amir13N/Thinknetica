@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
@@ -7,10 +9,17 @@ RSpec.describe AnswersController, type: :controller do
 
   describe 'Post #create' do
     before { login(user) }
-    
+
     context 'with valid attributes' do
       it 'saves a new answer in the database' do
-        expect { post :create, params: { question_id: question, answer: attributes_for(:answer) } }.to change(Answer, :count).by(1)
+        user_answer_count = user.answers.count
+        question_answer_count = question.answers.count
+        answer_count = Answer.count
+        post :create, params: { question_id: question, answer: attributes_for(:answer) }
+
+        expect(Answer.count).to eq answer_count + 1
+        expect(question.answers.count).to eq question_answer_count + 1
+        expect(user.answers.count).to eq user_answer_count + 1
       end
     end
 
@@ -20,14 +29,16 @@ RSpec.describe AnswersController, type: :controller do
       end
     end
 
-    it 'redirects to question show view' do
+    it 'renders question show view' do
       post :create, params: { question_id: question, answer: attributes_for(:answer) }
 
-      expect(response).to redirect_to question_path(question)
+      expect(response).to render_template(partial: 'questions/show', locals: { question: question })
     end
   end
 
   describe 'Patch #update' do
+    before { login(user) }
+
     context 'with valid attributes' do
       it 'changes answer attributes' do
         patch :update, params: { question_id: question, id: answer, answer: { body: 'new body' } }
@@ -38,13 +49,13 @@ RSpec.describe AnswersController, type: :controller do
 
       it 'redirects to updated answer' do
         patch :update, params: { question_id: question, id: answer, answer: attributes_for(:answer) }
-        expect(response).to redirect_to question_answer_path(question, answer)
+        expect(response).to redirect_to question
       end
     end
 
     context 'with invalid attributes' do
       before { patch :update, params: { question_id: question, id: answer, answer: attributes_for(:answer, :invalid) } }
-      
+
       it 'does not save a new answer in the database' do
         answer.reload
 
@@ -58,6 +69,8 @@ RSpec.describe AnswersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
+    before { login(user) }
+
     let!(:question) { create(:question) }
     let!(:answer) { create(:answer) }
 
@@ -67,7 +80,7 @@ RSpec.describe AnswersController, type: :controller do
 
     it 'redirects to index' do
       delete :destroy, params: { question_id: question, id: answer }
-      expect(response).to redirect_to question_path(question)
+      expect(response).to redirect_to question
     end
   end
 end
