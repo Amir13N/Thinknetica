@@ -11,7 +11,12 @@ RSpec.describe QuestionsController, type: :controller do
 
     context 'with valid attributes' do
       it 'saves a new question in the database' do
-        expect { post :create, params: { question: attributes_for(:question) } }.to change(Question, :count).by(1)
+        question_count = Question.count
+        user_question_count = user.questions.count
+        post :create, params: { question: attributes_for(:question) }
+
+        expect(Question.count).to eq question_count + 1
+        expect(user.questions.count).to eq user_question_count + 1
       end
 
       it 'redirects to index view' do
