@@ -7,11 +7,11 @@ feature 'User can delete answers', "
   As an authenticated user
   I'd like to delete it
 " do
-  given!(:user) { create(:user) }
-  given!(:question) { create(:question) }
-  given!(:answer) { create(:answer) }
+  given(:user) { create(:user) }
+  given(:question) { create(:question, user: user) }
+  given!(:answer) { create(:answer, question: question, user: user) }
 
-  background { create_list(:answer, 3) }
+  background { create_list(:answer, 3, question: question) }
 
   given!(:new_user) { create(:user) }
 
@@ -20,10 +20,9 @@ feature 'User can delete answers', "
       sign_in(user)
       visit questions_path
       click_on 'Show'
-      first('#delete-link').click
+      first(:link, 'Delete').click
 
       expect(page).to have_content 'Your answer was successfully deleted.'
-      expect(page).to_not have_content answer.body
     end
 
     scenario "can not delete others' answers" do

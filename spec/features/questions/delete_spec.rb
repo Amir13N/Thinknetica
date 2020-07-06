@@ -7,10 +7,8 @@ feature 'User can delete questions', "
   As an authenticated user
   I'd like to delete questions
 " do
-  given!(:user) { create(:user) }
-  given!(:question) { create(:question) }
-
-  background { create_list(:question, 3) }
+  given(:user) { create(:user) }
+  given!(:question) { create(:question, user: user) }
 
   given(:new_user) { create(:user) }
 
@@ -18,10 +16,11 @@ feature 'User can delete questions', "
     scenario 'deletes all his questions' do
       sign_in(user)
       visit questions_path
-      first('#delete-link').click
+      first(:link, 'Delete').click
 
       expect(page).to have_content 'Your question was successfully deleted.'
-      expect(page).to_not have_content question.title + question.body
+      expect(page).to_not have_content question.title
+      expect(page).to_not have_content question.body
     end
 
     scenario "deletes others' questions" do

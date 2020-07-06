@@ -1,5 +1,5 @@
-h1= question.title
-p= question.body
+h1= @question.title
+p= @question.body
 
 table.table.table-bordered.col-8
     thead
@@ -9,7 +9,7 @@ table.table.table-bordered.col-8
         th.col-2 Actions
 
     tbody
-      = render answers
+      = render @question.answers
 
 - if user_signed_in?
   p Answer question

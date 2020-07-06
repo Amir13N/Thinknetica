@@ -7,9 +7,9 @@ feature 'User can create answer', "
   As an authenticated user
   I'd like to be able to answer questions
 " do
-  given!(:user) { create(:user) }
+  given(:user) { create(:user) }
 
-  background { create(:question) }
+  background { create(:question, user: user) }
 
   describe 'Authenticated user' do
     background do

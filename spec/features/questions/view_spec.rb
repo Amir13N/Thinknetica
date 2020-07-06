@@ -7,11 +7,7 @@ feature 'User can view questions', "
   As an authenticated user
   I'd like to view questions
 " do
-  background { create(:user) }
-
   given!(:questions) { create_list(:question, 3) }
-
-  background { create_list(:answer, 3) }
 
   scenario 'User views the list of questions' do
     visit questions_path
@@ -22,9 +18,9 @@ feature 'User can view questions', "
     end
   end
 
-  scenario 'User views specific question and its answers' do
+  scenario 'User views specific question' do
     visit questions_path
-    first('#show-link').click
+    first(:link, 'Show').click
 
     expect(page).to have_content questions.first.title
     expect(page).to have_content questions.first.body

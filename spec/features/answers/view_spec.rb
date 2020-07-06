@@ -7,10 +7,10 @@ feature 'User can view answers', "
   As an authenticated user
   I'd like to view answers
 " do
-  background { create(:user) }
+  given(:user) { create(:user) }
 
   given!(:question) { create(:question) }
-  given!(:answers) { create_list(:answer, 3) }
+  given!(:answers) { create_list(:answer, 3, user: user, question: question) }
 
   scenario 'User views the list of answers' do
     visit questions_path

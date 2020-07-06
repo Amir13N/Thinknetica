@@ -4,22 +4,19 @@ require 'rails_helper'
 
 RSpec.describe AnswersController, type: :controller do
   let!(:user) { create(:user) }
-  let(:question) { create(:question) }
-  let(:answer) { create(:answer) }
+  let(:question) { create(:question, user: user) }
+  let(:answer) { create(:answer, question: question) }
 
   describe 'Post #create' do
     before { login(user) }
 
     context 'with valid attributes' do
-      it 'saves a new answer in the database' do
-        user_answer_count = user.answers.count
-        question_answer_count = question.answers.count
-        answer_count = Answer.count
-        post :create, params: { question_id: question, answer: attributes_for(:answer) }
+      it 'saves a new answer in the database with question parent' do
+        expect { post :create, params: { question_id: question, answer: attributes_for(:answer) } }.to change(question.answers, :count).by(1)
+      end
 
-        expect(Answer.count).to eq answer_count + 1
-        expect(question.answers.count).to eq question_answer_count + 1
-        expect(user.answers.count).to eq user_answer_count + 1
+      it 'saves a new answer in the database with user parent' do
+        expect { post :create, params: { question_id: question, answer: attributes_for(:answer) } }.to change(user.answers, :count).by(1)
       end
     end
 
@@ -59,7 +56,7 @@ RSpec.describe AnswersController, type: :controller do
       it 'does not save a new answer in the database' do
         answer.reload
 
-        expect(answer.body).to eq 'AnswerText'
+        expect(answer.body).to match 'AnswerText'
       end
 
       it 're-renders new view' do
@@ -71,8 +68,10 @@ RSpec.describe AnswersController, type: :controller do
   describe 'DELETE #destroy' do
     before { login(user) }
 
-    let!(:question) { create(:question) }
-    let!(:answer) { create(:answer) }
+    let(:question) { create(:question) }
+    let!(:answer) { create(:answer, user: user, question: question) }
+
+    let!(:other_answer) { create(:answer) }
 
     it 'deletes answer' do
       expect { delete :destroy, params: { question_id: question, id: answer } }.to change(Answer, :count).by(-1)
@@ -81,6 +80,10 @@ RSpec.describe AnswersController, type: :controller do
     it 'redirects to index' do
       delete :destroy, params: { question_id: question, id: answer }
       expect(response).to redirect_to question
+    end
+
+    it "can not to delete other's answer" do
+      expect { delete :destroy, params: { question_id: question, id: other_answer } }.to_not change(Answer, :count)
     end
   end
 end
