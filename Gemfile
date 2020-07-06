@@ -7,7 +7,6 @@ ruby '2.5.1'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
-gem 'decent_exposure', '3.0.0'
 gem 'devise', '~> 4.3'
 gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 4.1'
