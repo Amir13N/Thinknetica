@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    if current_user.author_of? @answer
+    if current_user.author_of?(@answer)
       @answer.destroy
       redirect_to @answer.question, notice: 'Your answer was successfully deleted.'
     else
@@ -42,7 +42,6 @@ class AnswersController < ApplicationController
 
   def set_question
     @question = Question.find(params[:question_id])
-    raise unless @question.save
   end
 
   def answer_params

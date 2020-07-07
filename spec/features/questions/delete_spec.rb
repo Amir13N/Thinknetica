@@ -16,6 +16,10 @@ feature 'User can delete questions', "
     scenario 'deletes all his questions' do
       sign_in(user)
       visit questions_path
+
+      expect(page).to have_content question.title
+      expect(page).to have_content question.body
+
       first(:link, 'Delete').click
 
       expect(page).to have_content 'Your question was successfully deleted.'

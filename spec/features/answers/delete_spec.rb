@@ -20,9 +20,13 @@ feature 'User can delete answers', "
       sign_in(user)
       visit questions_path
       click_on 'Show'
+
+      expect(page).to have_content answer.body
+
       first(:link, 'Delete').click
 
       expect(page).to have_content 'Your answer was successfully deleted.'
+      expect(page).to_not have_content answer.body
     end
 
     scenario "can not delete others' answers" do
