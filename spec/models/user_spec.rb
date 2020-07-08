@@ -13,11 +13,11 @@ RSpec.describe User, type: :model do
     let(:other_answer) { create(:answer) }
 
     it 'returns true' do
-      expect(user.author_of?(answer)).to be_truthy
+      expect(user).to be_author_of(answer)
     end
 
     it 'returns false' do
-      expect(user.author_of?(other_answer)).to be_falsey
+      expect(user).to_not be_author_of(other_answer)
     end
   end
 end
