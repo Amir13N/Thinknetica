@@ -1,0 +1,17 @@
+h1= @question.title
+p= @question.body
+
+table.table.table-bordered.col-8
+    thead
+      tr
+        th.col-4 Body
+        th.col-2 Correct
+        th.col-2 Actions
+
+    tbody
+      = render @question.answers
+
+- if user_signed_in?
+  p Answer question
+
+  = render 'answers/form'
