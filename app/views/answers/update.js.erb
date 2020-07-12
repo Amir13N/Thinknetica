@@ -1,9 +1,0 @@
-$('#edit-answer-' + '<%= @answer.id %> ' + '.answer-errors').html("<%= render 'shared/errors', resource: @answer %>");
-
-$('.flash').html("<%= j render partial: 'shared/flash' %>");
-
-<% if @answer.errors.empty? %>
-  $('#edit-answer-' + '<%= @answer.id %>').hide();
-  $('#edit-answer-link-' + '<%= @answer.id %>').show();
-  $('#answer-' + '<%= @answer.id %> ' + ' td').filter(':first').text('<%= @answer.body %>');
-<% end %>

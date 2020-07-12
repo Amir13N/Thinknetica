@@ -8,34 +8,34 @@ feature 'User can create answer', "
   I'd like to be able to answer questions
 " do
   given(:user) { create(:user) }
-  given(:question) { create(:question) }
 
-  describe 'Authenticated user', js: true do
+  background { create(:question, user: user) }
+
+  describe 'Authenticated user' do
     background do
       sign_in(user)
-      visit question_path(question)
+      visit questions_path
+      click_on 'Show'
     end
 
-    scenario 'gives valid answer to question' do
-      fill_in 'body', with: 'answer'
+    scenario 'gives valid answer question' do
+      fill_in 'Body', with: 'answer'
       click_on 'Answer'
 
       expect(page).to have_content 'Your answer was successfully created.'
-      within '.answers' do
-        expect(page).to have_content 'answer'
-      end
+      expect(page).to have_content 'answer'
     end
 
     scenario 'gives invalid answer to question' do
       click_on 'Answer'
 
-      expect(page).to have_content 'Your answer was not created.'
       expect(page).to have_content "Body can't be blank"
     end
   end
 
   scenario 'Unauthenticated user tries to answer question' do
-    visit question_path(question)
+    visit questions_path
+    click_on 'Show'
     expect(page).to_not have_content 'Answer question'
   end
 end

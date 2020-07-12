@@ -1,7 +1,0 @@
-$('form#edit-question-' + '<%= @question.id %> ' + '.question-errors').html("<%= render 'shared/errors', resource: @question %>");
-
-$('.flash').html("<%= j render partial: 'shared/flash' %>");
-
-<% unless @question.errors.present? %>
-  $('.questions').html('<%= j render @questions %>');
-<% end %>
