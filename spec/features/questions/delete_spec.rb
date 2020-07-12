@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'User can delete questions', "
+feature 'User can delete question', "
   In order to free space for questions
   As an authenticated user
   I'd like to delete questions

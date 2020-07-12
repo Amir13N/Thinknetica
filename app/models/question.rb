@@ -6,4 +6,8 @@ class Question < ApplicationRecord
 
   validates :body, :title, presence: true
   validates :body, uniqueness: { scope: :title }
+
+  def best_answer
+    answers.find_by(best: true)
+  end
 end

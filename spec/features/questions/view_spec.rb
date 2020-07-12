@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'User can view questions', "
+feature 'User can view question', "
   In order to find answers
   As an authenticated user
   I'd like to view questions
