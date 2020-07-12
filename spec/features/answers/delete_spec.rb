@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'User can delete answer', "
+feature 'User can delete answers', "
   If my answer is incorrect
   As an authenticated user
   I'd like to delete it
@@ -15,29 +15,32 @@ feature 'User can delete answer', "
 
   given!(:new_user) { create(:user) }
 
-  scenario 'Authenticated user deletes his answer', js: true do
-    sign_in(user)
-    visit question_path(question)
+  describe 'Authenticated user' do
+    scenario 'deletes his answer' do
+      sign_in(user)
+      visit questions_path
+      click_on 'Show'
 
-    expect(page).to have_content answer.body
+      expect(page).to have_content answer.body
 
-    first(:link, 'Delete').click
+      first(:link, 'Delete').click
 
-    expect(page).to have_content 'Your answer was successfully deleted.'
-    within '.answers' do
+      expect(page).to have_content 'Your answer was successfully deleted.'
       expect(page).to_not have_content answer.body
+    end
+
+    scenario "can not delete others' answers" do
+      sign_in(new_user)
+      visit questions_path
+      click_on 'Show'
+
+      expect(page).to_not have_link 'Delete'
     end
   end
 
-  scenario "Authenticated user can not delete others' answers" do
-    sign_in(new_user)
-    visit question_path(question)
-
-    expect(page).to_not have_link 'Delete'
-  end
-
   scenario 'Unauthenticated user tries to delete answers' do
-    visit question_path(question)
+    visit questions_path
+    click_on 'Show'
     expect(page).to_not have_link 'Delete'
   end
 end

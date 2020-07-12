@@ -1,8 +1,0 @@
-= form_for answer, remote: true, local: true, html: { class: 'hide', id: "edit-answer-#{answer.id}" } do |f|
-
-  .answer-errors
-    = render 'shared/errors', resource: answer
-      
-  = f.label :body
-  = f.text_area :body, id: :body
-  = f.submit 'Edit'

@@ -1,14 +1,14 @@
-.question-options
-  h1= @question.title
-  p= @question.body
+h1= @question.title
+p= @question.body
 
-table.table.table-bordered
+table.table.table-bordered.col-8
     thead
       tr
-        th Body
-        th Actions
+        th.col-4 Body
+        th.col-2 Correct
+        th.col-2 Actions
 
-    tbody.answers data-best-answer-id="#{@question.best_answer&.id}"
+    tbody
       = render @question.answers
 
 - if user_signed_in?

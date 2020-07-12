@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
 
   def show
-    @answer = Answer.new
+    @answer = @question.answers.new
   end
 
   def index
@@ -28,11 +28,10 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @questions = Question.all
     if @question.update(question_params)
-      flash.now[:notice] = 'Your answer was successfully updated.'
+      redirect_to question_path(@question), notice: 'Your question was successfully updated.'
     else
-      flash.now[:alert] = 'Your answer was not updated.'
+      render :edit
     end
   end
 
@@ -41,7 +40,7 @@ class QuestionsController < ApplicationController
       @question.destroy
       redirect_to questions_path, notice: 'Your question was successfully deleted.'
     else
-      redirect_to questions_path, alert: 'You can only delete your own questions.'
+      redirect_to questions_path, notice: 'You can only delete your own questions.'
     end
   end
 
