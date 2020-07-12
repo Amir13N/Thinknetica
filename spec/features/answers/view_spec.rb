@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'User can view answers', "
+feature 'User can view answer', "
   In order to get help
   As an authenticated user
   I'd like to view answers
@@ -11,8 +11,7 @@ feature 'User can view answers', "
   given!(:answers) { create_list(:answer, 3, question: question) }
 
   scenario 'User views the list of answers' do
-    visit questions_path
-    click_on 'Show'
+    visit question_path(question)
 
     answers.each do |answer|
       expect(page).to have_content answer.body
