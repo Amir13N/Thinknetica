@@ -49,11 +49,6 @@ RSpec.describe AnswersController, type: :controller do
 
         expect(answer.body).to eq 'new body'
       end
-
-      it 'renders update view' do
-        patch :update, params: { question_id: question, id: answer, answer: attributes_for(:answer), format: :js }
-        expect(response).to render_template :update
-      end
     end
 
     context 'with invalid attributes' do
@@ -64,10 +59,11 @@ RSpec.describe AnswersController, type: :controller do
 
         expect(answer.body).to match 'AnswerText'
       end
+    end
 
-      it 'renders update view' do
-        expect(response).to render_template :update
-      end
+    it 'renders update view' do
+      patch :update, params: { question_id: question, id: answer, answer: attributes_for(:answer), format: :js }
+      expect(response).to render_template :update
     end
   end
 
@@ -93,11 +89,20 @@ RSpec.describe AnswersController, type: :controller do
   describe 'PATCH #choose_best' do
     before { login(user) }
 
+    let(:other_answer) { create(:answer) }
+
     it "changes 'best' attribute value of an answer" do
-      patch :choose_best, params: { question_id: question, id: answer }, format: :js
+      patch :choose_best, params: { id: answer }, format: :js
       answer.reload
 
       expect(answer.best).to be_truthy
+    end
+
+    it "does not work with answer of pther user's question" do
+      patch :choose_best, params: { id: other_answer }, format: :js
+      other_answer.reload
+
+      expect(other_answer.best).to be_falsey
     end
   end
 end

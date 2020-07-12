@@ -32,10 +32,11 @@ class AnswersController < ApplicationController
   end
 
   def choose_best
-    @answer.question.best_answer&.update(best: false)
-    @answer.update(best: true)
-    flash.now[:notice] = 'Your answer was successfully chosen as the best'
-    render 'answers/choose_best'
+    if current_user&.author_of?(@answer.question)
+      @answer.make_best
+      flash.now[:notice] = 'Your answer was successfully chosen as the best'
+      render 'answers/choose_best'
+    end
   end
 
   private
