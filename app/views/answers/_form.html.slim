@@ -1,9 +1,10 @@
-= form_with model: [@question, @answer], local: true do |f|
+= form_for [@question, @answer], remote: true, local: true, html: { class: 'answer-create' } do |f|
 
-  = render 'shared/errors', resource: @answer
+  .answer-errors
+    = render 'shared/errors', resource: @answer
 
   p 
     = f.label :body
-    = f.text_field :body
+    = f.text_field :body, id: :body
   
   = f.submit 'Answer'

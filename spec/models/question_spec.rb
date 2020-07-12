@@ -11,4 +11,13 @@ RSpec.describe Question, type: :model do
   it { should validate_uniqueness_of(:body).scoped_to(:title) }
 
   it { should belong_to :user }
+
+  let(:question) { create(:question) }
+  let!(:answer) { create(:answer, question: question, best: true) }
+
+  describe '#best_answer' do
+    it 'returns best answer' do
+      expect(question.best_answer).to eq answer
+    end
+  end
 end

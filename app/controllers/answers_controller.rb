@@ -3,35 +3,39 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, except: 'show'
 
-  before_action :set_answer, only: %i[edit update destroy]
+  before_action :set_answer, only: %i[edit update destroy choose_best]
   before_action :set_question, only: %i[create]
 
   def create
-    @answer = current_user.answers.new(answer_params)
-    @answer.question = @question
-
+    @answer = current_user.answers.new(answer_params.merge(question: @question))
     if @answer.save
-      redirect_to @question, notice: 'Your answer was successfully created.'
+      flash.now[:notice] = 'Your answer was successfully created.'
     else
-      render 'questions/show', location: @question
+      flash.now[:alert] = 'Your answer was not created.'
     end
   end
 
   def update
+    @question = @answer.question
     if @answer.update(answer_params)
-      redirect_to @answer.question, notice: 'Your answer was successfully updated.'
+      flash.now[:notice] = 'Your answer was successfully updated.'
     else
-      render :edit
+      flash.now[:alert] = 'Your answer was not updated.'
     end
   end
 
   def destroy
     if current_user.author_of?(@answer)
       @answer.destroy
-      redirect_to @answer.question, notice: 'Your answer was successfully deleted.'
-    else
-      redirect_to @answer.question, notice: 'You can only delete your own answers.'
+      flash.now[:notice] = 'Your answer was successfully deleted.'
     end
+  end
+
+  def choose_best
+    @answer.question.best_answer&.update(best: false)
+    @answer.update(best: true)
+    flash.now[:notice] = 'Your answer was successfully chosen as the best'
+    render 'answers/choose_best'
   end
 
   private
