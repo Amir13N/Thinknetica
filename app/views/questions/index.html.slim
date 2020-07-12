@@ -1,12 +1,12 @@
 div.col
   p= link_to 'Ask questions', new_question_path
 
-  table.table.table-bordered.col-8
+  table.table.table-bordered
     thead
       tr
-        th.col-2 Title
-        th.col-4 Body
-        th.col-2 Actions
+        th Title
+        th Body
+        th Actions
 
-    tbody
+    tbody.questions
       = render @questions

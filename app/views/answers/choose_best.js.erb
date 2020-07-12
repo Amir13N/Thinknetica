@@ -1,0 +1,13 @@
+var bestAnswerLink = $('#best-answer-link-' + '<%= @answer.id %>');
+bestAnswerLink.hide();
+var bestAnswerId = $('.answers').data('bestAnswerId');
+if(bestAnswerId != null) {
+  $('#best-answer-link-' + bestAnswerId).show();
+}
+
+var answerId = bestAnswerLink.data('answerId');
+$('.answers').data('bestAnswerId', answerId);
+$('.answers').prepend($('#answer-' + answerId));
+
+
+$('.flash').html("<%= j render partial: 'shared/flash' %>");
