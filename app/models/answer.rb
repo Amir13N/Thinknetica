@@ -9,8 +9,8 @@ class Answer < ApplicationRecord
 
   def make_best
     ActiveRecord::Base.transaction do
-      question.best_answer&.update(best: false)
-      update(best: true)
+      question.best_answer&.update!(best: false)
+      update!(best: true)
     end
   end
 
