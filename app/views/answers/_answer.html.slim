@@ -1,5 +1,9 @@
-tr class="answer" id="answer-#{answer.id}"
+tr.answer id="answer-#{answer.id}"
   td.align-middle= answer.body
+  
+  td.align-middle.answer-files
+    = render 'answers/files', answer: answer
+
   td.align-middle
     - if current_user&.author_of?(answer)
       p = link_to 'Delete', answer_path(answer), method: :delete, remote: true

@@ -8,7 +8,7 @@ feature 'User can edit question', "
   I'd like to be able to edit question
 " do
   given(:user) { create(:user) }
-  given!(:question) { create(:question, user: user) }
+  given!(:question) { create(:question, :with_file, user: user) }
   given(:new_user) { create(:user) }
 
   background { create(:question) }
@@ -44,6 +44,18 @@ feature 'User can edit question', "
       end
 
       expect(page).to have_content 'Your answer was not updated.'
+    end
+
+    scenario 'edits with attached files' do
+      within '.questions' do
+        attach_file 'File', "#{Rails.root}/spec/spec_helper.rb"
+        click_on 'Edit'
+      end
+
+      within first('.question-files') do
+        expect(page).to have_content 'rails_helper.rb'
+        expect(page).to have_content 'spec_helper.rb'
+      end
     end
   end
 

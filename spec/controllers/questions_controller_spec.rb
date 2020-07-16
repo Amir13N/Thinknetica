@@ -33,8 +33,10 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'GET #new' do
-    before { login(user) }
-    before { get :new }
+    before do
+      login(user)
+      get :new
+    end
 
     it 'assigns a new Question to @question' do
       expect(assigns(:question)).to be_a_new(Question)
@@ -128,6 +130,27 @@ RSpec.describe QuestionsController, type: :controller do
 
     it "can not delete other's question" do
       expect { delete :destroy, params: { id: other_question } }.to_not change(Question, :count)
+    end
+  end
+
+  describe 'PATCH #delete_file' do
+    before { login(user) }
+
+    let(:question_with_file) { create(:question, :with_file, user: user) }
+    let(:other_question_with_file) { create(:question, :with_file) }
+
+    it 'deletes file' do
+      patch :delete_file, params: { id: question_with_file, file_id: question_with_file.files.first, format: :js }
+      question_with_file.reload
+
+      expect(question_with_file.files).to_not be_attached
+    end
+
+    it "does not delete file attached to other user's question" do
+      patch :delete_file, params: { id: other_question_with_file, file_id: other_question_with_file.files.first, format: :js }
+      question_with_file.reload
+
+      expect(other_question_with_file.files).to be_attached
     end
   end
 end

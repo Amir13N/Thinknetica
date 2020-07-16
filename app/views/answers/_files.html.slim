@@ -1,0 +1,7 @@
+- if answer.files.attached?
+  - answer.files.each do |file|
+    p id="answer-file-#{file.id}"
+      = link_to file.filename, url_for(file), target: :blank
+    
+      - if current_user&.author_of?(answer)
+        = link_to 'Delete', delete_file_answer_path(answer, file), method: :patch, remote: true

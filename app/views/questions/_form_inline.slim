@@ -3,8 +3,17 @@
   .question-errors
     = render 'shared/errors', resource: question
 
-  = f.label :title
-  = f.text_field :title, id: :title
-  = f.label :body
-  = f.text_field :body, id: :body
-  = f.submit 'Edit'
+  p
+    = f.label :title
+    = f.text_field :title, id: :title
+  
+  p
+    = f.label :body
+    = f.text_field :body, id: :body
+
+  p
+    = f.label :files
+    = f.file_field :files, multiple: true, direct_upload: true
+
+  p
+    = f.submit 'Edit'

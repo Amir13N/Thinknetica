@@ -2,11 +2,17 @@
   h1= @question.title
   p= @question.body
 
+.question-files
+  - if @question.files.attached?
+    - @question.files.each do |file|
+      p= link_to file.filename.to_s, url_for(file)
+
 table.table.table-bordered
     thead
       tr
         th Body
-        th Actions
+        th Files
+        th Actions     
 
     tbody.answers data-best-answer-id="#{@question.best_answer&.id}"
       = render @question.answers
@@ -15,3 +21,4 @@ table.table.table-bordered
   p Answer question
 
   = render 'answers/form'
+= link_to 'Back', root_path

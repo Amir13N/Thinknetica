@@ -3,7 +3,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
-  before_action :set_question, only: %i[show edit update destroy]
+  before_action :set_question, only: %i[show edit update destroy delete_file]
 
   def show
     @answer = Answer.new
@@ -45,13 +45,21 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def delete_file
+    if current_user&.author_of?(@question)
+      @file = @question.files.find(params[:file_id])
+      @file.purge
+      render :delete_file
+    end
+  end
+
   private
 
   def set_question
-    @question = Question.find(params[:id])
+    @question = Question.with_attached_files.find(params[:id])
   end
 
   def question_params
-    params.require(:question).permit(:body, :title)
+    params.require(:question).permit(:body, :title, files: [])
   end
 end
