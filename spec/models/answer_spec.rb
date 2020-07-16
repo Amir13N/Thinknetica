@@ -5,12 +5,16 @@ require 'rails_helper'
 RSpec.describe Answer, type: :model do
   it { should belong_to :question }
   it { should belong_to :user }
+  
+  it { should have_many(:links).dependent(:destroy) }
 
   it { should validate_presence_of :body }
 
   let(:question) { create(:question) }
   let!(:best_answer) { create(:answer, question: question, best: true) }
   let(:answer) { create(:answer, question: question) }
+
+  it { should accept_nested_attributes_for :links }
 
   describe '#best_answer_presence' do
     it 'returns false' do

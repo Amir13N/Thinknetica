@@ -5,6 +5,11 @@ tr.question id="question-#{question.id}"
 
   td.align-middle.question-files
     = render 'files', question: question
+
+  td.align-middle.question-links
+    - question.links.each do |link|
+      p
+        = link_to link.name, link.url, target: :blank
   
   td.align-middle
     p = link_to 'Show', question_path(question), id: 'show-link'

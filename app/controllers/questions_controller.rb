@@ -7,6 +7,7 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = Answer.new
+    @answer.links.new
   end
 
   def index
@@ -15,6 +16,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = current_user.questions.new
+    @question.links.new
   end
 
   def create
@@ -52,6 +54,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body, :title, files: [])
+    params.require(:question).permit(:body, :title, files: [], links_attributes: [:name, :url])
   end
 end

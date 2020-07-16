@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe AttachmentsController, type: :controller do
-
   let(:user) { create(:user) }
   let!(:question) { create(:question, :with_file, user: user) }
   let(:other_question) { create(:question, :with_file) }
@@ -30,7 +31,7 @@ RSpec.describe AttachmentsController, type: :controller do
     end
   end
 
-  it "Unauthenticated user can not delete files" do
+  it 'Unauthenticated user can not delete files' do
     expect { delete :destroy, params: { id: question.files.first }, format: :js }.to_not change(ActiveStorage::Attachment, :count)
   end
 end
