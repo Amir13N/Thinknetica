@@ -5,7 +5,7 @@ class Question < ApplicationRecord
   belongs_to :user
 
   has_many_attached :files
-  
+
   validates :body, :title, presence: true
   validates :body, uniqueness: { scope: :title }
 

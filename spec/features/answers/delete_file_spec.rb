@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'User can delete files attached to answer', "
@@ -34,7 +36,7 @@ feature 'User can delete files attached to answer', "
 
   scenario 'Unauthenticated user tries to delete answer files', js: true do
     visit question_path(question)
-    
+
     within '.answer-files' do
       expect(page).to_not have_content 'Delete'
     end
