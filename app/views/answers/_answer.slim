@@ -1,5 +1,0 @@
-tr
-  td.align-middle = answer.body
-  td.align-middle
-    - if current_user&.author_of?(answer)
-      = link_to 'Delete', answer_path(answer), method: :delete

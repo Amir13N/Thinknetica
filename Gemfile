@@ -8,6 +8,7 @@ ruby '2.5.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'devise', '~> 4.3'
+gem 'google-cloud-storage', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'

@@ -3,5 +3,9 @@ $('form#edit-question-' + '<%= @question.id %> ' + '.question-errors').html("<%=
 $('.flash').html("<%= j render partial: 'shared/flash' %>");
 
 <% unless @question.errors.present? %>
-  $('.questions').html('<%= j render @questions %>');
+  $('#edit-question-' + '<%= @question.id %>').hide();
+  $('#edit-question-link-' + '<%= @question.id %>').show();
+  $('#question-' + '<%= @question.id %> ' + ' .question-title').text('<%= @question.title %>');
+  $('#question-' + '<%= @question.id %> ' + ' .question-body').text('<%= @question.body %>');
+  $('#question-' + '<%= @question.id %> ' + '.question-files').html("<%= j render 'questions/files', question: @question %>");
 <% end %>

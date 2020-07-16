@@ -13,5 +13,13 @@ FactoryBot.define do
     trait :invalid do
       title { nil }
     end
+
+    trait :with_file do
+      after :create do |question|
+        file_path = Rails.root.join('spec/rails_helper.rb')
+        file = fixture_file_upload(file_path, 'ruby')
+        question.files.attach(file)
+      end
+    end
   end
 end

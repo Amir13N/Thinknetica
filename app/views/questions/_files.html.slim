@@ -1,0 +1,7 @@
+- if question.files.attached?
+  - question.files.each do |file|
+    p id="question-file-#{file.id}"
+      = link_to file.filename, url_for(file), target: :blank
+
+      - if current_user&.author_of?(question)
+        = link_to 'Delete', attachment_path(file), method: :delete, remote: true

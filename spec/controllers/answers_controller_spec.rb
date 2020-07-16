@@ -98,7 +98,7 @@ RSpec.describe AnswersController, type: :controller do
       expect(answer.best).to be_truthy
     end
 
-    it "does not work with answer of pther user's question" do
+    it "does not work with answer of other user's question" do
       patch :choose_best, params: { id: other_answer }, format: :js
       other_answer.reload
 

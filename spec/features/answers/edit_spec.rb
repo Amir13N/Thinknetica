@@ -9,7 +9,7 @@ feature 'User can edit answer', "
 " do
   given(:user) { create(:user) }
   given(:question) { create(:question) }
-  given!(:answer) { create(:answer, user: user, question: question) }
+  given!(:answer) { create(:answer, :with_file, user: user, question: question) }
   given(:new_user) { create(:user) }
 
   background { create(:answer) }
@@ -45,6 +45,18 @@ feature 'User can edit answer', "
       end
 
       expect(page).to have_content 'Your answer was not updated.'
+    end
+
+    scenario 'edits with attached files' do
+      within '.answers' do
+        attach_file 'File', "#{Rails.root}/spec/spec_helper.rb"
+        click_on 'Edit'
+      end
+
+      within '.answer-files' do
+        expect(page).to have_content 'rails_helper.rb'
+        expect(page).to have_content 'spec_helper.rb'
+      end
     end
   end
 

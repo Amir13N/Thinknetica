@@ -1,10 +1,15 @@
-tr
-  td.align-middle = question.title
-  td.align-middle = question.body
+tr.question id="question-#{question.id}"
+  td.align-middle.question-title = question.title
+  
+  td.align-middle.question-body = question.body
+
+  td.align-middle.question-files
+    = render 'files', question: question
+  
   td.align-middle
     p = link_to 'Show', question_path(question), id: 'show-link'
     - if current_user&.author_of?(question)
       p = link_to 'Delete', question_path(question), method: :delete
-      p = link_to 'Edit', '#', class: 'edit-question-link', data: { question_id: question.id }
+      p = link_to 'Edit', '#', class: 'edit-question-link', id: "edit-question-link-#{question.id}", data: { question_id: question.id }
 
       p = render 'form_inline', question: question
