@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "thinkenticacoursesqna",
+  "private_key_id": "fcfda840e5ec68fb059412007edc353907726969",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC6V9C2nphqboG/\nYxGEzz50i1BzsKqWp490nJv9DCwvv7hpGOH/R9CfR7Dyg7zAYeYFfAvxWXEK5L13\n3Erj6SKFX+ho7zBZXBNQ8SiHf3Kc87tEpy4Ap2Hi2rxHIfR9zMWVRGcIA0u4DhtS\nP0VmSPlih6O2EVI3fK7ZvNuIWob/RwBTArwMjqWTEgW7UJR8U9UtNVztMYLBseYX\nMrntQn9U03HO0R+fioGSu2jdj1odM++3pxIeNLLqE8SJsIMf+oApAlUwREDcLU8L\nFWokL/ZcE3WNpL0jrmlWhYlGVMiqcgiHz2KRzAI5KCi25k7MZSU1OLII2PojjmwB\nbmx/DiBRAgMBAAECggEABGWQCiRh1O5jPKskva0k0cZ7u88Tp1cFc9XszvgGOYuH\nhAtPQcu6/hcd82BCXYkHJA1SPCaacTcGdW6K4dJyuxI76fCYLnOVYm0zl0bdjcXT\nyayRfE3MFHiJcBA6tEEsTvenNVwxNtg2XXwashgksjt1vxUCNfGeL+BcjwdmdLLO\nMKW0CHyY9dccU75Sytcg4vurwr4xmJr9oswKw5xWie7S+lT1RWewogcCKylDkL21\n03RPq+ya/meIsP7xeHJF4GBUJbHp/ifNyc/7MO8YOMLA3VXs/gBDD/7XXE7XgJC7\nPNy03CrgG0jOu9KQaNd9GRpa1D7jawolG7bvoaPXRQKBgQDk8v5AxKKQoPsOXNgx\n2wtTmyhbjPtz4vaEoiDdec8TiLXfF4l//jbhwO54H3O9EvS0Fi48fv4m2WIEclWr\n0uf98PS8N0LaSXr9CwjUJIHQz/TTlfWtMET6/eoxKiowU9YOT9buH58jViMq3Mzq\nEbf6Vx0hroMV22GV0yCy2w2/cwKBgQDQXB35dLzhYt/reS6gIibVbqP6FAJZdRE1\nH87ihgfz1kO4YYiyRw0z7QK2cJzYXMHQxEVFfykKYWWUhK4ltWnBvS3LL7z3+OBa\nc6SsXMi4QEzwbMOzv/5AqoQpuwItKH3hHzO2sCLIH9jJNlFsHKU7Gq4lB8V5kUGd\n3Gcbm5coKwKBgHyfC+iDYB2rkpyByyhwG905cqFKv0CYRSly+sKzYBU48A5sSGsE\nHCmMFAIM1LoRTGOOQ0KouXy6DRFwjtOFbMQcWYrt5ZTeNHTyga6/5G2eFJzrXpwT\nzyhz9/slAWvm5nhJ2ysoyT250FCveVbbqDI7It9Hl5DZJmggUQcqF3SjAoGAbR9B\nZ4s2/Md+xGEkBSO9uNwILwnZrSY9i9gLzuEpOxAFSYRzRgMmLAK9//R8gGgb7Y1N\nRjdxtAkMXTsbxY38REYivJ5U1n3WaijUnpy9Vpn+cZBU8kfkDdQAAab6XdIuEv/3\nYn9ex/a936t9+yQJeSng+G3Yg3GKrvVmXrQe9x8CgYAEycWKfhX4zV/SUyeQ7uP2\nXYECK21D/NNLh3vXDpddkzKKE/SzpRQ7hd1FoPooUxQQMdioO+hSPYqtlhos4MXD\npf4p54OV2o8oX/uyF+0i6oVVGVujRNdaZ/BimWqHUEGL/az7T+vBkWlA3yELNotN\nzSn4zYqC+z2I41CLbw4jmQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "qna-518@thinkenticacoursesqna.iam.gserviceaccount.com",
+  "client_id": "111628495153770557277",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/qna-518%40thinkenticacoursesqna.iam.gserviceaccount.com"
+}
