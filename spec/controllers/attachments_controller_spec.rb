@@ -3,12 +3,11 @@ require 'rails_helper'
 RSpec.describe AttachmentsController, type: :controller do
 
   let(:user) { create(:user) }
+  let!(:question) { create(:question, :with_file, user: user) }
+  let(:other_question) { create(:question, :with_file) }
 
-  describe 'DELET #destroy' do
+  describe 'DELETE #destroy' do
     before { login(user) }
-
-    let(:question) { create(:question, :with_file, user: user) }
-    let(:other_question) { create(:question, :with_file) }
 
     it 'deletes file' do
       delete :destroy, params: { id: question.files.first, format: :js }
@@ -23,6 +22,15 @@ RSpec.describe AttachmentsController, type: :controller do
 
       expect(other_question.files).to be_attached
     end
+
+    it 'renders destroy view' do
+      delete :destroy, params: { id: other_question.files.first, format: :js }
+
+      expect(response).to render_template :destroy
+    end
   end
 
+  it "Unauthenticated user can not delete files" do
+    expect { delete :destroy, params: { id: question.files.first }, format: :js }.to_not change(ActiveStorage::Attachment, :count)
+  end
 end
