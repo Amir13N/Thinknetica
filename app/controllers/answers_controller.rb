@@ -3,7 +3,7 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, except: 'show'
 
-  before_action :set_answer, only: %i[edit update destroy choose_best delete_file]
+  before_action :set_answer, only: %i[edit update destroy choose_best]
   before_action :set_question, only: %i[create]
 
   def create
@@ -36,14 +36,6 @@ class AnswersController < ApplicationController
       @answer.make_best
       flash.now[:notice] = 'Your answer was successfully chosen as the best'
       render 'answers/choose_best'
-    end
-  end
-
-  def delete_file
-    if current_user&.author_of?(@answer)
-      @file = @answer.files.find(params[:file_id])
-      @file.purge
-      render 'answers/delete_file'
     end
   end
 

@@ -105,25 +105,4 @@ RSpec.describe AnswersController, type: :controller do
       expect(other_answer.best).to be_falsey
     end
   end
-
-  describe 'PATCH #delete_file' do
-    before { login(user) }
-
-    let(:answer_with_file) { create(:answer, :with_file, user: user) }
-    let(:other_answer_with_file) { create(:answer, :with_file) }
-
-    it 'deletes file' do
-      patch :delete_file, params: { id: answer_with_file, file_id: answer_with_file.files.first, format: :js }
-      answer_with_file.reload
-
-      expect(answer_with_file.files).to_not be_attached
-    end
-
-    it "does not delete file attached to other user's answer" do
-      patch :delete_file, params: { id: other_answer_with_file, file_id: other_answer_with_file.files.first, format: :js }
-      answer_with_file.reload
-
-      expect(other_answer_with_file.files).to be_attached
-    end
-  end
 end

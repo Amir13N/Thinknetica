@@ -1,0 +1,5 @@
+<% if flash.present? %>
+  $('.flash').html("<%= j render partial: 'shared/flash' %>");
+<% else %>
+  $('#' + '<%= @record_class %>' + '-' +  '<%= @record.id %> ' + '#' + '<%= @record_class %>' + '-file-' + '<%= @attachment.id %>').remove();
+<% end %>
