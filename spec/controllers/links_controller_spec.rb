@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe LinksController, type: :controller do
@@ -25,6 +27,6 @@ RSpec.describe LinksController, type: :controller do
   end
 
   it 'Unauthenticated user can not delete link' do
-    expect { delete :destroy, params: { id: link , format: :js } }.to_not change(question.links, :count)
+    expect { delete :destroy, params: { id: link, format: :js } }.to_not change(question.links, :count)
   end
 end

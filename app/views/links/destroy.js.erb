@@ -1,5 +1,5 @@
 <% if flash.present? %>
   $('.flash').html("<%= j render partial: 'shared/flash' %>");
 <% else %>
-  $('#' + '<%= @linkable_class %>' + '-' +  '<%= @link.id %> ' + '#' + '<%= @linkable_class %>' + '-link-' + '<%= @link.id %>').remove();
+  $('#' + '<%= @linkable_class %>' + '-link-' + '<%= @link.id %>').remove();
 <% end %>

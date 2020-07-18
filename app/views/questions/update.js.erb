@@ -8,4 +8,5 @@ $('.flash').html("<%= j render partial: 'shared/flash' %>");
   $('#question-' + '<%= @question.id %> ' + ' .question-title').text('<%= @question.title %>');
   $('#question-' + '<%= @question.id %> ' + ' .question-body').text('<%= @question.body %>');
   $('#question-' + '<%= @question.id %> ' + '.question-files').html("<%= j render 'questions/files', question: @question %>");
+  $('#question-' + '<%= @question.id %> ' + '.question-links').html("<%= j render 'questions/links', question: @question %>");
 <% end %>
