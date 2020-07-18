@@ -2,6 +2,6 @@
 
 module ApplicationHelper
   def gist(link)
-    @gist ||= Octokit.gist(link.url.split('/').last)
+    Octokit.gist(link.url.split('/').last)
   end
 end
