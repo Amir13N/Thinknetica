@@ -2,15 +2,16 @@
 
   = render 'shared/errors', resource: @question
 
-  p
-    = f.label :title
-    = f.text_field :title
-  
-  p
-    = f.label :body
-    = f.text_field :body
+  .main-form
+    p
+      = f.label :title
+      = f.text_field :title
+    
+    p
+      = f.label :body
+      = f.text_field :body
 
-  p.reward-form
+  .reward-form
     = f.label :reward
     = f.fields_for :reward do |r|
 
