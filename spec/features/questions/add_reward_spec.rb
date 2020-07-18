@@ -8,7 +8,6 @@ feature 'User can add links to question', "
   I'd like to be able to add links
 " do
   given(:user) { create(:user) }
-  given(:gist_url) { 'https://gist.github.com/Amir13N/3e9944d6f3f7d0e7ccaa73639c8f94d6' }
   given(:picture_url) { 'https://avatarko.ru/img/kartinka/13/TMNT_Michelangelo_12859.jpg' }
 
   scenario 'User adds reward when asks question' do
