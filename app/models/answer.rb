@@ -16,6 +16,7 @@ class Answer < ApplicationRecord
     ActiveRecord::Base.transaction do
       question.best_answer&.update!(best: false)
       update!(best: true)
+      question.reward&.update(user: user)
     end
   end
 
