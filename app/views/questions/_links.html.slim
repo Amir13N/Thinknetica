@@ -1,0 +1,6 @@
+- question.links.each do |link|
+  .question-link id="question-link-#{link.id}"
+    p= link_to link.name, link.url, target: :blank
+
+    - if current_user&.author_of?(question)
+      p= link_to 'Delete', link_path(link), method: :delete, remote: true

@@ -7,6 +7,8 @@ RSpec.describe AnswersController, type: :controller do
   let(:question) { create(:question, user: user) }
   let!(:answer) { create(:answer, question: question, user: user) }
 
+  before { create(:reward, question: question) }
+
   describe 'Post #create' do
     before { login(user) }
 
@@ -89,7 +91,8 @@ RSpec.describe AnswersController, type: :controller do
   describe 'PATCH #choose_best' do
     before { login(user) }
 
-    let(:other_answer) { create(:answer) }
+    let(:other_question_answer) { create(:answer) }
+    let(:other_answer) { create(:answer, question: question) }
 
     it "changes 'best' attribute value of an answer" do
       patch :choose_best, params: { id: answer }, format: :js
@@ -99,10 +102,16 @@ RSpec.describe AnswersController, type: :controller do
     end
 
     it "does not work with answer of other user's question" do
-      patch :choose_best, params: { id: other_answer }, format: :js
+      patch :choose_best, params: { id: other_question_answer }, format: :js
       other_answer.reload
 
       expect(other_answer.best).to be_falsey
+    end
+
+    it "awards answer's author" do
+      patch :choose_best, params: { id: other_answer }, format: :js
+
+      expect(other_answer.user.rewards.include?(question.reward)).to be_truthy
     end
   end
 end

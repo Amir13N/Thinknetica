@@ -7,4 +7,5 @@ $('.flash').html("<%= j render partial: 'shared/flash' %>");
   $('#edit-answer-link-' + '<%= @answer.id %>').show();
   $('#answer-' + '<%= @answer.id %> ' + ' td').filter(':first').text('<%= @answer.body %>');
   $('#answer-' + '<%= @answer.id %> ' + '.answer-files').html("<%= j render 'answers/files', answer: @answer %>");
+  $('#answer-' + '<%= @answer.id %> ' + '.answer-links').html("<%= j render 'answers/links', answer: @answer %>");
 <% end %>

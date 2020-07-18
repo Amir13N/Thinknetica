@@ -1,0 +1,13 @@
+- answer.links.each do |link|
+  .answer-link id="answer-link-#{link.id}"
+    - if link.gist?
+      ul
+        p.h5 = gist(link).description
+        
+        - gist(link).files.each do |file|
+          li= file[1][:content]
+    
+    p= link_to link.name, link.url, target: :blank
+    
+    - if current_user&.author_of?(answer)
+      p= link_to 'Delete', link_path(link), method: :delete, remote: true
