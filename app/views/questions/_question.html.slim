@@ -10,8 +10,9 @@ tr.question id="question-#{question.id}"
     = render 'links', question: question
 
   td.alihn-middle.question-reward
-    p= question.reward.title
-    p= question.reward.picture
+    - if question.reward
+      p= question.reward.title
+      p= question.reward.picture
   
   td.align-middle
     p = link_to 'Show', question_path(question), id: 'show-link'

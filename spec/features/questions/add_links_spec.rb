@@ -16,8 +16,10 @@ feature 'User can add links to question', "
     sign_in(user)
     visit new_question_path
 
-    fill_in 'Title', with: 'Test question'
-    fill_in 'Body', with: 'text text text'
+    within '.main-form' do
+      fill_in 'Title', with: 'Test question'
+      fill_in 'Body', with: 'text text text'
+    end
 
     fill_in 'Link name', with: 'My gist1'
     fill_in 'Url', with: gist_url
