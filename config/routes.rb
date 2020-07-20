@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :questions do
+    patch :vote_for, on: :member
+    
     resources :answers, shallow: true do
       patch :choose_best, on: :member
     end
