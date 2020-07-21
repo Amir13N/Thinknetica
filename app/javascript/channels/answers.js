@@ -6,8 +6,8 @@ $(document).on('turbolinks:load', function(){
     $('form#edit-answer-' + answerId).show();
   })
 
-  $('.answers').on('click', '.vote-answer-link', function(e){
-    var rating = e.detail;
+  $('.answers').on('ajax:success', '.vote-answer-link', function(e){
+    var rating = e.detail[0];
     var answerId = $(this).data('answerId');
     $('#answer-rating-' + answerId).html(rating);
     
@@ -32,8 +32,8 @@ $(document).on('turbolinks:load', function(){
     }
   })
 
-  $('.answers').on('click', '.revote-answer-link', function(e){
-    var rating = e.detail;
+  $('.answers').on('ajax:success', '.revote-answer-link', function(e){
+    var rating = e.detail[0];
     var answerId = $(this).data('answerId');
     $('#answer-rating-' + answerId).html(rating);
 
