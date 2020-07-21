@@ -9,9 +9,10 @@ feature 'User can revote question', "
 " do
   given(:user) { create(:user) }
   given!(:question) { create(:question) }
-  given!(:vote) { create(:vote, user: user, votable: question) }
 
-  scenario 'Authenticated user revotes question' do
+  background { create(:vote, user: user, votable: question) }
+
+  scenario 'Authenticated user revotes question', js: true do
     sign_in(user)
     visit questions_path
 
@@ -23,6 +24,6 @@ feature 'User can revote question', "
 
   scenario 'Unauthenticated user revotes question' do
     visit questions_path
-    expect(page).to have_content 'Revote'
+    expect(page).to_not have_content 'Revote'
   end
 end

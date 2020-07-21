@@ -6,6 +6,10 @@ $(document).on('turbolinks:load', function(){
     $('form#edit-answer-' + answerId).show();
   })
 
+  var bestAnswerId = $('.answers').data('bestAnswerId');
+  $('#best-answer-link-' + bestAnswerId).hide();
+  $('.answers').prepend($('#answer-' + bestAnswerId));
+
   $('.answers').on('ajax:success', '.vote-answer-link', function(e){
     var rating = e.detail[0];
     var answerId = $(this).data('answerId');

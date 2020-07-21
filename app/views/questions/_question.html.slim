@@ -29,7 +29,7 @@ tr.question id="question-#{question.id}"
       p= link_to 'Edit', '#', class: 'edit-question-link', id: "edit-question-link-#{question.id}", data: { question_id: question.id }
       p= render 'form_inline', question: question
 
-    - else
+    - elsif user_signed_in?
 
       p= link_to 'Vote for', vote_for_question_path(question),
                              remote: true,

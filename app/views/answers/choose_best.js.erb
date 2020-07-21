@@ -1,11 +1,14 @@
 var bestAnswerLink = $('#best-answer-link-' + '<%= @answer.id %>');
 bestAnswerLink.hide();
+
 var bestAnswerId = $('.answers').data('bestAnswerId');
+console.log(bestAnswerId);
 if(bestAnswerId != null) {
   $('#best-answer-link-' + bestAnswerId).show();
 }
 
 var answerId = bestAnswerLink.data('answerId');
+console.log(answerId);
 $('.answers').data('bestAnswerId', answerId);
 $('.answers').prepend($('#answer-' + answerId));
 

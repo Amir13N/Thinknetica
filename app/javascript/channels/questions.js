@@ -6,8 +6,8 @@ $(document).on('turbolinks:load', function(){
     $('form#edit-question-' + questionId).show();
   })
 
-  $('.questions').on('click', '.vote-question-link', function(e){
-    var rating = e.detail;
+  $('.questions').on('ajax:success', '.vote-question-link', function(e){
+    var rating = e.detail[0];
     var questionId = $(this).data('questionId');
     $('#question-rating-' + questionId).html(rating);
     
@@ -32,8 +32,8 @@ $(document).on('turbolinks:load', function(){
     }
   })
 
-  $('.questions').on('click', '.revote-question-link', function(e){
-    var rating = e.detail;
+  $('.questions').on('ajax:success', '.revote-question-link', function(e){
+    var rating = e.detail[0];
     var questionId = $(this).data('questionId');
     $('#question-rating-' + questionId).html(rating);
 

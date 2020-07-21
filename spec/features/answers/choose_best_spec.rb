@@ -28,6 +28,7 @@ feature 'User can choose best answer for its question', "
       first(:link, 'Make the best').click
 
       expect(page).to have_content 'Your answer was successfully chosen as the best'
+
       within "#answer-#{answers.first.id}" do
         expect(page).to_not have_content 'Make the best'
       end

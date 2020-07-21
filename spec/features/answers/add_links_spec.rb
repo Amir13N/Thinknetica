@@ -8,7 +8,7 @@ feature 'User can add links to answer', "
   I'd like to be able to add links
 " do
   given(:user) { create(:user) }
-  given(:gist_url) { 'https://gist.github.com/Amir13N/3e9944d6f3f7d0e7ccaa73639c8f94d6' }
+  given(:gist_url) { 'https://test.com' }
   given(:question) { create(:question) }
 
   background { create(:answer, question: question, user: user) }

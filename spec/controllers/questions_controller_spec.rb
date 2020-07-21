@@ -139,34 +139,4 @@ RSpec.describe QuestionsController, type: :controller do
       expect { delete :destroy, params: { id: other_question } }.to_not change(Question, :count)
     end
   end
-
-  describe 'PATCH #vote_for' do
-    before { login(user) }
-
-    let!(:question) { create(:question) }
-    let!(:user_question) { create(:question, user: user) }
-
-    it 'adds positive vote to question' do
-      expect { patch :vote_for, params: { id: question, format: :json } }.to change(question.votes.where(positive: true), :count).by(1)
-    end
-
-    it "can not add vote to authenticated user's question" do
-      expect { patch :vote_for, params: { id: user_question, format: :js } }.to_not change(question.votes.where(positive: true), :count)
-    end
-  end
-
-  describe 'PATCH #vote_against' do
-    before { login(user) }
-
-    let!(:question) { create(:question) }
-    let!(:user_question) { create(:question, user: user) }
-
-    it 'adds positive vote to question' do
-      expect { patch :vote_against, params: { id: question, format: :json } }.to change(question.votes.where(positive: false), :count).by(1)
-    end
-
-    it "can not add vote to authenticated user's question" do
-      expect { patch :vote_against, params: { id: user_question, format: :js } }.to_not change(question.votes.where(positive: false), :count)
-    end
-  end
 end
