@@ -8,7 +8,7 @@ module Voted
   end
 
   def vote_for
-    if !current_user&.author_of?(@votable) && user_signed_in?
+    unless current_user&.author_of?(@votable)
       @votable.vote_for(current_user)
 
       respond_with_rating
@@ -16,7 +16,7 @@ module Voted
   end
 
   def vote_against
-    if !current_user&.author_of?(@votable) && user_signed_in?
+    unless current_user&.author_of?(@votable)
       @votable.vote_against(current_user)
 
       respond_with_rating
@@ -24,7 +24,7 @@ module Voted
   end
 
   def revote
-    if !current_user&.author_of?(@votable) && user_signed_in?
+    unless current_user&.author_of?(@votable)
       @votable.revote(current_user)
 
       respond_with_rating

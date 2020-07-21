@@ -7,7 +7,7 @@ module Votable
   end
 
   def rating
-    votes.reduce(0) { |rating, vote| vote.positive ? rating += 1 : rating -= 1 }
+    votes.where(positive: true).count - votes.where(positive: false).count
   end
 
   def vote_for(user)
@@ -23,16 +23,16 @@ module Votable
   end
 
   def voted?(user)
-    votes.map(&:user).include?(user)
+    votes.exists?(user: user)
   end
 
   private
 
   def voted_for?(user)
-    votes.where(positive: true).map(&:user).include?(user)
+    votes.exists?(positive: true, user: user)
   end
 
   def voted_against?(user)
-    votes.where(positive: false).map(&:user).include?(user)
+    votes.exists?(positive: false, user: user)
   end
 end

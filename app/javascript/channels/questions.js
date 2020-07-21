@@ -17,8 +17,8 @@ $(document).on('turbolinks:load', function(){
     $('#revote-question-link-' + questionId).show();
   })
 
-  $('.question-actions').each(function(i, el){
-    var voted = $(el).data('voted');
+  $('.question-actions').each(function(){
+    var voted = $(this).data('voted');
 
     if(voted){
       $(this).find('.revote-question-link').show();
