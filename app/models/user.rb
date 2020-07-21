@@ -10,14 +10,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def vote_for(votable)
-    votes.create(votable: votable, positive: true)
-  end
-
-  def voted_for?(votable)
-    votes.where(positive: true).map(&:votable).include?(votable)
-  end
-
   def author_of?(object)
     id == object.user_id
   end

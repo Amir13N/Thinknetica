@@ -114,4 +114,53 @@ RSpec.describe AnswersController, type: :controller do
       expect(other_answer.user.rewards.include?(question.reward)).to be_truthy
     end
   end
+
+  describe 'PATCH #vote_for' do
+    before { login(user) }
+
+    let!(:answer) { create(:answer) }
+    let!(:user_answer) { create(:answer, user: user) }
+
+    it 'adds positive vote to answer' do
+      expect { patch :vote_for, params: { id: answer, format: :json } }.to change(answer.votes.where(positive: true), :count).by(1)
+    end
+
+    it "can not add vote to authenticated user's answer" do
+      expect { patch :vote_for, params: { id: user_answer, format: :js } }.to_not change(answer.votes.where(positive: true), :count)
+    end
+  end
+
+  describe 'PATCH #vote_against' do
+    before { login(user) }
+
+    let!(:answer) { create(:answer) }
+    let!(:user_answer) { create(:answer, user: user) }
+
+    it 'adds positive vote to answer' do
+      expect { patch :vote_against, params: { id: answer, format: :json } }.to change(answer.votes.where(positive: false), :count).by(1)
+    end
+
+    it "can not add vote to authenticated user's answer" do
+      expect { patch :vote_against, params: { id: user_answer, format: :js } }.to_not change(answer.votes.where(positive: false), :count)
+    end
+  end
+
+  describe 'PATCH #revote' do
+    before { login(user) }
+
+    let!(:answer) { create(:answer) }
+    let!(:user_answer) { create(:answer, user: user) }
+    before do
+      create(:vote, votable: answer, user: user)
+      create(:vote, votable: user_answer, user: user)
+    end
+
+    it 'removes vote to answer' do
+      expect { delete :revote, params: { id: answer, format: :json } }.to change(answer.votes, :count).by(-1)
+    end
+
+    it "can not remove vote of authenticated user's answer" do
+      expect { delete :revote, params: { id: user_answer, format: :js } }.to_not change(answer.votes, :count)
+    end
+  end
 end
