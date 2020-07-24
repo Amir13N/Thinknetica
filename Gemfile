@@ -12,17 +12,18 @@ gem 'devise', '~> 4.3'
 gem 'google-cloud-storage', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'octokit', '~> 4.0'
+gem 'pg'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 gem 'sass-rails', '>= 6'
 gem 'slim-rails'
-gem 'sqlite3', '~> 1.4'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
 end

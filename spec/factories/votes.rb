@@ -4,6 +4,5 @@ FactoryBot.define do
   factory :vote do
     positive { false }
     user
-    votable { question }
   end
 end

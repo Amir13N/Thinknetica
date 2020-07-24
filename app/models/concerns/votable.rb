@@ -2,37 +2,38 @@
 
 module Votable
   extend ActiveSupport::Concern
+
   included do
     has_many :votes, dependent: :destroy, as: :votable
   end
 
   def rating
-    votes.where(positive: true).count - votes.where(positive: false).count
+    vote_rates.compact.sum
   end
 
   def vote_for(user)
-    votes.create(user: user, positive: true) unless voted?(user)
+    unless voted?(user)
+      vote = votes.create(user: user, positive: true)
+      vote_rates[vote.id] = 1
+      save
+    end
   end
 
   def vote_against(user)
-    votes.create(user: user, positive: false) unless voted?(user)
+    unless voted?(user)
+      vote = votes.create(user: user, positive: false)
+      vote_rates[vote.id] = -1
+      save
+    end
   end
 
   def revote(user)
-    votes.find_by(user: user)&.destroy
+    vote = votes.find_by(user: user)&.destroy
+    vote_rates[vote.id] = nil
+    save
   end
 
   def voted?(user)
     votes.exists?(user: user)
-  end
-
-  private
-
-  def voted_for?(user)
-    votes.exists?(positive: true, user: user)
-  end
-
-  def voted_against?(user)
-    votes.exists?(positive: false, user: user)
   end
 end

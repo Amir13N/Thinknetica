@@ -1,12 +1,23 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  encoding: unicode
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: qna_development
+  host: localhost
+  username: amir
+  password: <%= ENV.fetch("PG_PASSWORD") %>
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: qna_test
+  host: localhost
+  username: amir
+  password: <%= ENV.fetch("PG_PASSWORD") %>
+  
+
+production:
+  <<: *default
+  database: qna_production

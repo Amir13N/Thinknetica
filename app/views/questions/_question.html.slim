@@ -12,13 +12,14 @@ tr.question id="question-#{question.id}"
   td.align-middle.question-rating id="question-rating-#{question.id}"
     h5= question.rating
 
-  td.alihn-middle.question-reward
+  td.align-middle.question-reward
     - if question.reward
       p= question.reward.title
       p= question.reward.picture
 
   = content_tag :td, class: 'align-middle question-actions',
-                     data: { voted: question.voted?(current_user) }
+                     data: { voted: question.voted?(current_user),
+                             question_id: question.id }
 
     p = link_to 'Show', question_path(question), id: 'show-link'
 
@@ -31,23 +32,4 @@ tr.question id="question-#{question.id}"
 
     - elsif user_signed_in?
 
-      p= link_to 'Vote for', vote_for_question_path(question),
-                             remote: true,
-                             method: :patch,
-                             class: 'vote-for-question-link vote-question-link',
-                             id: "vote-for-question-link-#{question.id}",
-                             data: { type: :json, question_id: question.id }
-
-      p= link_to 'Vote against', vote_against_question_path(question),
-                                 remote: true,
-                                 method: :patch,
-                                 class: 'vote-against-question-link vote-question-link',
-                                 id: "vote-against-question-link-#{question.id}",
-                                 data: { type: :json, question_id: question.id }
-
-      p= link_to 'Revote', revote_question_path(question),
-                           remote: true,
-                           method: :delete,
-                           class: 'revote-question-link',
-                           id: "revote-question-link-#{question.id}",
-                           data: { type: :json, question_id: question.id }
+      = render 'shared/vote', resource: question, resource_name: 'question'

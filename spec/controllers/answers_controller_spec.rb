@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require Rails.root.join 'spec/controllers/concerns/voted_spec.rb'
 
 RSpec.describe AnswersController, type: :controller do
   let(:user) { create(:user) }
   let(:question) { create(:question, user: user) }
   let!(:answer) { create(:answer, question: question, user: user) }
+
+  it_behaves_like 'voted'
 
   before { create(:reward, question: question) }
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require Rails.root.join 'spec/models/concerns/votable_spec.rb'
 
 RSpec.describe Question, type: :model do
   it { should have_many(:answers).dependent(:destroy) }
@@ -15,6 +16,8 @@ RSpec.describe Question, type: :model do
   it { should belong_to :user }
 
   it { should accept_nested_attributes_for :links }
+
+  it_behaves_like 'votable'
 
   let(:question) { create(:question) }
   let!(:answer) { create(:answer, question: question, best: true) }

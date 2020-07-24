@@ -11,7 +11,8 @@ tr.answer id="answer-#{answer.id}"
     h5= answer.rating
 
   = content_tag :td, class: 'align-middle answer-actions',
-                     data: { voted: answer.voted?(current_user) }
+                     data: { voted: answer.voted?(current_user),
+                             answer_id: answer.id }
 
     - if current_user&.author_of?(answer)
       p = link_to 'Delete', answer_path(answer), method: :delete, remote: true
@@ -21,26 +22,7 @@ tr.answer id="answer-#{answer.id}"
 
     - elsif user_signed_in?
 
-      p= link_to 'Vote for', vote_for_answer_path(answer),
-                             remote: true,
-                             method: :patch,
-                             class: 'vote-for-answer-link vote-answer-link',
-                             id: "vote-for-answer-link-#{answer.id}",
-                             data: { type: :json, answer_id: answer.id }
-
-      p= link_to 'Vote against', vote_against_answer_path(answer),
-                                 remote: true,
-                                 method: :patch,
-                                 class: 'vote-against-answer-link vote-answer-link',
-                                 id: "vote-against-answer-link-#{answer.id}",
-                                 data: { type: :json, answer_id: answer.id }
-
-      p= link_to 'Revote', revote_answer_path(answer),
-                           remote: true,
-                           method: :delete,
-                           class: 'revote-answer-link',
-                           id: "revote-answer-link-#{answer.id}",
-                           data: { type: :json, answer_id: answer.id }
+      = render 'shared/vote', resource: answer, resource_name: 'answer'
 
     - if current_user&.author_of?(answer.question)
       p = link_to 'Make the best', choose_best_answer_path(answer), method: :patch, remote: true, class: 'best-answer-link', id: "best-answer-link-#{answer.id}", data: { answer_id: answer.id }

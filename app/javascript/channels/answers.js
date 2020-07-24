@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function(){
 
   $('.answers').on('ajax:success', '.vote-answer-link', function(e){
     var rating = e.detail[0];
-    var answerId = $(this).data('answerId');
+    var answerId = $(this).closest('.answer-actions').data('answerId');
     $('#answer-rating-' + answerId).html(rating);
     
     $('#answer-' + answerId + ' .vote-answer-link').each(function(i, el){
@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function(){
 
   $('.answers').on('ajax:success', '.revote-answer-link', function(e){
     var rating = e.detail[0];
-    var answerId = $(this).data('answerId');
+    var answerId = $(this).closest('.answer-actions').data('answerId');
     $('#answer-rating-' + answerId).html(rating);
 
     $('#answer-' + answerId + ' .vote-answer-link').each(function(i, el){
