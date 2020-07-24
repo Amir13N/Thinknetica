@@ -7,20 +7,14 @@ shared_examples_for 'votable' do
     let(:user) { create(:user) }
     let!(:question) { create(:question, user: user) }
 
-    it 'adds 1 to vote_rates attribute' do
-      question.vote_for(user)
-
-      expect(question.vote_rates.include?('1')).to be_truthy
-    end
-
-    it 'adds new vote to question' do
+    it 'creates new vote for question' do
       expect { question.vote_for(user) }.to change(question.votes, :count).by(1)
     end
 
-    it 'creates new vote with positive true' do
+    it 'creates new vote with rate 1' do
       question.vote_for(user)
 
-      expect(question.votes.last.positive).to be_truthy
+      expect(question.votes.last.rate).to be_truthy
     end
   end
 
@@ -28,20 +22,14 @@ shared_examples_for 'votable' do
     let(:user) { create(:user) }
     let!(:question) { create(:question, user: user) }
 
-    it 'adds -1 to vote_rates attribute' do
-      question.vote_against(user)
-
-      expect(question.vote_rates.include?('-1')).to be_truthy
+    it 'creates new vote for question' do
+      expect { question.vote_for(user) }.to change(question.votes, :count).by(1)
     end
 
-    it 'adds new vote to question' do
-      expect { question.vote_against(user) }.to change(question.votes, :count).by(1)
-    end
+    it 'creates new vote with rate -1' do
+      question.vote_for(user)
 
-    it 'creates new vote with positive true' do
-      question.vote_against(user)
-
-      expect(question.votes.last.positive).to be_falsey
+      expect(question.votes.last.rate).to be_truthy
     end
   end
 
@@ -53,12 +41,6 @@ shared_examples_for 'votable' do
 
     it 'destroys vote' do
       expect { question.revote(user) }.to change(question.votes, :count).by(-1)
-    end
-
-    it 'deletes vote rate from vote_rates' do
-      question.revote(user)
-
-      expect(question.vote_rates.include?('-1')).to be_falsey
     end
   end
 

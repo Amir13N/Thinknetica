@@ -8,29 +8,19 @@ module Votable
   end
 
   def rating
-    vote_rates.compact.sum
+    votes.sum(:rate)
   end
 
   def vote_for(user)
-    unless voted?(user)
-      vote = votes.create(user: user, positive: true)
-      vote_rates[vote.id] = 1
-      save
-    end
+    votes.create(user: user, rate: 1) unless voted?(user)
   end
 
   def vote_against(user)
-    unless voted?(user)
-      vote = votes.create(user: user, positive: false)
-      vote_rates[vote.id] = -1
-      save
-    end
+    votes.create(user: user, rate: -1) unless voted?(user)
   end
 
   def revote(user)
-    vote = votes.find_by(user: user)&.destroy
-    vote_rates[vote.id] = nil
-    save
+    votes.find_by(user: user)&.destroy
   end
 
   def voted?(user)

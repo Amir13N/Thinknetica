@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :vote do
-    positive { false }
+    rate { 1 }
     user
   end
 end

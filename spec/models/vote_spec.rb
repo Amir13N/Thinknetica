@@ -6,5 +6,5 @@ RSpec.describe Vote, type: :model do
   it { should belong_to :votable }
   it { should belong_to :user }
 
-  it { should validate_inclusion_of(:positive).in?([false, true]) }
+  it { should validate_inclusion_of(:rate).in?([1, -1]) }
 end
