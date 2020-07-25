@@ -23,13 +23,13 @@ shared_examples_for 'votable' do
     let!(:question) { create(:question, user: user) }
 
     it 'creates new vote for question' do
-      expect { question.vote_for(user) }.to change(question.votes, :count).by(1)
+      expect { question.vote_against(user) }.to change(question.votes, :count).by(1)
     end
 
     it 'creates new vote with rate -1' do
-      question.vote_for(user)
+      question.vote_against(user)
 
-      expect(question.votes.last.rate).to be_truthy
+      expect(question.votes.pluck(:rate).include?(-1)).to be_truthy 
     end
   end
 
