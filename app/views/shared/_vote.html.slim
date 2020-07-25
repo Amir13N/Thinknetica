@@ -1,0 +1,20 @@
+p= link_to 'Vote for', polymorphic_path(resource, action: :vote_for),
+                       remote: true,
+                       method: :patch,
+                       class: "vote-for-#{resource_name}-link vote-#{resource_name}-link",
+                       id: "vote-for-#{resource_name}-link-#{resource.id}",
+                       data: { type: :json }
+
+p= link_to 'Vote against', polymorphic_path(resource, action: :vote_against),
+                           remote: true,
+                           method: :patch,
+                           class: "vote-against-#{resource_name}-link vote-#{resource_name}-link",
+                           id: "vote-against-#{resource_name}-link-#{resource.id}",
+                           data: { type: :json }
+
+p= link_to 'Revote', polymorphic_path(resource, action: :revote),
+                     remote: true,
+                     method: :delete,
+                     class: "revote-#{resource_name}-link",
+                     id: "revote-#{resource_name}-link-#{resource.id}",
+                     data: { type: :json }

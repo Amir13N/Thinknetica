@@ -9,14 +9,27 @@ tr.question id="question-#{question.id}"
   td.align-middle.question-links
     = render 'links', question: question
 
-  td.alihn-middle.question-reward
-    p= question.reward.title
-    p= question.reward.picture
-  
-  td.align-middle
-    p = link_to 'Show', question_path(question), id: 'show-link'
-    - if current_user&.author_of?(question)
-      p = link_to 'Delete', question_path(question), method: :delete
-      p = link_to 'Edit', '#', class: 'edit-question-link', id: "edit-question-link-#{question.id}", data: { question_id: question.id }
+  td.align-middle.question-rating id="question-rating-#{question.id}"
+    h5= question.rating
 
-      p = render 'form_inline', question: question
+  td.align-middle.question-reward
+    - if question.reward
+      p= question.reward.title
+      p= question.reward.picture
+
+  = content_tag :td, class: 'align-middle question-actions',
+                     data: { voted: question.voted?(current_user),
+                             question_id: question.id }
+
+    p = link_to 'Show', question_path(question), id: 'show-link'
+
+    - if current_user&.author_of?(question)
+
+      p= link_to 'Delete', question_path(question), method: :delete
+
+      p= link_to 'Edit', '#', class: 'edit-question-link', id: "edit-question-link-#{question.id}", data: { question_id: question.id }
+      p= render 'form_inline', question: question
+
+    - elsif user_signed_in?
+
+      = render 'shared/vote', resource: question, resource_name: 'question'

@@ -124,7 +124,6 @@ RSpec.describe QuestionsController, type: :controller do
     before { login(user) }
 
     let!(:question) { create(:question, user: user) }
-
     let!(:other_question) { create(:question) }
 
     it 'deletes question' do
