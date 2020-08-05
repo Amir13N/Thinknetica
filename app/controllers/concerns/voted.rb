@@ -8,27 +8,27 @@ module Voted
   end
 
   def vote_for
-    unless current_user&.author_of?(@votable)
-      @votable.vote_for(current_user)
+    return if current_user&.author_of?(@votable)
 
-      respond_with_rating
-    end
+    @votable.vote_for(current_user)
+
+    respond_with_rating
   end
 
   def vote_against
-    unless current_user&.author_of?(@votable)
-      @votable.vote_against(current_user)
+    return if current_user&.author_of?(@votable)
 
-      respond_with_rating
-    end
+    @votable.vote_against(current_user)
+
+    respond_with_rating
   end
 
   def revote
-    unless current_user&.author_of?(@votable)
-      @votable.revote(current_user)
+    return if current_user&.author_of?(@votable)
 
-      respond_with_rating
-    end
+    @votable.revote(current_user)
+
+    respond_with_rating
   end
 
   private

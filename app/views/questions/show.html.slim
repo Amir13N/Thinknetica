@@ -1,26 +1,28 @@
-.question-options
-  h1= @question.title
-  p= @question.body
+.col-8
+  .question-options
+    h1= @question.title
+    h3= @question.body
 
-.question-files
-  - if @question.files.attached?
-    - @question.files.each do |file|
-      p= link_to file.filename.to_s, url_for(file)
+  .question-files
+    - if @question.files.attached?
+      - @question.files.each do |file|
+        p= link_to file.filename.to_s, url_for(file)
 
-table.table.table-bordered
-    thead
-      tr
-        th Body
-        th Files
-        th Links
-        th Rating
-        th Actions
+  .mt-4.answers data-best-answer-id="#{@question.best_answer&.id}"
+    h3 Answers
+    = render @question.answers
 
-    tbody.answers data-best-answer-id="#{@question.best_answer&.id}"
-      = render @question.answers
+  - if user_signed_in?
+    h3.mt-4 Answer question
 
-- if user_signed_in?
-  p Answer question
+    .mt-2.container.card.border-primary.new-answer= render 'answers/form'
 
-  = render 'answers/form'
-= link_to 'Back', root_path
+  .mt-4.comments
+    h3 Comments
+
+    = render @question.comments
+
+  - if user_signed_in?
+    h3.mt-4 Add comment
+
+    .mt-2.container.card.border-primary.new-comment= render 'comments/form', commentable: @question

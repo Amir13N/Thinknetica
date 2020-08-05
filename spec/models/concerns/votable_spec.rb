@@ -29,7 +29,7 @@ shared_examples_for 'votable' do
     it 'creates new vote with rate -1' do
       question.vote_against(user)
 
-      expect(question.votes.pluck(:rate).include?(-1)).to be_truthy 
+      expect(question.votes.pluck(:rate).include?(-1)).to be_truthy
     end
   end
 

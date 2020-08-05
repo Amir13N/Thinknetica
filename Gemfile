@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'cocoon'
 gem 'devise', '~> 4.3'
+gem 'gon'
 gem 'google-cloud-storage', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'octokit', '~> 4.0'

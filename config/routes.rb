@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   concern :votable do
-    patch :vote_for, on: :member
-    patch :vote_against, on: :member
-    delete :revote, on: :member
+    member do
+      patch :vote_for
+      patch :vote_against
+      delete :revote
+    end
   end
 
   resources :questions, concerns: :votable do
@@ -15,9 +17,14 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'questions/:commentable_id/comments', to: 'comments#create', defaults: { commentable: 'questions' }, as: :question_comments
+  post 'answers/:commentable_id/comments', to: 'comments#create', defaults: { commentable: 'answers' }, as: :answer_comments
+
   resources :attachments, only: :destroy
   resources :links, only: :destroy
   resources :rewards, only: :index
 
   root to: 'questions#index'
+
+  mount ActionCable.server => '/cable'
 end

@@ -17,7 +17,9 @@ feature 'User can add links to answer', "
     sign_in(user)
     visit question_path(question)
 
-    fill_in 'body', with: 'Answer'
+    within '.new-answer' do
+      fill_in 'body', with: 'Answer'
+    end
 
     fill_in 'Link name', with: 'My gist1'
     fill_in 'Url', with: gist_url
