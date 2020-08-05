@@ -44,7 +44,7 @@ feature 'User can create comments', "
   end
 
   context 'multiple sessions' do
-    scenario "comment appears on another user's page", js: true do
+    scenario "comment to question appears on another user's page", js: true do
       Capybara.using_session('user') do
         sign_in(user)
         visit question_path(question)
@@ -52,6 +52,31 @@ feature 'User can create comments', "
 
       Capybara.using_session('guest') do
         visit question_path(question)
+      end
+
+      Capybara.using_session('user') do
+        within '.comment-create' do
+          fill_in 'body', with: 'New comment'
+
+          click_on 'Add comment'
+        end
+
+        expect(page).to have_content 'New comment'
+      end
+
+      Capybara.using_session('guest') do
+        expect(page).to have_content 'New comment'
+      end
+    end
+
+    scenario "comment to answer appears on another user's page", js: true do
+      Capybara.using_session('user') do
+        sign_in(user)
+        visit answer_path(answer)
+      end
+
+      Capybara.using_session('guest') do
+        visit answer_path(answer)
       end
 
       Capybara.using_session('user') do
