@@ -12,7 +12,7 @@ RSpec.describe AnswersController, type: :controller do
 
   before { create(:reward, question: question) }
 
-  describe 'Post #create' do
+  describe 'POST #create' do
     before { login(user) }
 
     context 'with valid attributes' do
@@ -44,7 +44,7 @@ RSpec.describe AnswersController, type: :controller do
     end
   end
 
-  describe 'Patch #update' do
+  describe 'PATCH #update' do
     before { login(user) }
 
     context 'with valid attributes' do

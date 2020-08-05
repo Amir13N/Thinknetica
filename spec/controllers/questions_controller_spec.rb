@@ -55,7 +55,7 @@ RSpec.describe QuestionsController, type: :controller do
     end
   end
 
-  describe 'Post #create' do
+  describe 'POST #create' do
     before { login(user) }
 
     context 'with valid attributes' do
@@ -87,7 +87,7 @@ RSpec.describe QuestionsController, type: :controller do
     end
   end
 
-  describe 'Patch #update' do
+  describe 'PATCH #update' do
     before { login(user) }
 
     context 'with valid attributes' do

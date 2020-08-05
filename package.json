@@ -7,8 +7,11 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "cocoon": "github:nathanvda/cocoon#c24ba53",
+    "handlebars": "^4.7.6",
+    "handlebars-loader": "^1.7.1",
     "iquery": "^0.0.2",
     "jquery": "^3.5.1",
+    "skim": "^0.1.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

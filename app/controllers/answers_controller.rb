@@ -5,11 +5,14 @@ class AnswersController < ApplicationController
 
   include Voted
 
-  before_action :set_answer, only: %i[edit update destroy choose_best]
+  before_action :set_answer, only: %i[edit update destroy choose_best show]
   before_action :set_question, only: %i[create]
+
+  after_action :publish_answer, only: :create
 
   def create
     @answer = current_user.answers.new(answer_params.merge(question: @question))
+
     if @answer.save
       flash.now[:notice] = 'Your answer was successfully created.'
     else
@@ -41,7 +44,20 @@ class AnswersController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.new
+  end
+
   private
+
+  def publish_answer
+    return if @answer.errors.any?
+
+    ActionCable.server.broadcast(
+      'answers',
+      @answer.body
+    )
+  end
 
   def set_answer
     @answer = Answer.with_attached_files.find(params[:id])

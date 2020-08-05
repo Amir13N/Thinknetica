@@ -7,9 +7,12 @@ class QuestionsController < ApplicationController
 
   before_action :set_question, only: %i[show edit update destroy]
 
+  after_action :publish_question, only: :create
+
   def show
     @answer = Answer.new
     @answer.links.new
+    @comment = Comment.new
   end
 
   def index
@@ -51,6 +54,15 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def publish_question
+    return if @question.errors.any?
+
+    ActionCable.server.broadcast(
+      'questions',
+      @question.body
+    )
+  end
 
   def set_question
     @question = Question.with_attached_files.find(params[:id])
