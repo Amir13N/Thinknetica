@@ -24,10 +24,11 @@ class CommentsController < ApplicationController
 
     ActionCable.server.broadcast(
       "#{commentable_name}/#{@commentable.id}/comments",
-      ApplicationController.render(
+      partial: ApplicationController.render(
         partial: 'comments/comment',
         locals: { comment: @comment }
-      )
+      ),
+      user_id: current_user.id
     )
   end
 
