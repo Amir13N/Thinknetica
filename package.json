@@ -7,6 +7,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "cocoon": "github:nathanvda/cocoon#c24ba53",
+    "gon": "^1.0.3",
     "handlebars": "^4.7.6",
     "handlebars-loader": "^1.7.1",
     "iquery": "^0.0.2",

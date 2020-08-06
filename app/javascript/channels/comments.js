@@ -3,7 +3,10 @@ import consumer from './consumer'
 $(document).on('turbolinks:load', function(){
   consumer.subscriptions.create('CommentsChannel', {
     connected(){
-      this.perform('follow');
+      var path = window.location.pathname.split('/');
+      var commentableName = path[1];
+      var commentableId = path[2];
+      this.perform('follow', {commentable_name: commentableName, commentable_id: commentableId});
     },
 
     received(data){
