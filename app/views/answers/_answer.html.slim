@@ -14,7 +14,7 @@
   = content_tag :div, class: 'align-middle answer-actions',
                      data: { voted: answer.voted?(current_user),
                              answer_id: answer.id }
-    p= link_to 'Show', answer_path(answer)
+    p= link_to 'Show comments', answer_path(answer)
 
     - if current_user&.author_of?(answer)
       p = link_to 'Delete', answer_path(answer), method: :delete, remote: true
