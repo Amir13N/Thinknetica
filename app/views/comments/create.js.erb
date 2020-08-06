@@ -3,5 +3,6 @@ $('.comment-errors').html("<%= render 'shared/errors', resource: @comment %>");
 $('.flash').html("<%= j render partial: 'shared/flash' %>");
 
 <% if @comment.persisted? %>
+  $('.comments').append('<%= j render @comment %>');
   $('.comment-create #body').val('');
 <% end %>

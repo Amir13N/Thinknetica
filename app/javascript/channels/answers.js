@@ -51,11 +51,14 @@ $(document).on('turbolinks:load', function(){
 
   consumer.subscriptions.create('AnswersChannel', {
     connected(){
-      this.perform('follow');
+      var questionId = window.location.pathname.split('/')[2]
+      this.perform('follow', {question_id: questionId});
     },
 
     received(data){
-      $('.answers').append('<p>' + data + '</p>');
+      if (gon.user_id != data['user_id']){
+        $('.answers').append('<p>' + data['answer'] + '</p>');
+      }
     }
   })
 })

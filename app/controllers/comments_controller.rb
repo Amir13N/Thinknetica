@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     return if @comment.errors.any?
 
     ActionCable.server.broadcast(
-      'comments',
+      "#{commentable_name}/#{@commentable.id}/comments",
       ApplicationController.render(
         partial: 'comments/comment',
         locals: { comment: @comment }
