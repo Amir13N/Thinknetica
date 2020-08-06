@@ -10,7 +10,9 @@ $(document).on('turbolinks:load', function(){
     },
 
     received(data){
-      $('.comments').append(data);
+      if (gon.user_id != data['user_id']){
+        $('.comments').append(data['partial']);
+      }
     }
   })
 })
