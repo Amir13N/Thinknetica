@@ -17,7 +17,9 @@ feature 'User can create answer', "
     end
 
     scenario 'gives valid answer to question' do
-      fill_in 'body', with: 'answer'
+      within '.new-answer' do
+        fill_in 'body', with: 'answer'
+      end
       click_on 'Answer'
 
       expect(page).to have_content 'Your answer was successfully created.'
@@ -34,13 +36,40 @@ feature 'User can create answer', "
     end
 
     scenario 'answers a question with attached files' do
-      fill_in 'body', with: 'answer'
-
-      attach_file 'File', ["#{Rails.root}/spec/rails_helper.rb", "#{Rails.root}/spec/spec_helper.rb"]
+      within '.new-answer' do
+        fill_in 'body', with: 'answer'
+        attach_file 'File', ["#{Rails.root}/spec/rails_helper.rb", "#{Rails.root}/spec/spec_helper.rb"]
+      end
       click_on 'Answer'
 
       expect(page).to have_link 'rails_helper.rb'
       expect(page).to have_link 'spec_helper.rb'
+    end
+  end
+
+  context 'multiple sessions' do
+    scenario "answer appears on another user's page", js: true do
+      Capybara.using_session('user') do
+        sign_in(user)
+        visit question_path(question)
+      end
+
+      Capybara.using_session('guest') do
+        visit question_path(question)
+      end
+
+      Capybara.using_session('user') do
+        within '.new-answer' do
+          fill_in 'body', with: 'answer'
+        end
+        click_on 'Answer'
+
+        expect(page).to have_content 'answer'
+      end
+
+      Capybara.using_session('guest') do
+        expect(page).to have_content 'answer'
+      end
     end
   end
 

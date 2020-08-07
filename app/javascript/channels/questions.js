@@ -1,3 +1,5 @@
+import consumer from './consumer'
+
 $(document).on('turbolinks:load', function(){
   $('.questions').on('click', '.edit-question-link', function(e) {
     e.preventDefault();
@@ -41,5 +43,15 @@ $(document).on('turbolinks:load', function(){
       $(el).show();
     })
     $(this).hide();
+  })
+
+  consumer.subscriptions.create('QuestionsChannel', {
+    connected(){
+      this.perform('follow');
+    },
+
+    received(data){
+      $('.questions').append('<p>' + data + '</p>');
+    }
   })
 })

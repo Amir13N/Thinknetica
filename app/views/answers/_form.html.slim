@@ -1,4 +1,4 @@
-= form_for [@question, @answer], remote: true, local: true, html: { class: 'answer-create' } do |f|
+= form_for [@question, @answer], remote: true, local: true do |f|
 
   .answer-errors
     = render 'shared/errors', resource: @answer

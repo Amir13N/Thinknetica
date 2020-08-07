@@ -1,16 +1,4 @@
-div.col
-  p= link_to 'Ask questions', new_question_path
+div.col-8
+  p= link_to 'Ask question', new_question_path
 
-  table.table.table-bordered
-    thead
-      tr
-        th Title
-        th Body
-        th Files
-        th Links
-        th Rating
-        th Reward
-        th Actions
-
-    tbody.questions
-      = render @questions
+  .questions= render @questions

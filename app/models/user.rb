@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   has_many :votes
   has_many :rewards
+  has_many :comments, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
   # Include default devise modules. Others available are:

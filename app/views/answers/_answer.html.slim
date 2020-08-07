@@ -1,16 +1,17 @@
-tr.answer id="answer-#{answer.id}"
-  td.align-middle= answer.body
+.mt-2.container.card.border-primary.answer id="answer-#{answer.id}"
+  .h4.answer-body= answer.body
   
-  td.align-middle.answer-files
+  .answer-files
     = render 'answers/files', answer: answer
 
-  td.align-middle.answer-links
+  .answer-links
     = render 'answers/links', answer: answer
 
-  td.align-middle.answer-rating id="answer-rating-#{answer.id}"
-    h5= answer.rating
+  .h5
+    label Rating:
+    value.answer-rating id="answer-rating-#{answer.id}"= answer.rating
 
-  = content_tag :td, class: 'align-middle answer-actions',
+  = content_tag :div, class: 'align-middle answer-actions',
                      data: { voted: answer.voted?(current_user),
                              answer_id: answer.id }
 
@@ -18,11 +19,21 @@ tr.answer id="answer-#{answer.id}"
       p = link_to 'Delete', answer_path(answer), method: :delete, remote: true
       p = link_to 'Edit', '#', class: 'edit-answer-link', id: "edit-answer-link-#{answer.id}", data: { answer_id: answer.id }
 
-      p = render 'answers/form_inline', answer: answer
+      = render 'answers/form_inline', answer: answer
 
     - elsif user_signed_in?
 
-      = render 'shared/vote', resource: answer, resource_name: 'answer'
+      = render 'shared/votes', resource: answer, resource_name: 'answer'
 
     - if current_user&.author_of?(answer.question)
       p = link_to 'Make the best', choose_best_answer_path(answer), method: :patch, remote: true, class: 'best-answer-link', id: "best-answer-link-#{answer.id}", data: { answer_id: answer.id }
+
+  .mt-4.answer-comments id="answer-comments-#{answer.id}"
+    h3 Comments
+
+    = render answer.comments
+
+  - if user_signed_in?
+    h3.mt-4 Add comment
+
+    .mt-2.container.answer-new-comment= render 'comments/form', question: answer.question, commentable: answer
