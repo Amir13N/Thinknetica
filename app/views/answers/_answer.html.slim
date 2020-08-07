@@ -14,7 +14,6 @@
   = content_tag :div, class: 'align-middle answer-actions',
                      data: { voted: answer.voted?(current_user),
                              answer_id: answer.id }
-    p= link_to 'Show comments', answer_path(answer)
 
     - if current_user&.author_of?(answer)
       p = link_to 'Delete', answer_path(answer), method: :delete, remote: true
@@ -28,3 +27,13 @@
 
     - if current_user&.author_of?(answer.question)
       p = link_to 'Make the best', choose_best_answer_path(answer), method: :patch, remote: true, class: 'best-answer-link', id: "best-answer-link-#{answer.id}", data: { answer_id: answer.id }
+
+  .mt-4.answer-comments id="answer-comments-#{answer.id}"
+    h3 Comments
+
+    = render answer.comments
+
+  - if user_signed_in?
+    h3.mt-4 Add comment
+
+    .mt-2.container.answer-new-comment= render 'comments/form', question: answer.question, commentable: answer

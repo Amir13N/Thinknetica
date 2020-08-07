@@ -1,4 +1,4 @@
-= form_for [commentable, @comment], local: true, remote: true, html: { class: 'comment-create' } do |f|
+= form_for [commentable, @comment], local: true, remote: true do |f|
   
   .comment-errors= render 'shared/errors', resource: @comment
 

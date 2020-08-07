@@ -17,7 +17,7 @@
 
     .mt-2.container.card.border-primary.new-answer= render 'answers/form'
 
-  .mt-4.comments
+  .mt-4.question-comments id="question-comments-#{@question.id}"
     h3 Comments
 
     = render @question.comments
@@ -25,4 +25,4 @@
   - if user_signed_in?
     h3.mt-4 Add comment
 
-    .mt-2.container.card.border-primary.new-comment= render 'comments/form', commentable: @question
+    .mt-2.container.card.border-primary.question-new-comment= render 'comments/form', commentable: @question

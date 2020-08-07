@@ -10,8 +10,7 @@ feature 'User can add links to answer', "
   given(:user) { create(:user) }
   given(:gist_url) { 'https://test.com' }
   given(:question) { create(:question) }
-
-  background { create(:answer, question: question, user: user) }
+  given!(:answer) { create(:answer, question: question, user: user) }
 
   scenario 'User adds link when answers question', js: true do
     sign_in(user)
@@ -43,17 +42,19 @@ feature 'User can add links to answer', "
     sign_in(user)
     visit question_path(question)
 
-    within '.answers' do
+    within "#answer-#{answer.id}" do
       click_on 'Edit'
 
-      fill_in 'body', with: 'New Answer'
+      within '.edit-answer' do
+        fill_in 'body', with: 'New Answer'
 
-      click_on 'Add link'
+        click_on 'Add link'
 
-      fill_in 'Link name', with: 'My new gist'
-      fill_in 'Url', with: gist_url
+        fill_in 'Link name', with: 'My new gist'
+        fill_in 'Url', with: gist_url
 
-      click_on 'Edit'
+        click_on 'Edit'
+      end
 
       expect(page).to have_link 'My new gist', href: gist_url
     end

@@ -23,7 +23,9 @@ feature 'User can edit answer', "
 
     scenario 'edits his answer' do
       within '.answers' do
-        fill_in 'body', with: 'edited answer'
+        within "#edit-answer-#{answer.id}" do
+          fill_in 'body', with: 'edited answer'
+        end
         click_on 'Edit'
 
         expect(page).to_not have_content answer.body
@@ -36,7 +38,9 @@ feature 'User can edit answer', "
 
     scenario 'incorrectly edits answer' do
       within '.answers' do
-        fill_in 'body', with: ''
+        within "#edit-answer-#{answer.id}" do
+          fill_in 'body', with: ''
+        end
         click_on 'Edit'
 
         within "#edit-answer-#{answer.id}" do
@@ -48,7 +52,7 @@ feature 'User can edit answer', "
     end
 
     scenario 'edits with attached files' do
-      within '.answers' do
+      within "#edit-answer-#{answer.id}" do
         attach_file 'File', "#{Rails.root}/spec/spec_helper.rb"
         click_on 'Edit'
       end

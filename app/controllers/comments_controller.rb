@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash.now[:notice] = 'Your comment was successfully added.'
+      @commentable_name = commentable_name.singularize
     else
       flash.now[:alert] = 'Your comment was not added.'
     end
@@ -22,13 +23,17 @@ class CommentsController < ApplicationController
   def publish_comment
     return if @comment.errors.any?
 
+    question = @commentable.class == Question ? @commentable : @commentable.question
+
     ActionCable.server.broadcast(
-      "#{@commentable.id}/comments",
+      "#{question.id}/comments",
       partial: ApplicationController.render(
         partial: 'comments/comment',
         locals: { comment: @comment }
       ),
-      user_id: current_user.id
+      user_id: current_user.id,
+      commentable_name: @commentable_name,
+      commentable_id: @commentable.id
     )
   end
 
