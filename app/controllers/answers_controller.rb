@@ -12,6 +12,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = current_user.answers.new(answer_params.merge(question: @question))
+    @comment = Comment.new
 
     if @answer.save
       flash.now[:notice] = 'Your answer was successfully created.'
@@ -42,10 +43,6 @@ class AnswersController < ApplicationController
       flash.now[:notice] = 'Your answer was successfully chosen as the best'
       render 'answers/choose_best'
     end
-  end
-
-  def show
-    @comment = Comment.new
   end
 
   private

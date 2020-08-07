@@ -3,14 +3,13 @@ import consumer from './consumer'
 $(document).on('turbolinks:load', function(){
   consumer.subscriptions.create('CommentsChannel', {
     connected(){
-      var path = window.location.pathname.split('/');
-      var commentableId = path[2];
-      this.perform('follow', {commentable_id: commentableId});
+      var questionId = window.location.pathname.split('/')[2];
+      this.perform('follow', {question_id: questionId});
     },
 
     received(data){
       if (gon.user_id != data['user_id']){
-        $('.comments').append(data['partial']);
+        $('#' + data['commentable_name'] + '-comments-' + data['commentable_id']).append(data['partial']);
       }
     }
   })
