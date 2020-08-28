@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :answers, dependent: :destroy
+  has_many :authorizations, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,10 +15,14 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:github]
 
   def self.find_for_oauth(auth)
-    
+    FindForOauthService.new(auth).call
   end
 
   def author_of?(object)
     id == object.user_id
+  end
+
+  def create_authorization(auth)
+    authorizations.create(provider: auth.provider, uid: auth.uid)
   end
 end
