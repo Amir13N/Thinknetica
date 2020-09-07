@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.new
     @question.links.new
     Reward.new(question: @question)
+    UsersMailer.confirm_email(current_user.email).deliver_now
   end
 
   def create

@@ -3,6 +3,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'oauth_callbacks' }
 
+  get 'email_confirmation', to: 'users#email_confirmation', as: :email_confirmation
+  post 'send_email_confirmation_message', to: 'users#send_email_confirmation_message', as: :send_email_confirmation_message
+  post 'confirm_email', to: 'users#confirm_email', as: :confirm_email
+
   concern :votable do
     member do
       patch :vote_for

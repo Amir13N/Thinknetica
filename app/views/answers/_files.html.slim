@@ -2,8 +2,6 @@
   - answer.files.each do |file|
     p id="answer-file-#{file.id}"
       p= link_to file.filename, url_for(file), target: :blank
-
-      p= 
     
       - if current_user&.author_of?(answer)
         p= link_to 'Delete', attachment_path(file), method: :delete, remote: true
