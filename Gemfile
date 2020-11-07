@@ -24,6 +24,7 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'omniauth-vkontakte'
 gem 'capybara-email'
+gem 'rails_temporary_data'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

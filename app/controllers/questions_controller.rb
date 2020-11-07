@@ -23,7 +23,6 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.new
     @question.links.new
     Reward.new(question: @question)
-    UsersMailer.confirm_email(current_user.email).deliver_now
   end
 
   def create
@@ -39,9 +38,9 @@ class QuestionsController < ApplicationController
   def update
     @questions = Question.all
     if @question.update(question_params)
-      flash.now[:notice] = 'Your answer was successfully updated.'
+      flash.now[:notice] = 'Your question was successfully updated.'
     else
-      flash.now[:alert] = 'Your answer was not updated.'
+      flash.now[:alert] = 'Your question was not updated.'
     end
   end
 

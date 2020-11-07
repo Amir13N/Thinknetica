@@ -2,7 +2,7 @@
 
 class OauthCallbacksController < Devise::OmniauthCallbacksController
   def github
-    @user = User.find_for_oauth(request.env['omniauth.auth'])
+    @user = User.find_for_oauth(auth)
 
     if @user&.persisted?
       sign_in_and_redirect @user, event: :authentication
@@ -13,8 +13,8 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def vkontakte
-    if request.env['omniauth.auth'].info['email']
-      @user = User.find_for_oauth(request.env['omniauth.auth'])
+    if auth.info['email']
+      @user = User.find_for_oauth(auth)
 
       if @user&.persisted?
         sign_in_and_redirect @user, event: :authentication
@@ -23,7 +23,14 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to root_path, alert: 'Something went wrong'
       end
     else
+      session[:auth] = auth
       redirect_to email_confirmation_path
     end
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
   end
 end

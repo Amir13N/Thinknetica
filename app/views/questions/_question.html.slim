@@ -9,7 +9,7 @@
   .question-links
     = render 'questions/links', question: question
   
-  .h5
+  .h5.question-rating
     label Rating:
     value.question-rating id="question-rating-#{question.id}"= question.rating
 

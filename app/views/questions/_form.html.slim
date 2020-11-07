@@ -12,7 +12,7 @@
       = f.text_field :body
 
   .reward-form
-    = f.label :reward
+    = f.label :reward if @question.reward
     = f.fields_for :reward do |r|
 
       p
@@ -23,11 +23,11 @@
         = r.label :picture
         = r.text_field :picture
 
-  p
+  p.files-form
     = f.label :files
     = f.file_field :files, multiple: true, direct_upload: true
 
-  p= render 'shared/link_form', f: f
+  p.link-form= render 'shared/link_form', f: f, resource: @question
   
-  p
+  p.submit-btn
     = f.submit 'Ask'

@@ -235,6 +235,8 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rails_temporary_data (1.0.1)
+      rails
     railties (6.0.3.2)
       actionpack (= 6.0.3.2)
       activesupport (= 6.0.3.2)
@@ -374,6 +376,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.1)
   rails-controller-testing
+  rails_temporary_data
   rspec-rails
   sass-rails (>= 6)
   selenium-webdriver
