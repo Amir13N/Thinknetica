@@ -51,7 +51,6 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
   config.action_controller.forgery_protection_origin_check = false
 
-
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.

@@ -7,6 +7,7 @@ ruby '2.6.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
+gem 'capybara-email'
 gem 'cocoon'
 gem 'devise', '~> 4.3'
 gem 'gon'
@@ -15,24 +16,23 @@ gem 'jbuilder', '~> 2.7'
 gem 'octokit', '~> 4.0'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-vkontakte'
 gem 'pg'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
+gem 'rails_temporary_data'
 gem 'sass-rails', '>= 6'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-gem 'omniauth-vkontakte'
-gem 'capybara-email'
-gem 'rails_temporary_data'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
-  gem 'rspec-rails'
   gem 'letter_opener'
+  gem 'rspec-rails'
 end
 
 group :development do

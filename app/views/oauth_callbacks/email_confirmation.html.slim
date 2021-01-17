@@ -1,0 +1,7 @@
+=form_with url: send_email_confirmation_message_path, local: true do |f|
+  
+  p.email
+    = f.label :email
+    = f.email_field :email
+
+  p.submit= f.submit 'Send email confirmation'
