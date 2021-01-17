@@ -8,6 +8,11 @@ $(document).on('turbolinks:load', function(){
     $('form#edit-answer-' + answerId).show();
   })
 
+  $('.answers').on('click', '.delete-answer-file', function(e) {
+    var answerId = $(this).data('answerId');
+    $('.answer-file-' + answerId).hide();
+  })
+
   var bestAnswerId = $('.answers').data('bestAnswerId');
   $('#best-answer-link-' + bestAnswerId).hide();
   $('.answers').prepend($('#answer-' + bestAnswerId));

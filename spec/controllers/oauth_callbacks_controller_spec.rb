@@ -6,7 +6,7 @@ RSpec.describe OauthCallbacksController, type: :controller do
   before { @request.env['devise.mapping'] = Devise.mappings[:user] }
 
   describe '#github' do
-    let(:oauth_data) { { 'provider' => 'github', 'uid' => 123 } }
+    let(:oauth_data) { { provider: 'github', uid: 123 } }
 
     it 'finds user from oauth data' do
       allow(request.env).to receive(:[]).and_call_original
@@ -45,6 +45,17 @@ RSpec.describe OauthCallbacksController, type: :controller do
       it 'does not login user if it does not exist' do
         expect(subject.current_user).to_not be
       end
+    end
+  end
+
+  describe '#vkontakte' do
+    let(:oauth_data) { { provider: 'vkontakte', uid: 123, info: { email: 'test@mail.ru' } } }
+
+    it 'finds user from oauth data with email' do
+      allow(request.env).to receive(:[]).and_call_original
+      allow(request.env).to receive(:[]).with('omniauth.auth').and_return(oauth_data)
+      expect(User).to receive(:find_for_oauth).with(oauth_data)
+      get :vkontakte
     end
   end
 end
