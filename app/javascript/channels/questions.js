@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function(){
   $('.questions').on('ajax:success', '.vote-question-link', function(e){
     var rating = e.detail[0];
     var questionId = $(this).closest('.question-actions').data('questionId');
-    $('#question-rating-' + questionId).html(rating);
+    $('#question-rating-value-' + questionId).html(rating);
     
     $('#question-' + questionId + ' .vote-question-link').each(function(i, el){
       $(el).hide();
