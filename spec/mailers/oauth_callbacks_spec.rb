@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe OauthCallbacksMailer, type: :mailer do
   describe '#confirm_email' do

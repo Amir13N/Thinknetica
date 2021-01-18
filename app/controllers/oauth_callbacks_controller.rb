@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class OauthCallbacksController < Devise::OmniauthCallbacksController
-  include RailsTemporaryData::ControllerHelpers
-
   def github
     @user = User.find_for_oauth(auth)
 
@@ -21,7 +19,7 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: 'Vkontakte') if is_navigational_format?
     elsif auth[:info][:email].nil?
-      set_tmp_data('auth', auth)
+      session[:auth] = { provider: auth[:provider], uid: auth[:uid] }
       redirect_to email_confirmation_path
     else
       redirect_to root_path, alert: 'Something went wrong'
@@ -29,7 +27,7 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def send_email_confirmation_message
-    OauthCallbacksMailer.confirm_email(params[:email], get_tmp_data('auth').data).deliver
+    OauthCallbacksMailer.confirm_email(params[:email], session[:auth]).deliver
   end
 
   def confirm_email
