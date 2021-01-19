@@ -113,4 +113,13 @@ RSpec.describe OauthCallbacksController, type: :controller do
       end
     end
   end
+
+  describe '#confirm_email' do
+    let(:oauth_data) { { provider: 'vkontakte', uid: '123', info: { email: 'test@example.com' } } }
+
+    it 'creates user' do
+      expect(User).to receive(:find_for_oauth)
+      post :confirm_email, params: { auth: oauth_data }
+    end
+  end
 end
