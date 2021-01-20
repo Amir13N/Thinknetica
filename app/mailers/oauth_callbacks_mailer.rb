@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OauthCallbacksMailer < ApplicationMailer
   def confirm_email(email, auth)
     @auth = auth
