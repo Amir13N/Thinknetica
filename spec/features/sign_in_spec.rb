@@ -37,9 +37,6 @@ feature 'User can log in', "
       open_email('test@example.com')
 
       expect(current_email).to have_content 'Click the button below to confirm your email'
-      current_email.click_on 'Confirm email'
-    rescue Addressable::URI::InvalidURIError
-      expect(page.current_path).to eq '/send_email_confirmation_message'
     end
   end
 end
