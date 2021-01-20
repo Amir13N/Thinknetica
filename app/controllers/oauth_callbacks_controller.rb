@@ -2,7 +2,7 @@
 
 class OauthCallbacksController < Devise::OmniauthCallbacksController
   def github
-    @user = User.find_for_oauth(auth)
+    @user = FindForOauthService.new(auth).call
 
     if @user&.persisted?
       sign_in_and_redirect @user, event: :authentication
@@ -13,7 +13,7 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def vkontakte
-    @user = User.find_for_oauth(auth)
+    @user = FindForOauthService.new(auth).call
 
     if @user&.persisted?
       sign_in_and_redirect @user, event: :authentication
@@ -31,7 +31,7 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def confirm_email
-    User.find_for_oauth(params[:auth])
+    FindForOauthService.new(params[:auth]).call
   end
 
   private

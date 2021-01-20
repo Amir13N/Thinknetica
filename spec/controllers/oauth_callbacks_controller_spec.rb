@@ -3,15 +3,21 @@
 require 'rails_helper'
 
 RSpec.describe OauthCallbacksController, type: :controller do
+  let(:service) { double('FindForOauthService') }
+
   before { @request.env['devise.mapping'] = Devise.mappings[:user] }
 
   describe '#github' do
     let(:oauth_data) { { provider: 'github', uid: 123 } }
 
-    it 'finds user from oauth data' do
+    before do
       allow(request.env).to receive(:[]).and_call_original
       allow(request.env).to receive(:[]).with('omniauth.auth').and_return(oauth_data)
-      expect(User).to receive(:find_for_oauth).with(oauth_data)
+    end
+
+    it 'finds user from oauth data' do
+      expect(FindForOauthService).to receive(:new).with(oauth_data).and_return(service)
+      expect(service).to receive(:call)
       get :github
     end
 
@@ -19,7 +25,8 @@ RSpec.describe OauthCallbacksController, type: :controller do
       let!(:user) { create(:user) }
 
       before do
-        allow(User).to receive(:find_for_oauth).and_return(user)
+        allow(FindForOauthService).to receive(:new).with(oauth_data).and_return(service)
+        allow(service).to receive(:call).and_return(user)
         get :github
       end
 
@@ -34,7 +41,8 @@ RSpec.describe OauthCallbacksController, type: :controller do
 
     context 'user does not exist' do
       before do
-        allow(User).to receive(:find_for_oauth)
+        allow(FindForOauthService).to receive(:new).with(oauth_data).and_return(service)
+        allow(service).to receive(:call)
         get :github
       end
 
@@ -54,7 +62,8 @@ RSpec.describe OauthCallbacksController, type: :controller do
     it 'finds user from oauth data with email' do
       allow(request.env).to receive(:[]).and_call_original
       allow(request.env).to receive(:[]).with('omniauth.auth').and_return(oauth_data)
-      expect(User).to receive(:find_for_oauth).with(oauth_data)
+      allow(FindForOauthService).to receive(:new).with(oauth_data).and_return(service)
+      allow(service).to receive(:call)
       get :vkontakte
     end
 
@@ -62,7 +71,10 @@ RSpec.describe OauthCallbacksController, type: :controller do
       let!(:user) { create(:user) }
 
       before do
-        allow(User).to receive(:find_for_oauth).and_return(user)
+        allow(request.env).to receive(:[]).and_call_original
+        allow(request.env).to receive(:[]).with('omniauth.auth').and_return(oauth_data)
+        allow(FindForOauthService).to receive(:new).with(oauth_data).and_return(service)
+        allow(service).to receive(:call).and_return(user)
         get :vkontakte
       end
 
@@ -76,12 +88,12 @@ RSpec.describe OauthCallbacksController, type: :controller do
     end
 
     context 'user does not exist' do
-      before { allow(request.env).to receive(:[]).and_call_original }
-
       context 'provider gives email' do
         before do
+          allow(request.env).to receive(:[]).and_call_original
           allow(request.env).to receive(:[]).with('omniauth.auth').and_return(oauth_data)
-          allow(User).to receive(:find_for_oauth)
+          allow(FindForOauthService).to receive(:new).with(oauth_data).and_return(service)
+          allow(service).to receive(:call)
           get :vkontakte
         end
 
@@ -98,8 +110,10 @@ RSpec.describe OauthCallbacksController, type: :controller do
         let(:oauth_data_invalid) { { provider: 'vkontakte', uid: 123, info: { email: nil } } }
 
         before do
+          allow(request.env).to receive(:[]).and_call_original
           allow(request.env).to receive(:[]).with('omniauth.auth').and_return(oauth_data_invalid)
-          allow(User).to receive(:find_for_oauth)
+          allow(FindForOauthService).to receive(:new).with(oauth_data_invalid).and_return(service)
+          allow(service).to receive(:call)
           get :vkontakte
         end
 
@@ -115,11 +129,10 @@ RSpec.describe OauthCallbacksController, type: :controller do
   end
 
   describe '#confirm_email' do
-    let(:oauth_data) { { provider: 'vkontakte', uid: '123', info: { email: 'test@example.com' } } }
-
     it 'creates user' do
-      expect(User).to receive(:find_for_oauth)
-      post :confirm_email, params: { auth: oauth_data }
+      expect(FindForOauthService).to receive(:new).and_return(service)
+      expect(service).to receive(:call)
+      post :confirm_email
     end
   end
 end

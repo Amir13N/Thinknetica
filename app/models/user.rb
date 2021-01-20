@@ -14,15 +14,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github vkontakte]
 
-  def self.find_for_oauth(auth)
-    FindForOauthService.new(auth).call
-  end
-
   def author_of?(object)
     id == object.user_id
-  end
-
-  def create_authorization(auth)
-    authorizations.create(provider: auth[:provider], uid: auth[:uid])
   end
 end
