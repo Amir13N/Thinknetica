@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     get 'email_confirmation', to: 'oauth_callbacks#email_confirmation', as: :email_confirmation
     post 'send_email_confirmation_message', to: 'oauth_callbacks#send_email_confirmation_message',
                                             as: :send_email_confirmation_message
-    post 'confirm_email', to: 'oauth_callbacks#confirm_email', as: :confirm_email
   end
 
   concern :votable do

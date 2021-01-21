@@ -27,12 +27,8 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def send_email_confirmation_message
-    OauthCallbacksMailer.confirm_email(params[:email], session[:auth]).deliver
+    user = FindForOauthService.new(session[:auth].symbolize_keys.merge({ info: { email: params[:email] } })).call
     session.delete(:auth)
-  end
-
-  def confirm_email
-    FindForOauthService.new(params[:auth]).call
   end
 
   private
