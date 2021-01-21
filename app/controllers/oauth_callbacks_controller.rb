@@ -28,6 +28,7 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
 
   def send_email_confirmation_message
     OauthCallbacksMailer.confirm_email(params[:email], session[:auth]).deliver
+    session.delete(:auth)
   end
 
   def confirm_email
