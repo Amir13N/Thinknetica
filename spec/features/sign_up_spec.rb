@@ -13,7 +13,11 @@ feature 'User can sign up', "
     fill_in 'Password', with: '123456'
     fill_in 'Password confirmation', with: '123456'
     click_on 'Sign up'
-
-    expect(page).to have_content 'You have signed up successfully.'
+    open_email('user@test.com')
+    current_email.click_on 'Confirm my account'
+    fill_in 'Email', with: 'user@test.com'
+    fill_in 'Password', with: '123456'
+    click_on 'Log in'
+    expect(page).to have_content 'Signed in successfully.'
   end
 end
