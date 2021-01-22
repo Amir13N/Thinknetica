@@ -7,12 +7,7 @@ feature 'User can log in', "
   As an authenticated user
   I'd like to be able to sign up
 " do
-  given(:user) do
-    user = User.new(attributes_for(:user))
-    user.skip_confirmation!
-    user.save!
-    user
-  end
+  given(:user) { create(:user) }
 
   background { visit new_user_session_path }
 

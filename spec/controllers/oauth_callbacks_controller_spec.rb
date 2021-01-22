@@ -128,11 +128,12 @@ RSpec.describe OauthCallbacksController, type: :controller do
     end
   end
 
-  describe '#confirm_email' do
-    it 'creates user' do
+  describe '#send_email_confirmation_message' do
+    it 'sends message' do
+      session[:auth] = { provider: 'vkontakte', uid: 123 }
       expect(FindForOauthService).to receive(:new).and_return(service)
       expect(service).to receive(:call)
-      post :confirm_email
+      post :send_email_confirmation_message
     end
   end
 end
