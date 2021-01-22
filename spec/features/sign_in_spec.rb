@@ -7,7 +7,12 @@ feature 'User can log in', "
   As an authenticated user
   I'd like to be able to sign up
 " do
-  given(:user) { create(:user) }
+  given(:user) do
+    user = User.new(attributes_for(:user))
+    user.skip_confirmation!
+    user.save!
+    user
+  end
 
   background { visit new_user_session_path }
 
@@ -35,8 +40,9 @@ feature 'User can log in', "
       click_on 'Send email confirmation message'
 
       open_email('test@example.com')
-
-      expect(current_email).to have_content 'Click the button below to confirm your email'
+      current_email.click_on 'Confirm my account'
+      click_on 'Sign in with Vkontakte'
+      expect(page).to have_content 'Successfully authenticated from Vkontakte account.'
     end
   end
 end
