@@ -37,12 +37,16 @@ Rails.application.configure do
   config.active_storage.service = :test
   config.active_storage.replace_on_assign_to_many = false
 
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:vkontakte] = { provider: 'vkontakte', uid: '123545', info: { email: nil } }
+
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

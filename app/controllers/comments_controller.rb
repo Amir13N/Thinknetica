@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def publish_comment
     return if @comment.errors.any?
 
-    question = @commentable.class == Question ? @commentable : @commentable.question
+    question = @commentable.instance_of?(Question) ? @commentable : @commentable.question
 
     ActionCable.server.broadcast(
       "#{question.id}/comments",

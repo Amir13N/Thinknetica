@@ -17,11 +17,17 @@ RSpec.describe AnswersController, type: :controller do
 
     context 'with valid attributes' do
       it 'saves a new answer in the database with question parent' do
-        expect { post :create, params: { question_id: question, answer: attributes_for(:answer), format: :js } }.to change(question.answers, :count).by(1)
+        expect do
+          post :create,
+               params: { question_id: question, answer: attributes_for(:answer), format: :js }
+        end.to change(question.answers, :count).by(1)
       end
 
       it 'saves a new answer in the database with user parent' do
-        expect { post :create, params: { question_id: question, answer: attributes_for(:answer), format: :js } }.to change(user.answers, :count).by(1)
+        expect do
+          post :create,
+               params: { question_id: question, answer: attributes_for(:answer), format: :js }
+        end.to change(user.answers, :count).by(1)
       end
 
       it 'renders create' do
@@ -33,7 +39,10 @@ RSpec.describe AnswersController, type: :controller do
 
     context 'with invalid attributes' do
       it 'does not save a new answer in the database' do
-        expect { post :create, params: { question_id: question, answer: attributes_for(:answer, :invalid), format: :js } }.to_not change(Answer, :count)
+        expect do
+          post :create,
+               params: { question_id: question, answer: attributes_for(:answer, :invalid), format: :js }
+        end.to_not change(Answer, :count)
       end
     end
 
@@ -57,7 +66,10 @@ RSpec.describe AnswersController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      before { patch :update, params: { question_id: question, id: answer, answer: attributes_for(:answer, :invalid), format: :js } }
+      before do
+        patch :update,
+              params: { question_id: question, id: answer, answer: attributes_for(:answer, :invalid), format: :js }
+      end
 
       it 'does not save a new answer in the database' do
         answer.reload
@@ -78,7 +90,9 @@ RSpec.describe AnswersController, type: :controller do
     let!(:other_answer) { create(:answer) }
 
     it 'deletes answer' do
-      expect { delete :destroy, params: { question_id: question, id: answer }, format: :js }.to change(Answer, :count).by(-1)
+      expect do
+        delete :destroy, params: { question_id: question, id: answer }, format: :js
+      end.to change(Answer, :count).by(-1)
     end
 
     it 'renders destroy view' do
@@ -87,7 +101,9 @@ RSpec.describe AnswersController, type: :controller do
     end
 
     it "can not delete other's answer" do
-      expect { delete :destroy, params: { question_id: question, id: other_answer }, format: :js }.to_not change(Answer, :count)
+      expect do
+        delete :destroy, params: { question_id: question, id: other_answer }, format: :js
+      end.to_not change(Answer, :count)
     end
   end
 

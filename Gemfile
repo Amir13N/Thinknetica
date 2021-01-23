@@ -3,16 +3,20 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.6.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
+gem 'capybara-email'
 gem 'cocoon'
 gem 'devise', '~> 4.3'
 gem 'gon'
 gem 'google-cloud-storage', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'octokit', '~> 4.0'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-vkontakte'
 gem 'pg'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
@@ -26,6 +30,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
+  gem 'letter_opener'
   gem 'rspec-rails'
 end
 
@@ -40,7 +45,6 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'launchy'

@@ -20,13 +20,13 @@ feature 'User can vote for/against question', "
     scenario 'votes for other user questions' do
       click_on 'Vote for'
 
-      within "#question-rating-#{other_user_question.id}" do
+      within "#question-rating-value-#{other_user_question.id}" do
         expect(page).to have_content '1'
       end
     end
 
     scenario 'votes for his question' do
-      within "#question-rating-#{user_question.id}" do
+      within "#question-rating-value-#{user_question.id}" do
         expect(page).to_not have_content 'Vote for'
       end
     end
@@ -34,13 +34,13 @@ feature 'User can vote for/against question', "
     scenario 'votes against other user question' do
       click_on 'Vote against'
 
-      within "#question-rating-#{other_user_question.id}" do
+      within "#question-rating-value-#{other_user_question.id}" do
         expect(page).to have_content '-1'
       end
     end
 
     scenario 'votes against his question' do
-      within "#question-rating-#{user_question.id}" do
+      within "#question-rating-value-#{user_question.id}" do
         expect(page).to_not have_content 'Vote against'
       end
     end

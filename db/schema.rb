@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_726_103_432) do
+ActiveRecord::Schema.define(version: 20_210_121_143_526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -23,7 +21,8 @@ ActiveRecord::Schema.define(version: 20_200_726_103_432) do
     t.integer 'blob_id', null: false
     t.datetime 'created_at', null: false
     t.index ['blob_id'], name: 'index_active_storage_attachments_on_blob_id'
-    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness', unique: true
+    t.index %w[record_type record_id name blob_id], name: 'index_active_storage_attachments_uniqueness',
+                                                    unique: true
   end
 
   create_table 'active_storage_blobs', force: :cascade do |t|
@@ -46,6 +45,16 @@ ActiveRecord::Schema.define(version: 20_200_726_103_432) do
     t.boolean 'best', default: false
     t.index ['question_id'], name: 'index_answers_on_question_id'
     t.index ['user_id'], name: 'index_answers_on_user_id'
+  end
+
+  create_table 'authorizations', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.string 'provider'
+    t.string 'uid'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index %w[provider uid], name: 'index_authorizations_on_provider_and_uid'
+    t.index ['user_id'], name: 'index_authorizations_on_user_id'
   end
 
   create_table 'comments', force: :cascade do |t|
@@ -97,6 +106,10 @@ ActiveRecord::Schema.define(version: 20_200_726_103_432) do
     t.string 'reset_password_token'
     t.datetime 'reset_password_sent_at'
     t.datetime 'remember_created_at'
+    t.string 'confirmation_token'
+    t.datetime 'confirmed_at'
+    t.datetime 'confirmation_sent_at'
+    t.index ['confirmation_token'], name: 'index_users_on_confirmation_token', unique: true
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
@@ -114,4 +127,5 @@ ActiveRecord::Schema.define(version: 20_200_726_103_432) do
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'answers', 'questions'
+  add_foreign_key 'authorizations', 'users'
 end

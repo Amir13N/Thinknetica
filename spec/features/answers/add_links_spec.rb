@@ -20,6 +20,8 @@ feature 'User can add links to answer', "
       fill_in 'body', with: 'Answer'
     end
 
+    click_on 'Add link'
+
     fill_in 'Link name', with: 'My gist1'
     fill_in 'Url', with: gist_url
 

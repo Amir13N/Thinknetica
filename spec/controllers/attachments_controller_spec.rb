@@ -11,11 +11,15 @@ RSpec.describe AttachmentsController, type: :controller do
     before { login(user) }
 
     it 'deletes file' do
-      expect { delete :destroy, params: { id: question.files.first, format: :js } }.to change(question.files, :count).by(-1)
+      expect do
+        delete :destroy, params: { id: question.files.first, format: :js }
+      end.to change(question.files, :count).by(-1)
     end
 
     it "does not delete file attached to other user's question" do
-      expect { delete :destroy, params: { id: other_question.files.first, format: :js } }.to_not change(other_question.files, :count)
+      expect do
+        delete :destroy, params: { id: other_question.files.first, format: :js }
+      end.to_not change(other_question.files, :count)
     end
 
     it 'renders destroy view' do

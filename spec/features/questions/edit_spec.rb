@@ -30,7 +30,7 @@ feature 'User can edit question', "
         expect(page).to_not have_selector 'textarea'
       end
 
-      expect(page).to have_content 'Your answer was successfully updated.'
+      expect(page).to have_content 'Your question was successfully updated.'
     end
 
     scenario 'incorrectly edits question' do
@@ -43,7 +43,7 @@ feature 'User can edit question', "
         end
       end
 
-      expect(page).to have_content 'Your answer was not updated.'
+      expect(page).to have_content 'Your question was not updated.'
     end
 
     scenario 'edits with attached files' do

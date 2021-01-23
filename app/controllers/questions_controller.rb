@@ -38,9 +38,9 @@ class QuestionsController < ApplicationController
   def update
     @questions = Question.all
     if @question.update(question_params)
-      flash.now[:notice] = 'Your answer was successfully updated.'
+      flash.now[:notice] = 'Your question was successfully updated.'
     else
-      flash.now[:alert] = 'Your answer was not updated.'
+      flash.now[:alert] = 'Your question was not updated.'
     end
   end
 
@@ -69,6 +69,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:body, :title, files: [], links_attributes: %i[id name url _destroy], reward_attributes: %i[title picture])
+    params.require(:question).permit(:body, :title, files: [], links_attributes: %i[id name url _destroy],
+                                                    reward_attributes: %i[title picture])
   end
 end

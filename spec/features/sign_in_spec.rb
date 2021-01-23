@@ -19,11 +19,25 @@ feature 'User can log in', "
     expect(page).to have_content 'Signed in successfully.'
   end
 
-  scenario 'Uregistered user tries to sign in' do
-    fill_in 'Email', with: 'wrong@test.com'
-    fill_in 'Password', with: user.password
-    click_on 'Log in'
+  describe 'Unregistered user' do
+    scenario 'tries to sign in' do
+      fill_in 'Email', with: 'wrong@test.com'
+      fill_in 'Password', with: user.password
+      click_on 'Log in'
 
-    expect(page).to have_content 'Invalid Email or password.'
+      expect(page).to have_content 'Invalid Email or password.'
+    end
+
+    scenario 'tries to sign in with social media account' do
+      click_on 'Sign in with Vkontakte'
+
+      fill_in 'Email', with: 'test@example.com'
+      click_on 'Send email confirmation message'
+
+      open_email('test@example.com')
+      current_email.click_on 'Confirm my account'
+      click_on 'Sign in with Vkontakte'
+      expect(page).to have_content 'Successfully authenticated from Vkontakte account.'
+    end
   end
 end
