@@ -49,5 +49,6 @@ RSpec.describe Ability do
     it { should be_able_to :add_comment, create(:answer) }
 
     it { should be_able_to :delete_attachment, create(:question, user: user) }
+    it { should be_able_to :delete_attachment, create(:answer, user: user) }
   end
 end
