@@ -26,7 +26,7 @@
 
       = render 'shared/votes', resource: answer, resource_name: 'answer'
 
-    - if can? :make_the_best, answer
+    - if can? :make_the_best, answer.question
       p = link_to 'Make the best', choose_best_answer_path(answer), method: :patch, remote: true, class: 'best-answer-link', id: "best-answer-link-#{answer.id}", data: { answer_id: answer.id }
 
   .mt-4.answer-comments id="answer-comments-#{answer.id}"

@@ -29,11 +29,12 @@ class Ability
     can :vote, [Question, Answer]
     cannot :vote, Votable, user_id: @user.id
 
-    can :make_the_best, Answer
-    cannot :make_the_best, Answer, user_id: @user.id
+    can :make_the_best, Question, user_id: @user.id
 
     can :add_comment, Answer
 
     can :delete_attachment, [Question, Answer], user_id: @user.id
+
+    can :delete_link, Linkable, user_id: @user.id
   end
 end

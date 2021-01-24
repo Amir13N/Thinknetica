@@ -23,7 +23,7 @@ RSpec.describe AttachmentsController, type: :controller do
     end
 
     it 'renders destroy view' do
-      delete :destroy, params: { id: other_question.files.first, format: :js }
+      delete :destroy, params: { id: question.files.first, format: :js }
 
       expect(response).to render_template :destroy
     end

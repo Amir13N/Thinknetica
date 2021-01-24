@@ -3,11 +3,8 @@
 class LinksController < ApplicationController
   def destroy
     @link = Link.find(params[:id])
+    authorize! :delete_link, @link.linkable
     @linkable_class = @link.linkable.class.to_s.downcase
-    if current_user&.author_of?(@link.linkable)
-      @link.destroy
-    else
-      flash.now[:alert] = "This #{@linkable_class} does not belong to you or you are not signed in."
-    end
+    @link.destroy
   end
 end

@@ -3,5 +3,5 @@
     .answer-file id="answer-file-#{file.id}"
       p= link_to file.filename, url_for(file), target: :blank
     
-      - if current_user&.author_of?(answer)
+      - if can? :delete_attachment, answer
         p= link_to 'Delete', attachment_path(file), method: :delete, remote: true, class: 'delete-answer-file'

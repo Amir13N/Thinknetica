@@ -43,12 +43,15 @@ RSpec.describe Ability do
     it { should be_able_to :vote, create(:answer, user: other) }
     it { should_not be_able_to :vote, create(:answer, user: user) }
 
-    it { should be_able_to :make_the_best, create(:answer, user: other) }
-    it { should_not be_able_to :make_the_best, create(:answer, user: user) }
+    it { should_not be_able_to :make_the_best, create(:question, user: other) }
+    it { should be_able_to :make_the_best, create(:question, user: user) }
 
     it { should be_able_to :add_comment, create(:answer) }
 
     it { should be_able_to :delete_attachment, create(:question, user: user) }
     it { should be_able_to :delete_attachment, create(:answer, user: user) }
+
+    it { should be_able_to :delete_link, create(:question, user: user) }
+    it { should be_able_to :delete_link, create(:answer, user: user) }
   end
 end

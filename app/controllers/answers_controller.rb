@@ -10,9 +10,8 @@ class AnswersController < ApplicationController
 
   after_action :publish_answer, only: :create
 
-  authorize_resource
-
   def create
+    authorize! :create, Answer
     @answer = current_user.answers.new(answer_params.merge(question: @question))
     @comment = Comment.new
 
@@ -24,6 +23,7 @@ class AnswersController < ApplicationController
   end
 
   def update
+    authorize! :update, @answer
     @question = @answer.question
     if @answer.update(answer_params)
       flash.now[:notice] = 'Your answer was successfully updated.'
@@ -33,18 +33,16 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    if current_user.author_of?(@answer)
-      @answer.destroy
-      flash.now[:notice] = 'Your answer was successfully deleted.'
-    end
+    authorize! :delete, @answer
+    @answer.destroy
+    flash.now[:notice] = 'Your answer was successfully deleted.'
   end
 
   def choose_best
-    if current_user&.author_of?(@answer.question)
-      @answer.make_best
-      flash.now[:notice] = 'Your answer was successfully chosen as the best'
-      render 'answers/choose_best'
-    end
+    authorize! :make_the_best, @answer.question
+    @answer.make_best
+    flash.now[:notice] = 'Your answer was successfully chosen as the best'
+    render 'answers/choose_best'
   end
 
   private

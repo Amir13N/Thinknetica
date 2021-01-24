@@ -9,8 +9,6 @@ class QuestionsController < ApplicationController
 
   after_action :publish_question, only: :create
 
-  authorize_resource
-
   def show
     @answer = Answer.new
     @answer.links.new
@@ -22,12 +20,18 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    authorize! :create, Question
     @question = current_user.questions.new
     @question.links.new
     Reward.new(question: @question)
   end
 
+  def edit
+    authorize! :update, @question
+  end
+
   def create
+    authorize! :create, Question
     @question = current_user.questions.new(question_params)
 
     if @question.save
@@ -38,6 +42,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
+    authorize! :update, @question
     @questions = Question.all
     if @question.update(question_params)
       flash.now[:notice] = 'Your question was successfully updated.'
@@ -47,12 +52,9 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    if current_user.author_of?(@question)
-      @question.destroy
-      redirect_to questions_path, notice: 'Your question was successfully deleted.'
-    else
-      redirect_to questions_path, alert: 'You can only delete your own questions.'
-    end
+    authorize! :delete, @question
+    @question.destroy
+    redirect_to questions_path, notice: 'Your question was successfully deleted.'
   end
 
   private
