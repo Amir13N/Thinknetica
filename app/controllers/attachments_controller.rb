@@ -2,6 +2,7 @@
 
 class AttachmentsController < ApplicationController
   def destroy
+    authorize! :delete_attachment, @record
     @attachment = ActiveStorage::Attachment.find(params[:id])
     @record = @attachment.record
     @record_class = @record.class.to_s.downcase

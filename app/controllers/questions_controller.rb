@@ -9,6 +9,8 @@ class QuestionsController < ApplicationController
 
   after_action :publish_question, only: :create
 
+  authorize_resource
+
   def show
     @answer = Answer.new
     @answer.links.new

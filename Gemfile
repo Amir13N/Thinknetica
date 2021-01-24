@@ -7,6 +7,7 @@ ruby '2.6.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
+gem 'cancancan'
 gem 'capybara-email'
 gem 'cocoon'
 gem 'devise', '~> 4.3'

@@ -24,14 +24,16 @@
 
     p = link_to 'Show', question_path(question), id: 'show-link'
 
-    - if current_user&.author_of?(question)
+    - if can? :delete, question
 
       p= link_to 'Delete', question_path(question), method: :delete
+
+    - if can? :update, question
 
       p= link_to 'Edit', '#', class: 'edit-question-link', id: "edit-question-link-#{question.id}", data: { question_id: question.id }
 
       = render 'questions/form_inline', question: question
 
-    - elsif user_signed_in?
+    - if can? :vote, question
 
       = render 'shared/votes', resource: question, resource_name: 'question'

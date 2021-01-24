@@ -15,17 +15,18 @@
                      data: { voted: answer.voted?(current_user),
                              answer_id: answer.id }
 
-    - if current_user&.author_of?(answer)
+    - if can? :delete, answer
       p = link_to 'Delete', answer_path(answer), method: :delete, remote: true
+    
       p = link_to 'Edit', '#', class: 'edit-answer-link', id: "edit-answer-link-#{answer.id}", data: { answer_id: answer.id }
 
       = render 'answers/form_inline', answer: answer
 
-    - elsif user_signed_in?
+    - if can? :vote, answer
 
       = render 'shared/votes', resource: answer, resource_name: 'answer'
 
-    - if current_user&.author_of?(answer.question)
+    - if can? :make_the_best, answer
       p = link_to 'Make the best', choose_best_answer_path(answer), method: :patch, remote: true, class: 'best-answer-link', id: "best-answer-link-#{answer.id}", data: { answer_id: answer.id }
 
   .mt-4.answer-comments id="answer-comments-#{answer.id}"
@@ -33,7 +34,7 @@
 
     = render answer.comments
 
-  - if user_signed_in?
+  - if can? :add_comment, answer
     h3.mt-4 Add comment
 
     .mt-2.container.answer-new-comment= render 'comments/form', question: answer.question, commentable: answer
