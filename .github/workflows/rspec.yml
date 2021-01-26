@@ -1,9 +1,3 @@
-env:
-  RUBY_VERSION: 2.6.6
-  POSTGRESQL_USERNAME: postgres
-  POSTGRESQL_PASSWORD: postgres
-  POSTGRES_DB: postgres
-
 name: Rails tests
 on: [push]
 jobs:
@@ -13,6 +7,11 @@ jobs:
     services:
       postgres:
         image: postgres:latest
+        env:
+          RUBY_VERSION: 2.6.6
+          POSTGRESQL_USERNAME: postgres
+          POSTGRESQL_PASSWORD: postgres
+          POSTGRES_DB: postgres
         ports:
         - 5432:5432
         options: >-
