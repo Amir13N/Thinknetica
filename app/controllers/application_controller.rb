@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   before_action :set_gon_user, unless: :devise_controller?
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, alert: exception.message
+  end
+
   private
 
   def set_gon_user
