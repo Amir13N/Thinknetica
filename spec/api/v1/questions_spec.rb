@@ -4,8 +4,7 @@ require 'rails_helper'
 
 describe 'Questions API', type: :request do
   let(:headers) do
-    { 'CONTENT_TYPE' => 'application/json',
-      'ACCEPT' => 'application/json' }
+    { 'ACCEPT' => 'application/json' }
   end
 
   describe 'GET /api/v1/questions' do
@@ -54,7 +53,7 @@ describe 'Questions API', type: :request do
         end
 
         it 'returns all public fields' do
-          %w[id body user_id created_at updated_at].each do |attr|
+          %w[id body created_at updated_at].each do |attr|
             expect(answer_json[attr]).to eq answer.send(attr).as_json
           end
         end
@@ -63,7 +62,7 @@ describe 'Questions API', type: :request do
   end
 
   describe 'GET /api/v1/questions/id' do
-    let(:question) { create(:question, :with_file) }
+    let(:question) { create(:question) }
     let(:api_path) { "/api/v1/questions/#{question.id}" }
     it_behaves_like 'API Authorizable' do
       let(:method) { :get }
@@ -74,6 +73,7 @@ describe 'Questions API', type: :request do
       let(:question_json) { json['question'] }
       let!(:comments) { create_list(:comment, 3, commentable: question) }
       let!(:links) { create_list(:link, 3, linkable: question) }
+
       before { get api_path, params: { access_token: access_token.token }, headers: headers }
 
       it 'returns 200 status' do
@@ -101,21 +101,6 @@ describe 'Questions API', type: :request do
         end
       end
 
-      # describe 'files' do
-      #   let(:file) { question.file }
-      #   let(:file_json) { question_json['files'].first }
-
-      #   it 'returns list of files' do
-      #     expect(question_json['files'].size).to eq 2
-      #   end
-
-      #   it 'returns all public fields' do
-      #     %w[id attachable_id created_at updated_at].each do |attr|
-      #       expect(file_json[attr]).to eq file.send(attr).as_json
-      #     end
-      #   end
-      # end
-
       describe 'links' do
         let(:link) { links.first }
         let(:link_json) { question_json['links'].first }
@@ -129,6 +114,95 @@ describe 'Questions API', type: :request do
             expect(link_json[attr]).to eq link.send(attr).as_json
           end
         end
+      end
+    end
+  end
+
+  describe 'PATCH /api/v1/answers/id' do
+    let!(:access_token) { create(:access_token) }
+    let(:answer) { create(:answer, user: User.last) }
+    let(:api_path) { "/api/v1/answers/#{answer.id}" }
+    it_behaves_like 'API Authorizable' do
+      let(:method) { :patch }
+    end
+
+    context 'authorized' do
+      context "user's answer" do
+        before do
+          patch api_path, params: { access_token: access_token.token, answer: { body: 'new body' } }, headers: headers
+        end
+
+        it 'returns 200 status' do
+          expect(response).to be_successful
+        end
+
+        it 'updates answer' do
+          answer.reload
+          expect(answer.body).to eq 'new body'
+        end
+      end
+
+      context "other user's answer" do
+        let(:other_answer) { create(:answer) }
+        let(:wrong_api_path) { "/api/v1/answers/#{other_answer.id}" }
+        before do
+          patch wrong_api_path, params: { access_token: access_token.token, answer: { body: 'new body' } },
+                                headers: headers
+        end
+
+        it 'does not update other user answer' do
+          expect(other_answer.body).to_not eq 'new body'
+        end
+      end
+    end
+  end
+
+  describe 'DELETE /api/v1/questions/id' do
+    let!(:access_token) { create(:access_token) }
+    let(:question) { create(:question, user: User.last) }
+    let(:api_path) { "/api/v1/questions/#{question.id}" }
+    it_behaves_like 'API Authorizable' do
+      let(:method) { :delete }
+    end
+
+    context 'authorized' do
+      context "user's question" do
+        let!(:question) { create(:question, user: User.last) }
+
+        it 'deletes question' do
+          expect do
+            delete api_path, params: { access_token: access_token.token }, headers: headers
+          end.to change(Question, :count).by(-1)
+        end
+      end
+
+      context "other user's question" do
+        let!(:other_question) { create(:question) }
+        let(:wrong_api_path) { "/api/v1/questions/#{other_question.id}" }
+
+        it 'does not delete other user question' do
+          expect do
+            delete wrong_api_path, params: { access_token: access_token.token }, headers: headers
+          end.to_not change(Answer, :count)
+        end
+      end
+    end
+  end
+
+  describe 'POST /api/v1/questions' do
+    let(:api_path) { '/api/v1/questions' }
+    it_behaves_like 'API Authorizable' do
+      let(:method) { :post }
+    end
+
+    context 'authorized' do
+      let(:access_token) { create(:access_token) }
+
+      it 'create question' do
+        expect do
+          post api_path, params: { access_token: access_token.token, question: attributes_for(:question) },
+                         headers: headers
+        end.to change(Question, :count).by(1)
       end
     end
   end
