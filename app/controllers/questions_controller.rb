@@ -49,7 +49,6 @@ class QuestionsController < ApplicationController
     else
       flash.now[:alert] = 'Your question was not updated.'
     end
-    byebug
   end
 
   def destroy
