@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  use_doorkeeper
   devise_for :users, controllers: { omniauth_callbacks: 'oauth_callbacks' }
 
   devise_scope :user do
@@ -31,6 +32,18 @@ Rails.application.routes.draw do
   resources :attachments, only: :destroy
   resources :links, only: :destroy
   resources :rewards, only: :index
+
+  namespace :api do
+    namespace :v1 do
+      resources :profiles, only: [:index] do
+        get :me, on: :collection
+      end
+
+      resources :questions, only: %i[index show update destroy create] do
+        resources :answers, shallow: true, only: %i[show update destroy create]
+      end
+    end
+  end
 
   root to: 'questions#index'
 

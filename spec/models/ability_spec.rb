@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Ability do
@@ -5,7 +7,6 @@ RSpec.describe Ability do
 
   describe 'for quest' do
     let(:user) { nil }
-    it { should be_able_to :read, Question }
     it { should be_able_to :read, Question }
     it { should be_able_to :read, Comment }
 

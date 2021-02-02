@@ -5,16 +5,19 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'cancancan'
 gem 'capybara-email'
 gem 'cocoon'
 gem 'devise', '~> 4.3'
+gem 'doorkeeper'
 gem 'gon'
 gem 'google-cloud-storage', require: false
 gem 'jbuilder', '~> 2.7'
 gem 'octokit', '~> 4.0'
+gem 'oj'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-vkontakte'

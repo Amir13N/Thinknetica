@@ -4,6 +4,7 @@ FactoryBot.define do
   factory :comment do
     body { 'MyText' }
     commentable { FactoryBot.create(:question) }
+    user
 
     trait :invalid do
       body { nil }
