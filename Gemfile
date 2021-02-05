@@ -25,11 +25,11 @@ gem 'pg'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 gem 'sass-rails', '>= 6'
+gem 'sidekiq'
+gem 'sinatra', require: false
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
-gem 'sidekiq'
-gem 'sinatra', require: false
 gem 'whenever', require: false
 
 group :development, :test do
