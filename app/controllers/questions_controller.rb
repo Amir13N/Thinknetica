@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
   include Voted
 
-  before_action :set_question, only: %i[show edit update destroy]
+  before_action :set_question, only: %i[show edit update destroy subscribe unsubscribe]
 
   after_action :publish_question, only: :create
 
@@ -55,6 +55,14 @@ class QuestionsController < ApplicationController
     authorize! :delete, @question
     @question.destroy
     redirect_to questions_path, notice: 'Your question was successfully deleted.'
+  end
+
+  def subscribe
+    current_user.subscribes.push(@question) unless current_user.subscribes.include?(@question)
+  end
+
+  def unsubscribe
+    current_user.subscribes.delete(@question)
   end
 
   private

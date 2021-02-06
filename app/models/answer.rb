@@ -13,7 +13,7 @@ class Answer < ApplicationRecord
   validates :body, presence: true
   validate :best_answer_presence, unless: -> { question.nil? }
 
-  after_create :notify_question_user
+  after_create :notify_question_subscribers
 
   def make_best
     ActiveRecord::Base.transaction do
@@ -25,7 +25,7 @@ class Answer < ApplicationRecord
 
   private
 
-  def notify_question_user
+  def notify_question_subscribers
     AnswerNotifyJob.perform_later(self)
   end
 

@@ -4,6 +4,8 @@ require 'rails_helper'
 require Rails.root.join 'spec/models/concerns/votable_spec.rb'
 
 RSpec.describe Question, type: :model do
+  it { have_many_and_belong_to :subscribers }
+
   it { should have_many(:answers).dependent(:destroy) }
   it { should have_many(:links).dependent(:destroy) }
   it { should have_many(:comments).dependent(:destroy) }

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_127_125_551) do
+ActiveRecord::Schema.define(version: 20_210_206_111_301) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -131,6 +129,15 @@ ActiveRecord::Schema.define(version: 20_210_127_125_551) do
     t.index ['user_id'], name: 'index_questions_on_user_id'
   end
 
+  create_table 'questions_users', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'question_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['question_id'], name: 'index_questions_users_on_question_id'
+    t.index ['user_id'], name: 'index_questions_users_on_user_id'
+  end
+
   create_table 'rewards', force: :cascade do |t|
     t.string 'title'
     t.string 'picture'
@@ -175,4 +182,6 @@ ActiveRecord::Schema.define(version: 20_210_127_125_551) do
   add_foreign_key 'authorizations', 'users'
   add_foreign_key 'oauth_access_grants', 'oauth_applications', column: 'application_id'
   add_foreign_key 'oauth_access_tokens', 'oauth_applications', column: 'application_id'
+  add_foreign_key 'questions_users', 'questions'
+  add_foreign_key 'questions_users', 'users'
 end

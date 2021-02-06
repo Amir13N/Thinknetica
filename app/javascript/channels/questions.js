@@ -1,6 +1,39 @@
 import consumer from './consumer'
 
 $(document).on('turbolinks:load', function(){
+  $('.question-actions').each(function(){
+    var subscribed = $(this).data('subscribed');
+
+    if(subscribed){
+      $(this).find('.subscribe-question-link').hide();
+      $(this).find('.unsubscribe-question-link').show();
+      $(this).find('.subscribe-question-note').show();
+    }
+    else{
+      $(this).find('.subscribe-question-link').show();
+      $(this).find('.unsubscribe-question-link').hide();
+      $(this).find('.subscribe-question-note').hide();
+    }
+  })
+
+  $('.questions').on('click', '.subscribe-question-link', function(){
+    var questionId = $(this).closest('.question-actions').data('questionId');
+
+    $(this).hide();
+    $('#subscribe-question-note-' + questionId).show();
+    $('#unsubscribe-question-link-' + questionId).show();
+    $('#subscribe-question-link-' + questionId).hide();
+  })
+
+  $('.questions').on('click', '.unsubscribe-question-link', function(){
+    var questionId = $(this).closest('.question-actions').data('questionId');
+
+    $(this).hide();
+    $('#subscribe-question-note-' + questionId).hide();
+    $('#unsubscribe-question-link-' + questionId).hide();
+    $('#subscribe-question-link-' + questionId).show();
+  })
+
   $('.questions').on('click', '.edit-question-link', function(e) {
     e.preventDefault();
     $(this).hide();

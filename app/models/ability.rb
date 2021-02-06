@@ -36,5 +36,7 @@ class Ability
     can :delete_attachment, [Question, Answer], user_id: @user.id
 
     can :delete_link, Linkable, user_id: @user.id
+
+    can :subscribe, Question
   end
 end
