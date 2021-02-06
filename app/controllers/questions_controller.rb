@@ -58,11 +58,13 @@ class QuestionsController < ApplicationController
   end
 
   def subscribe
-    current_user.subscribes.push(@question) unless current_user.subscribes.include?(@question)
+    authorize! :subscribe, @question
+    @question.subscribe(current_user)
   end
 
   def unsubscribe
-    current_user.subscribes.delete(@question)
+    authorize! :subscribe, @question
+    @question.unsubscribe(current_user)
   end
 
   private

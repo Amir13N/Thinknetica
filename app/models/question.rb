@@ -19,7 +19,27 @@ class Question < ApplicationRecord
 
   accepts_nested_attributes_for :reward, reject_if: :all_blank, allow_destroy: true
 
+  after_create :subscribe_author
+
   def best_answer
     answers.find_by(best: true)
+  end
+
+  def subscribe(subscriber)
+    subscribers.push(subscriber) unless subscribed?(subscriber)
+  end
+
+  def unsubscribe(subscriber)
+    subscribers.delete(subscriber)
+  end
+
+  def subscribed?(subscriber)
+    subscribers.include?(subscriber)
+  end
+
+  private
+
+  def subscribe_author
+    subscribe(user)
   end
 end

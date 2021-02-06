@@ -143,12 +143,15 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   describe 'POST #subscribe' do
-    before { login(user) }
-
     let!(:question) { create(:question) }
 
     it 'adds question to user subscribes' do
+      login(user)
       expect { post :subscribe, params: { id: question.id } }.to change(user.subscribes, :count).by(1)
+    end
+
+    it 'can not add question to user subscribes' do
+      expect { post :subscribe, params: { id: question.id } }.to_not change(user.subscribes, :count)
     end
   end
 
@@ -160,6 +163,10 @@ RSpec.describe QuestionsController, type: :controller do
     it 'adds question to user subscribes' do
       user.subscribes.push(question)
       expect { post :unsubscribe, params: { id: question.id } }.to change(user.subscribes, :count).by(-1)
+    end
+
+    it 'can not add question to user subscribes' do
+      expect { post :unsubscribe, params: { id: question.id } }.to_not change(user.subscribes, :count)
     end
   end
 end
