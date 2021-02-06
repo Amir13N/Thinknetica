@@ -6,7 +6,7 @@ RSpec.describe AnswerNotifyJob, type: :job do
 
   before { allow(AnswerNotifyService).to receive(:new).and_return(service) }
 
-  it 'calls DailyDigestService#send_digest' do
+  it 'calls AnswernotifyService#notify' do
     expect(service).to receive(:notify)
     AnswerNotifyJob.perform_now(answer)
   end
