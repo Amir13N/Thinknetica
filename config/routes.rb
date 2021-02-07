@@ -7,9 +7,6 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  post 'questions/:id/subscribe', to: 'questions#subscribe', as: :subscribe_question
-  post 'questions/:id/unsubscribe', to: 'questions#unsubscribe', as: :unsubscribe_question
-
   use_doorkeeper
   devise_for :users, controllers: { omniauth_callbacks: 'oauth_callbacks' }
 
@@ -28,6 +25,11 @@ Rails.application.routes.draw do
   end
 
   resources :questions, concerns: :votable do
+    member do
+      post :subscribe
+      post :unsubscribe
+    end
+
     resources :answers, shallow: true, concerns: :votable do
       patch :choose_best, on: :member
     end

@@ -1,6 +1,6 @@
 class DailyDigestService
   def send_digest
-    User.find_each(batch_size: 500) do |user|
+    User.all.each do |user|
       DailyDigestMailer.digest(user).deliver_later
     end
   end

@@ -24,6 +24,7 @@ RSpec.describe Question, type: :model do
 
   let(:question) { create(:question) }
   let!(:answer) { create(:answer, question: question, best: true) }
+  let(:user) { create(:user) }
 
   describe '#best_answer' do
     it 'returns best answer' do
@@ -33,5 +34,34 @@ RSpec.describe Question, type: :model do
 
   it 'has many attached file' do
     expect(Question.new.files).to be_an_instance_of(ActiveStorage::Attached::Many)
+  end
+
+  describe '#subscribe' do
+    it 'add subscriber' do
+      expect { question.subscribe(user) }.to change(question.subscribers, :count).by(1)
+    end
+
+    it 'does not add subscriber if it is already subscribed' do
+      question.subscribers.push(user)
+      expect { question.subscribe(user) }.to change(question.subscribers, :count).by(0)
+    end
+  end
+
+  describe '#unsubscribe' do
+    it 'deletes user from question subscribers' do
+      question.subscribe(user)
+      expect { question.unsubscribe(user) }.to change(question.subscribers, :count).by(-1)
+    end
+  end
+
+  describe '#subscribed?' do
+    it 'returns false if user is not subscribed to question' do
+      expect(question.subscribed?(user)).to be_falsey
+    end
+
+    it 'returns true if user is subscribed to question' do
+      question.subscribe(user)
+      expect(question.subscribed?(user)).to be_truthy
+    end
   end
 end
