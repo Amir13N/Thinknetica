@@ -7,7 +7,7 @@ class Question < ApplicationRecord
 
   belongs_to :user
 
-  has_and_belongs_to_many :subscribers, as: :subscribe, class_name: 'User'
+  has_and_belongs_to_many :subscribers, as: :subscribe, class_name: 'User', join_table: :subscriptions
 
   has_one :reward, dependent: :destroy
   has_many :answers, dependent: :destroy
@@ -25,14 +25,6 @@ class Question < ApplicationRecord
     answers.find_by(best: true)
   end
 
-  def subscribe(subscriber)
-    subscribers.push(subscriber) unless subscribed?(subscriber)
-  end
-
-  def unsubscribe(subscriber)
-    subscribers.delete(subscriber)
-  end
-
   def subscribed?(subscriber)
     subscribers.include?(subscriber)
   end
@@ -40,6 +32,6 @@ class Question < ApplicationRecord
   private
 
   def subscribe_author
-    subscribe(user)
+    subscribers.push(user)
   end
 end

@@ -24,12 +24,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :questions, concerns: :votable do
-    member do
-      post :subscribe
-      post :unsubscribe
-    end
+  resources :subscriptions, only: %i[create], path: 'subscriptions/:question_id'
+  delete 'subscriptions/:question_id/:user_id', to: 'subscriptions#destroy', as: :subscription
 
+  resources :questions, concerns: :votable do
     resources :answers, shallow: true, concerns: :votable do
       patch :choose_best, on: :member
     end

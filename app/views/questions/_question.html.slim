@@ -42,5 +42,7 @@
     - if can? :subscribe, question
       .subscribe
         p.subscribe-question-note id="subscribe-question-note-#{question.id}" #Subscribed
-        p= link_to 'Unsubscribe', unsubscribe_question_path(question), class: 'unsubscribe-question-link', id: "unsubscribe-question-link-#{question.id}", method: :post, remote: true, data: { question_id: question.id }
-        p= link_to 'Subscribe', subscribe_question_path(question), class: 'subscribe-question-link', id: "subscribe-question-link-#{question.id}", method: :post, remote: true, data: { question_id: question.id }
+
+        p= link_to 'Unsubscribe', subscription_path(user_id: current_user, question_id: question), class: 'unsubscribe-question-link', id: "unsubscribe-question-link-#{question.id}", method: :delete, remote: true, data: { question_id: question.id }
+
+        p= link_to 'Subscribe', subscriptions_path(question_id: question.id), class: 'subscribe-question-link', id: "subscribe-question-link-#{question.id}", method: :post, remote: true, data: { question_id: question.id }

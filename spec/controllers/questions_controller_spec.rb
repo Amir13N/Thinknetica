@@ -141,32 +141,4 @@ RSpec.describe QuestionsController, type: :controller do
       expect { delete :destroy, params: { id: other_question } }.to_not change(Question, :count)
     end
   end
-
-  describe 'POST #subscribe' do
-    let!(:question) { create(:question) }
-
-    it 'adds question to user subscribes' do
-      login(user)
-      expect { post :subscribe, params: { id: question.id } }.to change(user.subscribes, :count).by(1)
-    end
-
-    it 'can not add question to user subscribes' do
-      expect { post :subscribe, params: { id: question.id } }.to_not change(user.subscribes, :count)
-    end
-  end
-
-  describe 'POST #unsubscribe' do
-    before { login(user) }
-
-    let!(:question) { create(:question) }
-
-    it 'adds question to user subscribes' do
-      user.subscribes.push(question)
-      expect { post :unsubscribe, params: { id: question.id } }.to change(user.subscribes, :count).by(-1)
-    end
-
-    it 'can not add question to user subscribes' do
-      expect { post :unsubscribe, params: { id: question.id } }.to_not change(user.subscribes, :count)
-    end
-  end
 end

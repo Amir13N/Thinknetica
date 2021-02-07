@@ -25,7 +25,7 @@ feature 'User can subscribe to questions_path', "
       end
     end
 
-    scenario 'unsubscribe from question' do
+    scenario 'unsubscribes from question' do
       user.subscribes.push(question)
       visit questions_path
 
