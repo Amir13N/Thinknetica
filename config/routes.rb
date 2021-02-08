@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   resources :subscriptions, only: %i[create], path: 'subscriptions/:question_id'
-  delete 'subscriptions/:question_id/:user_id', to: 'subscriptions#destroy', as: :subscription
+  delete 'subscriptions/:question_id', to: 'subscriptions#destroy', as: :subscription
 
   resources :questions, concerns: :votable do
     resources :answers, shallow: true, concerns: :votable do

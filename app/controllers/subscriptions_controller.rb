@@ -15,7 +15,7 @@ class SubscriptionsController < ApplicationController
   private
 
   def set_subscription
-    @subscription = Subscription.find_by(question_id: params[:question_id].to_i, user_id: params[:user_id].to_i)
+    @subscription = Subscription.find_by(question_id: params[:question_id], user: current_user)
   end
 
   def set_question

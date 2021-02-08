@@ -30,13 +30,13 @@ RSpec.describe SubscriptionsController, type: :controller do
     it 'adds question to user subscribes' do
       user.subscribes.push(question)
       expect do
-        delete :destroy, params: { question_id: question.id, user_id: user.id }
+        delete :destroy, params: { question_id: question.id }
       end.to change(user.subscribes, :count).by(-1)
     end
 
     it 'can not add question to user subscribes' do
       expect do
-        delete :destroy, params: { question_id: question.id, user_id: user.id }
+        delete :destroy, params: { question_id: question.id }
       end.to_not change(user.subscribes, :count)
     end
   end

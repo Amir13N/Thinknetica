@@ -57,16 +57,6 @@ class QuestionsController < ApplicationController
     redirect_to questions_path, notice: 'Your question was successfully deleted.'
   end
 
-  def subscribe
-    authorize! :subscribe, @question
-    @question.subscribe(current_user)
-  end
-
-  def unsubscribe
-    authorize! :subscribe, @question
-    @question.unsubscribe(current_user)
-  end
-
   private
 
   def publish_question
