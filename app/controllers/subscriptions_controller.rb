@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-    authorize! :subscribe, Question
+    authorize! :unsubscribe, @subscription
     @subscription&.destroy
   end
 

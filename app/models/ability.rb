@@ -38,5 +38,6 @@ class Ability
     can :delete_link, Linkable, user_id: @user.id
 
     can :subscribe, Question
+    can :unsubscribe, Subscription, user_id: @user.id
   end
 end

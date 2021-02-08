@@ -15,4 +15,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github vkontakte]
+
+  def subscribed?(subscribe)
+    subscribes.include?(subscribe)
+  end
 end
