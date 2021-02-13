@@ -29,8 +29,11 @@
     - if can? :make_the_best, answer.question
       p = link_to 'Make the best', choose_best_answer_path(answer), method: :patch, remote: true, class: 'best-answer-link', id: "best-answer-link-#{answer.id}", data: { answer_id: answer.id }
 
+  h3 Comments
+  
+  = render 'shared/search_form', search_path: searches_answer_comments_path(answer)
+
   .mt-4.answer-comments id="answer-comments-#{answer.id}"
-    h3 Comments
 
     = render answer.comments
 

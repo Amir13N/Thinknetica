@@ -16,6 +16,7 @@ gem 'doorkeeper'
 gem 'gon'
 gem 'google-cloud-storage', require: false
 gem 'jbuilder', '~> 2.7'
+gem 'mysql2'
 gem 'octokit', '~> 4.0'
 gem 'oj'
 gem 'omniauth'
@@ -28,6 +29,7 @@ gem 'sass-rails', '>= 6'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim-rails'
+gem 'thinking-sphinx'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'whenever', require: false

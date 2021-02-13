@@ -3,5 +3,7 @@ nav.navbar.bg-light
     = link_to 'Sign out', destroy_user_session_path, method: :delete
   - else
     = link_to 'Sign in', new_user_session_path
+  
+  = link_to 'Search among all', searches_path
 
   = link_to 'Home', root_path

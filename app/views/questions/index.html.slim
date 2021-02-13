@@ -1,4 +1,6 @@
 div.col-8
   p= link_to 'Ask question', new_question_path
 
+  = render 'shared/search_form', search_path: searches_questions_path
+
   .questions= render @questions

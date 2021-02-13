@@ -8,8 +8,11 @@
       - @question.files.each do |file|
         p= link_to file.filename.to_s, url_for(file)
 
+  h3 Answers
+
+  = render 'shared/search_form', search_path: searches_answers_path(@question)
+  
   .mt-4.answers data-best-answer-id="#{@question.best_answer&.id}"
-    h3 Answers
     = render @question.answers
 
   - if user_signed_in?
@@ -17,8 +20,11 @@
 
     .mt-2.container.card.border-primary.new-answer= render 'answers/form'
 
+  h3.mt-4 Comments
+  
+  = render 'shared/search_form', search_path: searches_question_comments_path(@question)
+
   .mt-4.question-comments id="question-comments-#{@question.id}"
-    h3 Comments
 
     = render @question.comments
 

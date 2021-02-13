@@ -24,6 +24,19 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :searches, only: [:index]
+  scope 'searches' do
+    post '', to: 'searches#all', as: :searches_all
+    scope 'questions' do
+      post '', to: 'searches#questions', as: :searches_questions
+      post ':question_id/answers', to: 'searches#answers', as: :searches_answers
+      post ':commentable_id/comments', to: 'searches#comments', as: :searches_question_comments,
+                                       defaults: { commentable: 'question' }
+    end
+    post 'answers/:commentable_id/comments', to: 'searches#comments', as: :searches_answer_comments,
+                                             defaults: { commentable: 'answer' }
+  end
+
   resources :subscriptions, only: %i[create], path: 'subscriptions/:question_id'
   delete 'subscriptions/:question_id', to: 'subscriptions#destroy', as: :subscription
 
