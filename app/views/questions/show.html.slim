@@ -10,7 +10,7 @@
 
   h3 Answers
 
-  = render 'shared/search_form', search_path: searches_answers_path(@question)
+  .answers-search= render 'shared/search_form', search_path: searches_answers_path(@question)
   
   .mt-4.answers data-best-answer-id="#{@question.best_answer&.id}"
     = render @question.answers
@@ -22,7 +22,7 @@
 
   h3.mt-4 Comments
   
-  = render 'shared/search_form', search_path: searches_question_comments_path(@question)
+  .question-comments-search= render 'shared/search_form', search_path: searches_question_comments_path(@question)
 
   .mt-4.question-comments id="question-comments-#{@question.id}"
 

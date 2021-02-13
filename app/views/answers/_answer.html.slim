@@ -31,7 +31,7 @@
 
   h3 Comments
   
-  = render 'shared/search_form', search_path: searches_answer_comments_path(answer)
+  .answer-comments-search= render 'shared/search_form', search_path: searches_answer_comments_path(answer)
 
   .mt-4.answer-comments id="answer-comments-#{answer.id}"
 

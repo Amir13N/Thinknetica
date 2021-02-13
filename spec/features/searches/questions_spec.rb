@@ -5,17 +5,17 @@ feature 'User can search for questions', "
   As  an User
   I'd like to be able to search for questions
 " do
-  given!(:question) { create(:question, title: 'Title') }
+  given!(:questions) { create_list(:question, 2) }
 
   scenario 'User can search for question', sphinx: true, js: true do
-    visit searches_question_path
+    visit questions_path
 
-    Thinking::Test.run do
-      fill_in 'Search', with: 'title'
+    ThinkingSphinx::Test.run do
+      fill_in 'search', with: questions.first.title
       click_on 'Search'
 
-      expect(page).to have_content question.title
-      expect(page).to have_content question.body
+      expect(page).to have_content questions.first.title
+      expect(page).to_not have_content questions.last.title
     end
   end
 end

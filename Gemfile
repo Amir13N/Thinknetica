@@ -53,6 +53,7 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner-active_record'
   # Adds support for Capybara system testing and selenium driver
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
