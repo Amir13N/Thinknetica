@@ -24,9 +24,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:index]
+
   resources :searches, only: [:index]
   scope 'searches' do
     post '', to: 'searches#all', as: :searches_all
+    post 'users', to: 'searches#users', as: :searches_users
     scope 'questions' do
       post '', to: 'searches#questions', as: :searches_questions
       post ':question_id/answers', to: 'searches#answers', as: :searches_answers
