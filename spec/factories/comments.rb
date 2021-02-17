@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :comment do
-    body { 'MyText' }
+    body
     commentable { FactoryBot.create(:question) }
     user
 

@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
   include Voted
 
-  before_action :set_question, only: %i[show edit update destroy]
+  before_action :set_question, only: %i[show edit update destroy subscribe unsubscribe]
 
   after_action :publish_question, only: :create
 

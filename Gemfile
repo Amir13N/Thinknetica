@@ -16,6 +16,7 @@ gem 'doorkeeper'
 gem 'gon'
 gem 'google-cloud-storage', require: false
 gem 'jbuilder', '~> 2.7'
+gem 'mysql2'
 gem 'octokit', '~> 4.0'
 gem 'oj'
 gem 'omniauth'
@@ -25,9 +26,13 @@ gem 'pg'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 gem 'sass-rails', '>= 6'
+gem 'sidekiq'
+gem 'sinatra', require: false
 gem 'slim-rails'
+gem 'thinking-sphinx'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,6 +53,7 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner-active_record'
   # Adds support for Capybara system testing and selenium driver
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers

@@ -1,7 +1,7 @@
 .mt-2.container.card.border-primary.question id="question-#{question.id}"
-  h3.question-title= question.title
+  .h3.question-title= question.title
   
-  h4.question-body= question.body
+  .h4.question-body= question.body
 
   .question-files
     = render 'questions/files', question: question
@@ -20,7 +20,8 @@
 
   = content_tag :div, class: 'align-middle question-actions',
                      data: { voted: question.voted?(current_user),
-                             question_id: question.id }
+                             question_id: question.id,
+                             subscribed: question.subscribed?(current_user) }
 
     p = link_to 'Show', question_path(question), id: 'show-link'
 
@@ -37,3 +38,11 @@
     - if can? :vote, question
 
       = render 'shared/votes', resource: question, resource_name: 'question'
+
+    - if can? :subscribe, question
+      .subscribe
+        p.subscribe-question-note id="subscribe-question-note-#{question.id}" #Subscribed
+
+        = link_to 'Unsubscribe', subscription_path(question_id: question), class: 'unsubscribe-question-link', id: "unsubscribe-question-link-#{question.id}", method: :delete, remote: true, data: { question_id: question.id }
+
+        = link_to 'Subscribe', subscriptions_path(question_id: question.id), class: 'subscribe-question-link', id: "subscribe-question-link-#{question.id}", method: :post, remote: true, data: { question_id: question.id }

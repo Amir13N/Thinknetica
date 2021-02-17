@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   use_doorkeeper
   devise_for :users, controllers: { omniauth_callbacks: 'oauth_callbacks' }
 
@@ -17,6 +23,25 @@ Rails.application.routes.draw do
       delete :revote
     end
   end
+
+  resources :users, only: [:index]
+
+  resources :searches, only: [:index]
+  scope 'searches' do
+    post '', to: 'searches#all', as: :searches_all
+    post 'users', to: 'searches#users', as: :searches_users
+    scope 'questions' do
+      post '', to: 'searches#questions', as: :searches_questions
+      post ':question_id/answers', to: 'searches#answers', as: :searches_answers
+      post ':commentable_id/comments', to: 'searches#comments', as: :searches_question_comments,
+                                       defaults: { commentable: 'question' }
+    end
+    post 'answers/:commentable_id/comments', to: 'searches#comments', as: :searches_answer_comments,
+                                             defaults: { commentable: 'answer' }
+  end
+
+  resources :subscriptions, only: %i[create], path: 'subscriptions/:question_id'
+  delete 'subscriptions/:question_id', to: 'subscriptions#destroy', as: :subscription
 
   resources :questions, concerns: :votable do
     resources :answers, shallow: true, concerns: :votable do
