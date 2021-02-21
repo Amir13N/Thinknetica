@@ -33,6 +33,7 @@ gem 'thinking-sphinx'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'whenever', require: false
+gem 'mini_racer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
