@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class OauthCallbacksController < Devise::OmniauthCallbacksController
-  before_action :cors_set_access_control_headers
-
   def github
     @user = FindForOauthService.new(auth).call
 
@@ -34,13 +32,6 @@ class OauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   private
-
-  def cors_set_access_control_headers
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
-    response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-    response.headers['Access-Control-Max-Age'] = '1728000'
-  end
 
   def auth
     request.env['omniauth.auth']
