@@ -15,7 +15,7 @@ class SearchesController < ApplicationController
   def comments
     @commentable_name = params[:commentable]
     @commentable = @commentable_name.classify.constantize.find(params[:commentable_id])
-    @searched_comments = @commentable.comments.search(params[:search])
+    @searched_comments = @commentable.comments.search(params[:search], with: { commentable_type: @commentable_name })
   end
 
   def users
