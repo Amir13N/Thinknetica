@@ -1,1 +1,30 @@
-$('.questions').html('<%= j render @searched_questions %>');
+var questions = html('<%= j render @searched_questions %>');
+
+$(questions).each(function(){
+  var subscribed = $(this).data('subscribed');
+
+  if(subscribed){
+    $(this).find('.subscribe-question-link').hide();
+    $(this).find('.unsubscribe-question-link').show();
+    $(this).find('.subscribe-question-note').show();
+  }
+  else{
+    $(this).find('.subscribe-question-link').show();
+    $(this).find('.unsubscribe-question-link').hide();
+    $(this).find('.subscribe-question-note').hide();
+  }
+
+  var voted = $(this).data('voted');
+
+  if(voted){
+    $(this).find('.revote-question-link').show();
+    $(this).find('.vote-against-question-link').hide();
+    $(this).find('.vote-for-question-link').hide();
+  }
+  else{
+    $(this).find('.revote-question-link').hide();
+    $(this).find('.vote-against-question-link').show();
+    $(this).find('.vote-for-question-link').show();
+  }
+}
+$('.questions').html(questions);

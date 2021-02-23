@@ -21,7 +21,8 @@
   = content_tag :div, class: 'align-middle question-actions',
                      data: { voted: question.voted?(current_user),
                              question_id: question.id,
-                             subscribed: question.subscribed?(current_user) }
+                             subscribed: question.subscribed?(current_user) },
+                             id: "question-actions-#{question.id}"
 
     p = link_to 'Show', question_path(question), id: 'show-link'
 
