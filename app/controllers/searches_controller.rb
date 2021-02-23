@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   def all
-    @searched_resources = ThinkingSphinx.search(params[:search])
+    @searched_resources = ThinkingSphinx.search(ThinkingSphinx::Query.escape(params[:search]))
   end
 
   def questions
