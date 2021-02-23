@@ -1,7 +1,7 @@
-var answers = html('<%= j render @searched_answers %>');
-
+<% @comment = Comment.new %>
+var answers = $('<%= j render @searched_answers %>');
 $(answers).each(function(){
-  var voted = $(this).data('voted');
+  var voted = $(this).find('.answer-actions').data('voted');
 
   if(voted){
     $(this).find('.revote-answer-link').show();
@@ -13,6 +13,6 @@ $(answers).each(function(){
     $(this).find('.vote-against-answer-link').show();
     $(this).find('.vote-for-answer-link').show();
   }
-}
+})
 
 $('.answers').html(answers);

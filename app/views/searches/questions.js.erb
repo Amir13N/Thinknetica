@@ -1,7 +1,8 @@
-var questions = html('<%= j render @searched_questions %>');
+var questions = $('<%= j render @searched_questions %>');
 
 $(questions).each(function(){
-  var subscribed = $(this).data('subscribed');
+  var subscribed = $(this).find('.question-actions').data('subscribed');
+  console.log(subscribed);
 
   if(subscribed){
     $(this).find('.subscribe-question-link').hide();
@@ -26,5 +27,5 @@ $(questions).each(function(){
     $(this).find('.vote-against-question-link').show();
     $(this).find('.vote-for-question-link').show();
   }
-}
+})
 $('.questions').html(questions);
