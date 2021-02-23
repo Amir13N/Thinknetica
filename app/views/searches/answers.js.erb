@@ -1,1 +1,18 @@
-$('.answers').html('<%= j render @searched_answers %>');
+var answers = html('<%= j render @searched_answers %>');
+
+$(answers).each(function(){
+  var voted = $(this).data('voted');
+
+  if(voted){
+    $(this).find('.revote-answer-link').show();
+    $(this).find('.vote-against-answer-link').hide();
+    $(this).find('.vote-for-answer-link').hide();
+  }
+  else{
+    $(this).find('.revote-answer-link').hide();
+    $(this).find('.vote-against-answer-link').show();
+    $(this).find('.vote-for-answer-link').show();
+  }
+}
+
+$('.answers').html(answers);
