@@ -22,6 +22,6 @@ set :ssh_options, {
 }
 
 set :default_env, {
-  'SMTP_USERNAME' => ENV['SMTP_USERNAME']
+  'SMTP_USERNAME' => ENV['SMTP_USERNAME'],
   'SMTP_PASSWORD' => ENV['SMTP_PASSWORD']
 }
