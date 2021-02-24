@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+  puts ENV['SMTP_USERNAME']
+  puts ENV['SMTP_PASSWORD']
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -61,7 +63,6 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "qna_production"
-  byebug
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: '128.199.245.250' }
   config.action_mailer.delivery_method = :smtp
