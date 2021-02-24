@@ -20,10 +20,15 @@ set :ssh_options, {
   auth_methods: %w(publickey password),
   port: 2234
 }
+task :test do
+  puts 'start'
+  puts Figaro.env.smtp_username
+  puts 'end'
+end
 
 task :set_aciton_mailer_auth do
   put 'smtp_username: ' + ENV['SMTP_USERNAME'], 'qna/current/config/application.yml'
   put 'smtp_password: ' + ENV['SMTP_PASSWORD'], 'qna/current/config/application.yml'
 end
 
-before 'deploy:start', 'set_aciton_mailer_auth'
+before 'deploy:started', 'set_aciton_mailer_auth'
