@@ -20,8 +20,3 @@ set :ssh_options, {
   auth_methods: %w(publickey password),
   port: 2234
 }
-
-set :default_env, {
-  'SMTP_USERNAME' => ENV['SMTP_USERNAME'],
-  'SMTP_PASSWORD' => ENV['SMTP_PASSWORD']
-}
