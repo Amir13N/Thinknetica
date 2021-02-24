@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 Rails.application.configure do
-  puts 'START'
-  puts ENV['SMTP_USERNAME']
-  puts ENV['SMTP_PASSWORD']
-  puts 'END'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
