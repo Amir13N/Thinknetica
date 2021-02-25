@@ -11,7 +11,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'cancancan'
 gem 'capybara-email'
 gem 'cocoon'
-gem 'devise', '~> 4.3'
+gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'doorkeeper'
 gem 'gon'
 gem 'google-cloud-storage', require: false
