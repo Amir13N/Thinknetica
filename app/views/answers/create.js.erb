@@ -3,6 +3,20 @@ $('.answer-errors').html("<%= render 'shared/errors', resource: @answer %>");
 $('.flash').html("<%= j render partial: 'shared/flash' %>");
 
 <% if @answer.persisted? %>
-  $('.answers').append("<%= j render @answer %>");
+  <% @comment = Comment.new %>
+  var answer = $('<%= j render @answer %>');
+  var voted = $(answer).find('.answer-actions').data('voted');
+
+    if(voted){
+      $(answer).find('.revote-answer-link').show();
+      $(answer).find('.vote-against-answer-link').hide();
+      $(answer).find('.vote-for-answer-link').hide();
+    }
+    else{
+      $(answer).find('.revote-answer-link').hide();
+      $(answer).find('.vote-against-answer-link').show();
+      $(answer).find('.vote-for-answer-link').show();
+    }
+  $('.answers').append(answer);
   $('.answer-create #body').val('');
 <% end %>

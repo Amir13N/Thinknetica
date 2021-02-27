@@ -1,34 +1,35 @@
-.col-8
-  .question-options
-    h1= @question.title
-    h3= @question.body
+- cache @question do
+  .col-8
+    .question-options
+      h1= @question.title
+      h3= @question.body
 
-  .question-files
-    - if @question.files.attached?
-      - @question.files.each do |file|
-        p= link_to file.filename.to_s, url_for(file)
+    .question-files
+      - if @question.files.attached?
+        - @question.files.each do |file|
+          p= link_to file.filename.to_s, url_for(file)
 
-  h3 Answers
+    h3 Answers
 
-  .answers-search= render 'shared/search_form', search_path: searches_answers_path(@question)
-  
-  .mt-4.answers data-best-answer-id="#{@question.best_answer&.id}"
-    = render @question.answers
+    .answers-search= render 'shared/search_form', search_path: searches_answers_path(@question)
+    
+    .mt-4.answers data-best-answer-id="#{@question.best_answer&.id}"
+      = render @question.answers
 
-  - if user_signed_in?
-    h3.mt-4 Answer question
+    - if user_signed_in?
+      h3.mt-4 Answer question
 
-    .mt-2.container.card.border-primary.new-answer= render 'answers/form'
+      .mt-2.container.card.border-primary.new-answer= render 'answers/form'
 
-  h3.mt-4 Comments
-  
-  .question-comments-search= render 'shared/search_form', search_path: searches_question_comments_path(@question)
+    h3.mt-4 Comments
+    
+    .question-comments-search= render 'shared/search_form', search_path: searches_question_comments_path(@question)
 
-  .mt-4.question-comments id="question-comments-#{@question.id}"
+    .mt-4.question-comments id="question-comments-#{@question.id}"
 
-    = render @question.comments
+      = render @question.comments
 
-  - if user_signed_in?
-    h3.mt-4 Add comment
+    - if user_signed_in?
+      h3.mt-4 Add comment
 
-    .mt-2.container.card.border-primary.question-new-comment= render 'comments/form', commentable: @question
+      .mt-2.container.card.border-primary.question-new-comment= render 'comments/form', commentable: @question

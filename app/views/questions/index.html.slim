@@ -1,6 +1,7 @@
-div.col-8
-  p= link_to 'Ask question', new_question_path
+- cache collection_cache_key_for :question do
+  div.col-8
+    p= link_to 'Ask question', new_question_path
 
-  = render 'shared/search_form', search_path: searches_questions_path
+    = render 'shared/search_form', search_path: searches_questions_path
 
-  .questions= render @questions
+    .questions= render @questions
