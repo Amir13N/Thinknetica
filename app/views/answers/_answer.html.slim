@@ -1,43 +1,44 @@
-.mt-2.container.card.border-primary.answer id="answer-#{answer.id}"
-  .h4.answer-body= answer.body
-  
-  .answer-files
-    = render 'answers/files', answer: answer
-
-  .answer-links
-    = render 'answers/links', answer: answer
-
-  .h5
-    label Rating:
-    value.answer-rating id="answer-rating-#{answer.id}"= answer.rating
-
-  = content_tag :div, class: 'align-middle answer-actions',
-                     data: { voted: answer.voted?(current_user),
-                             answer_id: answer.id }
-
-    - if can? :delete, answer
-      p = link_to 'Delete', answer_path(answer), method: :delete, remote: true
+- cache answer do
+  .mt-2.container.card.border-primary.answer id="answer-#{answer.id}"
+    .h4.answer-body= answer.body
     
-      p = link_to 'Edit', '#', class: 'edit-answer-link', id: "edit-answer-link-#{answer.id}", data: { answer_id: answer.id }
+    .answer-files
+      = render 'answers/files', answer: answer
 
-      = render 'answers/form_inline', answer: answer
+    .answer-links
+      = render 'answers/links', answer: answer
 
-    - if can? :vote, answer
+    .h5
+      label Rating:
+      value.answer-rating id="answer-rating-#{answer.id}"= answer.rating
 
-      = render 'shared/votes', resource: answer, resource_name: 'answer'
+    = content_tag :div, class: 'align-middle answer-actions',
+                       data: { voted: answer.voted?(current_user),
+                               answer_id: answer.id }
 
-    - if can? :make_the_best, answer.question
-      p = link_to 'Make the best', choose_best_answer_path(answer), method: :patch, remote: true, class: 'best-answer-link', id: "best-answer-link-#{answer.id}", data: { answer_id: answer.id }
+      - if can? :delete, answer
+        p = link_to 'Delete', answer_path(answer), method: :delete, remote: true
+      
+        p = link_to 'Edit', '#', class: 'edit-answer-link', id: "edit-answer-link-#{answer.id}", data: { answer_id: answer.id }
 
-  h3 Comments
-  
-  .answer-comments-search= render 'shared/search_form', search_path: searches_answer_comments_path(answer)
+        = render 'answers/form_inline', answer: answer
 
-  .mt-4.answer-comments id="answer-comments-#{answer.id}"
+      - if can? :vote, answer
 
-    = render answer.comments
+        = render 'shared/votes', resource: answer, resource_name: 'answer'
 
-  - if can? :add_comment, answer
-    h3.mt-4 Add comment
+      - if can? :make_the_best, answer.question
+        p = link_to 'Make the best', choose_best_answer_path(answer), method: :patch, remote: true, class: 'best-answer-link', id: "best-answer-link-#{answer.id}", data: { answer_id: answer.id }
 
-    .mt-2.container.answer-new-comment= render 'comments/form', commentable: answer
+    h3 Comments
+    
+    .answer-comments-search= render 'shared/search_form', search_path: searches_answer_comments_path(answer)
+
+    .mt-4.answer-comments id="answer-comments-#{answer.id}"
+
+      = render answer.comments
+
+    - if can? :add_comment, answer
+      h3.mt-4 Add comment
+
+      .mt-2.container.answer-new-comment= render 'comments/form', commentable: answer
