@@ -28,6 +28,7 @@ module Qna
                        request_specs: false,
                        controller_specs: true
 
+    config.cache_store = :redis_cache_store, { expires_in: 90.minutes, url: 'redis://localhost:6379/0/cache' }
     end
   end
 end
