@@ -9,7 +9,7 @@
     "cocoon": "github:nathanvda/cocoon#c24ba53",
     "gon": "^1.0.3",
     "handlebars": "^4.7.6",
-    "handlebars-loader": "^1.7.1",
+    "handlebars-loader": "^1.7.3",
     "iquery": "^0.0.2",
     "jquery": "^3.5.1",
     "skim": "^0.1.1",
